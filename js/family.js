@@ -30,14 +30,19 @@ function loadFamilyData() {
             familyData = familyLoader.load();
         } else {
             // 브라우저 환경에서 실행되는 경우
-            // 실제 데이터는 서버에서 로드되어야 함
-            familyData = {
-                persons: [],
-                byLine: { Line1: [], Line2: [], Line3: [], 공통: [] },
-                byGeneration: { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] },
-                familyTree: {},
-                statistics: { total: 0, byLine: {}, byGeneration: {} }
-            };
+            // 브라우저용 데이터 사용
+            if (typeof FAMILY_DATA_BROWSER !== 'undefined') {
+                familyData = FAMILY_DATA_BROWSER;
+            } else {
+                // 폴백 데이터
+                familyData = {
+                    persons: [],
+                    byLine: { Line1: [], Line2: [], Line3: [], 공통: [] },
+                    byGeneration: { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] },
+                    familyTree: {},
+                    statistics: { total: 0, byLine: {}, byGeneration: {} }
+                };
+            }
         }
         
         console.log('패밀리 데이터 로드 완료:', familyData);

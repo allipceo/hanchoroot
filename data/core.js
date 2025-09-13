@@ -1,12 +1,12 @@
 // 한양조씨 족보앱 Core Module V3.0
 // 019번 데이터 스키마 기반 구현
 
-// 실제 노션 데이터 로드 (152명 완전 데이터)
+// 실제 노션 데이터 로드 (155명 완전 데이터 - 1세대 관계 수정)
 const fs = require('fs');
-const notionData = JSON.parse(fs.readFileSync('./converted_complete_data.json', 'utf8'));
+const notionData = JSON.parse(fs.readFileSync('./converted_complete_data_final.json', 'utf8'));
 
 const CORE_DATA = {
-  // Person 데이터 (실제 노션 데이터 152명) - 4단계 통합
+  // Person 데이터 (실제 노션 데이터 155명) - 4단계 통합 (1세대 관계 수정)
   persons: notionData.persons,
 
   // SearchIndex (실제 노션 데이터 기반) - 3-3단계 통합
