@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>패밀리별 보기 - 한양조씨 족보 앱</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/family.css">
+</head>
+<body>
+    <div id="app">
+        <header class="sub-header">
+            <button class="back-button" onclick="history.back()">← 뒤로</button>
+            <h1>📱 패밀리별 보기</h1>
+            <button class="home-button" onclick="location.href='index.html'">🏠 홈</button>
+        </header>
+        
+        <main class="family-main">
+            <!-- Line 탭 -->
+            <div class="line-tabs">
+                <button class="tab-button active" data-line="Line1">Line1</button>
+                <button class="tab-button" data-line="Line2">Line2</button>
+                <button class="tab-button" data-line="Line3">Line3</button>
+            </div>
+            
+            <!-- 세대 필터 -->
+            <div class="generation-filters">
+                <button class="filter-button active" data-generation="all">전체</button>
+                <button class="filter-button" data-generation="0">0세대</button>
+                <button class="filter-button" data-generation="4">4세대</button>
+                <button class="filter-button" data-generation="5">5세대</button>
+                <button class="filter-button" data-generation="6">6세대</button>
+            </div>
+            
+            <!-- 상태 필터 -->
+            <div class="status-filters">
+                <button class="status-button active" data-status="all">전체</button>
+                <button class="status-button" data-status="living">💚 생존</button>
+                <button class="status-button" data-status="deceased">🙏 고인</button>
+                <button class="status-button" data-status="unknown">❓ 미확인</button>
+            </div>
+            
+            <!-- 가족 트리 -->
+            <div class="family-tree">
+                <div id="familyList" class="family-list">
+                    <!-- 가족 트리 내용이 여기에 동적으로 생성됩니다 -->
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>버전: <span id="app-version"></span> | 데이터: <span id="data-version"></span></p>
+        </footer>
+    </div>
+
+    <script src="../data/core.js"></script>
+    <script src="../js/family.js"></script>
+</body>
+</html>

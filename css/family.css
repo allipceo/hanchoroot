@@ -1,0 +1,358 @@
+/* css/family.css - 패밀리별 보기 스타일 */
+
+.family-main {
+    padding: 20px;
+}
+
+/* Line 탭 스타일 */
+.line-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 10px;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    color: #666;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+    background-color: #e0e0e0;
+}
+
+.tab-button.active {
+    background-color: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(59, 130, 246, 0.3);
+}
+
+/* 세대 필터 스타일 */
+.generation-filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+/* 상태 필터 스타일 */
+.status-filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-button {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.filter-button:hover {
+    background-color: #f8f9fa;
+    border-color: var(--secondary-color);
+}
+
+.filter-button.active {
+    background-color: var(--secondary-color);
+    color: #fff;
+    border-color: var(--secondary-color);
+    box-shadow: 0 2px 5px rgba(0, 140, 186, 0.3);
+}
+
+/* 상태 필터 버튼 스타일 */
+.status-button {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.status-button:hover {
+    background-color: #f8f9fa;
+    border-color: #28a745;
+}
+
+.status-button.active {
+    background-color: #28a745;
+    color: #fff;
+    border-color: #28a745;
+    box-shadow: 0 2px 5px rgba(40, 167, 69, 0.3);
+}
+
+/* 가족 트리 컨테이너 */
+.family-tree {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    min-height: 400px;
+}
+
+.family-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 세대 그룹 스타일 */
+.generation-group {
+    margin-bottom: 25px;
+}
+
+.generation-header {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    background-color: #f0f7ff;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* 가족 구성원 스타일 */
+.family-member {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid #eee;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+/* 자녀 구성원 스타일 */
+.family-member.child-member {
+    background-color: #f0f7ff;
+    border-left: 3px solid var(--primary-color);
+    margin-left: 20px;
+}
+
+.family-member.child-member::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    width: 10px;
+    height: 1px;
+    background-color: #ccc;
+    transform: translateY(-50%);
+}
+
+.family-member:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.family-member.child-member:hover {
+    background-color: #e6f3ff;
+}
+
+.family-member:active {
+    transform: translateY(0);
+}
+
+/* 상태 아이콘 */
+.status-icon {
+    font-size: 24px;
+    margin-right: 15px;
+    min-width: 30px;
+    text-align: center;
+}
+
+/* 구성원 정보 */
+.member-info {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.member-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+
+.member-details {
+    font-size: 14px;
+    color: var(--dark-gray);
+    line-height: 1.4;
+}
+
+/* 세대 배지 */
+.generation-badge {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+/* 결과 없음 메시지 */
+.no-results {
+    text-align: center;
+    color: var(--dark-gray);
+    font-size: 16px;
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    border: 2px dashed #dee2e6;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+    .family-main {
+        padding: 15px;
+    }
+    
+    .line-tabs {
+        gap: 5px;
+        padding: 8px;
+    }
+    
+    .tab-button {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+    
+    .generation-filters {
+        gap: 6px;
+    }
+    
+    .filter-button {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    
+    .family-tree {
+        padding: 15px;
+    }
+    
+    .family-member {
+        padding: 12px;
+    }
+    
+    .member-name {
+        font-size: 16px;
+    }
+    
+    .member-details {
+        font-size: 13px;
+    }
+    
+    .status-icon {
+        font-size: 20px;
+        margin-right: 12px;
+    }
+}
+
+/* 터치 디바이스 최적화 */
+@media (hover: none) and (pointer: coarse) {
+    .family-member {
+        padding: 18px 15px;
+    }
+    
+    .tab-button,
+    .filter-button {
+        padding: 12px 16px;
+        font-size: 16px;
+    }
+    
+    .member-name {
+        font-size: 20px;
+    }
+    
+    .member-details {
+        font-size: 16px;
+    }
+}
+
+/* 로딩 상태 */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    color: var(--dark-gray);
+    font-size: 16px;
+}
+
+.loading::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 접근성 개선 */
+.tab-button:focus,
+.filter-button:focus,
+.family-member:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* 다크 모드 지원 (향후 확장용) */
+@media (prefers-color-scheme: dark) {
+    .family-tree {
+        background-color: #1a1a1a;
+        color: #fff;
+    }
+    
+    .family-member {
+        background-color: #2a2a2a;
+        border-color: #333;
+    }
+    
+    .family-member:hover {
+        background-color: #333;
+    }
+    
+    .generation-header {
+        background-color: #2a2a2a;
+        color: #fff;
+    }
+}
