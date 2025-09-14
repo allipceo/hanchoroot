@@ -39,7 +39,7 @@ function getPersonIdFromUrl() {
 
 // 상세 정보 데이터 로드 (1단계 Core Module 재활용)
 function loadDetailData() {
-  detailData = window.appData || CORE_DATA;
+  detailData = window.CORE_DATA || CORE_DATA;
   console.log("상세 정보 데이터 로드 완료:", detailData);
 }
 

@@ -280,3 +280,4 @@ function verifyCorrectedConsistency() {
 // 검증 실행
 verifyCorrectedConsistency();
 
+

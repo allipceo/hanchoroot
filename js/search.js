@@ -29,8 +29,10 @@ function initSearchPage() {
 
 // 검색 데이터 로드 (1단계 Core Module 재활용)
 function loadSearchData() {
-  searchData = window.appData || CORE_DATA;
+  searchData = window.CORE_DATA || CORE_DATA;
   console.log("검색 데이터 로드 완료:", searchData);
+  console.log("Persons count:", searchData?.persons?.length);
+  console.log("Search index:", searchData?.searchIndex);
 }
 
 // 검색 이벤트 리스너 설정
