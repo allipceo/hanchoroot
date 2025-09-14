@@ -92,14 +92,14 @@ function displayAllPersons() {
 
 // 인물 목록 아이템 생성
 function createPersonListItem(person) {
-  const statusText = person.status === 'living' ? '생존' : '고인';
-  const statusClass = person.status === 'living' ? 'living' : 'deceased';
+  const statusText = person.생존상태 === '생존' ? '생존' : '고인';
+  const statusClass = person.생존상태 === '생존' ? 'living' : 'deceased';
   
   return `
     <div class="modal-person-item" onclick="selectPerson('${person.id}')">
       <div class="modal-person-info">
         <div class="modal-person-name">${person.name}</div>
-        <div class="modal-person-details">${person.generation}세대 | ${person.line} | ${statusText}</div>
+        <div class="modal-person-details">${person.세대}세대 | ${person.Line1} | ${statusText}</div>
       </div>
       <button class="select-person-btn" onclick="event.stopPropagation(); selectPerson('${person.id}')">선택</button>
     </div>
@@ -138,7 +138,7 @@ function displaySelectedPerson(personNumber, person) {
     selected.style.display = 'block';
     
     name.textContent = person.name;
-    details.textContent = `${person.generation}세대 | ${person.line} | ${person.status === 'living' ? '생존' : '고인'}`;
+    details.textContent = `${person.세대}세대 | ${person.Line1} | ${person.생존상태 === '생존' ? '생존' : '고인'}`;
   }
 }
 

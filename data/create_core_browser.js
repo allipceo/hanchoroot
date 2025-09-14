@@ -6,7 +6,7 @@ console.log('=== 브라우저용 Core Module 생성 시작 ===\n');
 try {
   // 최종 데이터 파일 읽기
   console.log('1. 최종 데이터 파일 읽기...');
-  const finalData = JSON.parse(fs.readFileSync('./converted_complete_data_final.json', 'utf8'));
+  const finalData = JSON.parse(fs.readFileSync('./converted_data.json', 'utf8'));
   console.log(`✅ 데이터 로드 완료: ${finalData.persons.length}명`);
 
   // 브라우저용 core.js 파일 생성

@@ -30,18 +30,18 @@ function initializeApp() {
     console.log("앱 초기화 완료");
 }
 
-// Core 데이터 로드
+// Core 데이터 로드 (V2.0 방법론 - window.CORE_DATA 표준 사용)
 function loadCoreData() {
     try {
-        // Core Module 로드
-        if (typeof coreLoader !== 'undefined') {
-            const coreData = coreLoader.load();
+        // V2.0 방법론: window.CORE_DATA 표준 사용
+        if (typeof window.CORE_DATA !== 'undefined') {
+            const coreData = window.CORE_DATA;
             adminInfo = coreData.config.admin;
             appConfig = coreData.config.app;
             currentUser = coreData.persons[0]; // 조은상
-            console.log("Core 데이터 로드 성공");
+            console.log("Core 데이터 로드 성공 (V2.0)");
         } else {
-            console.error("Core Module을 찾을 수 없습니다");
+            console.error("window.CORE_DATA가 로드되지 않았습니다");
         }
     } catch (error) {
         console.error("데이터 로드 오류:", error);

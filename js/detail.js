@@ -77,13 +77,13 @@ function displayBasicInfo(person) {
   document.getElementById('person-name').textContent = person.name;
   
   const statusElement = document.getElementById('person-status');
-  statusElement.textContent = person.status === 'living' ? '생존' : '고인';
-  statusElement.className = `person-status ${person.status}`;
+  statusElement.textContent = person.생존상태 === '생존' ? '생존' : '고인';
+  statusElement.className = `person-status ${person.생존상태 === '생존' ? 'living' : 'deceased'}`;
   
   // 정보 그리드
-  document.getElementById('person-generation').textContent = `${person.generation}세대`;
-  document.getElementById('person-line').textContent = person.line;
-  document.getElementById('person-birth').textContent = person.birthDate || '미상';
+  document.getElementById('person-generation').textContent = `${person.세대}세대`;
+  document.getElementById('person-line').textContent = person.Line1;
+  document.getElementById('person-birth').textContent = person.생년 || '미상';
   document.getElementById('person-age').textContent = person.age ? `${person.age}세` : '미상';
 }
 
@@ -165,7 +165,7 @@ function displayFamilyRelations(person) {
       `<div class="family-item">
         <div class="family-relation">${relation.relation}</div>
         <div class="family-name">${relation.name}</div>
-        <div class="family-status ${relation.status}">${relation.status === 'living' ? '생존' : '고인'}</div>
+        <div class="family-status ${relation.생존상태 === '생존' ? 'living' : 'deceased'}">${relation.생존상태 === '생존' ? '생존' : '고인'}</div>
       </div>`
     ).join('');
   }

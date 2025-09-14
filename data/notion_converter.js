@@ -3,26 +3,20 @@
 
 const fs = require('fs');
 
-// 노션 데이터 로드 (UTF-8 인코딩 파일 사용)
-const notionData = JSON.parse(fs.readFileSync('notion_data_utf8.json', 'utf8'));
+// 노션 데이터 로드 (완전한 데이터 사용)
+const notionData = JSON.parse(fs.readFileSync('notion_data_complete.json', 'utf8'));
 
 // 필드 매핑 테이블 (019번 스키마 기반)
 const FIELD_MAPPING = {
-  // 기본 정보
-  '이름': 'name',
-  '세대': 'generation', 
-  'Line': 'line',
-  '생년': 'birthDate',
-  '사망일': 'deathDate',
-  '아버지': 'father',
-  '어머니': 'mother',
-  '배우자': 'spouse',
-  '자녀': 'children',
-  '형제자매': 'siblings',
-  '비고': 'notes',
-  '연락처': 'phone',
-  '이메일': 'email',
-  '주소': 'address'
+  // 노션 필드명과 완전히 동일 (1:1 매핑)
+  '생년': '생년',
+  '비고': '비고',
+  '세대': '세대',
+  '아버지': '아버지',
+  '성별': '성별',
+  'Line1': 'Line1',
+  '배우자': '배우자',
+  '생존상태': '생존상태'
 };
 
 // ID 생성 함수 (G5F001D 형식)
@@ -61,10 +55,9 @@ function getRelationCode(person) {
   return 'S'; // 기본값
 }
 
-// 상태 결정 함수
+// 상태 결정 함수 (노션 생존상태 필드 직접 사용)
 function determineStatus(person) {
-  const deathDate = person.properties.사망일?.date?.start;
-  return deathDate ? 'deceased' : 'living';
+  return person.properties.생존상태?.select?.name || '미확인';
 }
 
 // 나이 계산 함수
@@ -158,12 +151,12 @@ function convertNotionToJSON() {
       id: generateId(person, index),
       name: person.properties.이름?.title?.[0]?.text?.content || '',
       displayName: person.properties.이름?.title?.[0]?.text?.content || '',
-      gender: inferGender(person),
-      generation: parseInt(person.properties.세대?.select?.name?.replace('세대', '')) || 0,
-      line: person.properties.Line?.select?.name || 'Line1',
-      birthDate: person.properties.생년?.number ? `${person.properties.생년.number}-01-01` : null,
-      deathDate: person.properties.사망일?.date?.start || null,
-      status: determineStatus(person),
+      성별: person.properties.성별?.select?.name || 'M',
+      세대: parseInt(person.properties.세대?.select?.name?.replace('세대', '')) || 0,
+      Line1: person.properties.Line1?.rich_text?.[0]?.plain_text || 'Line1',
+      생년: person.properties.생년?.number || null,
+      사망일: person.properties.사망일?.date?.start || null,
+      생존상태: determineStatus(person),
       age: calculateAge(person),
       relationships: extractRelationships(person),
       contact: extractContact(person),

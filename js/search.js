@@ -158,8 +158,8 @@ function createResultItem(personId, query) {
   const person = getPersonById(personId);
   if (!person) return '';
   
-  const statusClass = person.status === 'living' ? 'living' : 'deceased';
-  const statusText = person.status === 'living' ? '생존' : '고인';
+  const statusClass = person.생존상태 === '생존' ? 'living' : 'deceased';
+  const statusText = person.생존상태 === '생존' ? '생존' : '고인';
   
   return `
     <div class="result-item" onclick="showPersonDetail('${personId}')">
@@ -168,9 +168,9 @@ function createResultItem(personId, query) {
         <div class="result-status ${statusClass}">${statusText}</div>
       </div>
       <div class="result-info">
-        <span>👤 ${person.generation}세대</span>
-        <span>🏠 ${person.line}</span>
-        <span>📅 ${person.birthDate || '미상'}</span>
+        <span>👤 ${person.세대}세대</span>
+        <span>🏠 ${person.Line1}</span>
+        <span>📅 ${person.생년 || '미상'}</span>
       </div>
       <div class="result-actions">
         <button onclick="event.stopPropagation(); showPersonDetail('${personId}')">상세보기</button>
@@ -239,7 +239,8 @@ function handleSuggestionClick(event) {
 // 검색 히스토리 표시
 function displaySearchHistory() {
   const historyList = document.getElementById('historyList');
-  const history = searchData?.searchHistory?.recent || [];
+  // 조대표님 로직 - 간단하게 로컬 스토리지에서 가져오기
+  const history = JSON.parse(localStorage.getItem('searchHistory') || '[]');
   
   if (history.length === 0) {
     historyList.innerHTML = '<p style="color: #999; font-style: italic;">최근 검색 기록이 없습니다.</p>';
@@ -257,27 +258,28 @@ function searchFromHistory(query) {
   performSearch();
 }
 
-// 검색 히스토리 추가
+// 검색 히스토리 추가 (조대표님 로직 - 간단하게)
 function addToSearchHistory(query, resultCount) {
-  if (!searchData.searchHistory) return;
+  // 간단한 로컬 스토리지 사용
+  let history = JSON.parse(localStorage.getItem('searchHistory') || '[]');
   
-  const history = searchData.searchHistory;
-  const newEntry = {
+  // 중복 제거
+  history = history.filter(item => item.query !== query);
+  
+  // 새 항목 추가
+  history.unshift({
     query: query,
     timestamp: new Date().toISOString(),
     resultCount: resultCount
-  };
+  });
   
-  // 중복 제거
-  history.recent = history.recent.filter(item => item.query !== query);
-  
-  // 새 항목 추가
-  history.recent.unshift(newEntry);
-  
-  // 최대 개수 제한
-  if (history.recent.length > history.maxHistory) {
-    history.recent = history.recent.slice(0, history.maxHistory);
+  // 최대 10개만 저장
+  if (history.length > 10) {
+    history = history.slice(0, 10);
   }
+  
+  // 로컬 스토리지에 저장
+  localStorage.setItem('searchHistory', JSON.stringify(history));
   
   // 히스토리 다시 표시
   displaySearchHistory();
@@ -289,14 +291,15 @@ function displayAppVersion() {
   const dataVersion = document.getElementById('data-version');
   
   if (appVersion && dataVersion && searchData) {
-    appVersion.textContent = searchData.config.app.version;
-    dataVersion.textContent = searchData.config.app.dataVersion;
+    appVersion.textContent = searchData.config.version || "1.0";
+    dataVersion.textContent = searchData.config.lastUpdated || "Unknown";
   }
 }
 
 // 유틸리티 함수들 (간결한 구현)
 function getPersonById(id) {
-  return searchData?.persons?.find(p => p.id === id);
+  const data = searchData || window.CORE_DATA;
+  return data?.persons?.find(p => p.id === id);
 }
 
 function showPersonDetail(personId) {
