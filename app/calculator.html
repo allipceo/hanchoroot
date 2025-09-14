@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>촌수 계산기 - 한양조씨 족보</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/calculator.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 헤더 (1단계 재사용) -->
+        <header>
+            <button class="back-btn" onclick="goBack()">←</button>
+            <h1>🧮 촌수 계산기</h1>
+            <p>두 사람의 관계를 계산하세요</p>
+        </header>
+
+        <!-- 메인 컨텐츠 -->
+        <main>
+            <!-- 첫 번째 인물 선택 -->
+            <div class="person-selection">
+                <h3>👤 첫 번째 사람</h3>
+                <div class="person-selector" id="person1-selector">
+                    <button class="select-btn" onclick="openPersonSelector(1)">
+                        <span id="person1-placeholder">검색하여 선택하기</span>
+                    </button>
+                    <div class="selected-person" id="person1-selected" style="display: none;">
+                        <div class="person-card">
+                            <div class="person-info">
+                                <div class="person-name" id="person1-name"></div>
+                                <div class="person-details" id="person1-details"></div>
+                            </div>
+                            <button class="change-btn" onclick="openPersonSelector(1)">변경</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 두 번째 인물 선택 -->
+            <div class="person-selection">
+                <h3>👤 두 번째 사람</h3>
+                <div class="person-selector" id="person2-selector">
+                    <button class="select-btn" onclick="openPersonSelector(2)">
+                        <span id="person2-placeholder">검색하여 선택하기</span>
+                    </button>
+                    <div class="selected-person" id="person2-selected" style="display: none;">
+                        <div class="person-card">
+                            <div class="person-info">
+                                <div class="person-name" id="person2-name"></div>
+                                <div class="person-details" id="person2-details"></div>
+                            </div>
+                            <button class="change-btn" onclick="openPersonSelector(2)">변경</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 계산 버튼 -->
+            <div class="calculate-section">
+                <button class="calculate-btn" id="calculate-btn" onclick="calculateKinship()" disabled>
+                    🧮 촌수 계산하기
+                </button>
+            </div>
+
+            <!-- 계산 결과 -->
+            <div class="result-section" id="result-section" style="display: none;">
+                <h3>📊 계산 결과</h3>
+                <div class="result-card" id="result-card">
+                    <!-- 계산 결과가 여기에 동적으로 추가됩니다 -->
+                </div>
+            </div>
+
+            <!-- 계산 히스토리 -->
+            <div class="history-section" id="history-section">
+                <h3>📝 최근 계산</h3>
+                <div class="history-list" id="history-list">
+                    <!-- 계산 히스토리가 여기에 동적으로 추가됩니다 -->
+                </div>
+            </div>
+        </main>
+
+        <!-- 푸터 (1단계 재사용) -->
+        <footer>
+            <p>버전: <span id="app-version"></span> | 데이터: <span id="data-version"></span></p>
+        </footer>
+    </div>
+
+    <!-- 인물 선택 모달 -->
+    <div class="modal" id="person-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">인물 선택</h3>
+                <button class="close-btn" onclick="closePersonSelector()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-container">
+                    <input type="text" id="modal-search" placeholder="이름을 입력하세요" autocomplete="off">
+                    <button onclick="searchPersons()">검색</button>
+                </div>
+                <div class="person-list" id="modal-person-list">
+                    <!-- 검색 결과가 여기에 표시됩니다 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 스크립트 로드 -->
+    <script src="../data/core.js"></script>
+    <script src="../data/kinship.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/calculator.js"></script>
+</body>
+</html>

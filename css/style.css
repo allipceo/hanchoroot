@@ -1,0 +1,342 @@
+/* 한양조씨 족보앱 스타일 V3.0 */
+/* 모바일 최적화 + 고령 사용자 배려 */
+
+/* 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* 컨테이너 */
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 16px;
+    min-height: 100vh;
+}
+
+/* 헤더 */
+.header {
+    background: linear-gradient(135deg, #2563EB, #1D4ED8);
+    color: white;
+    padding: 20px 16px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.header .subtitle {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* 메인 화면 */
+.main-screen {
+    display: block;
+}
+
+.settings-screen {
+    display: none;
+}
+
+/* 현재 사용자 표시 */
+.current-user {
+    background: #e3f2fd;
+    border: 2px solid #2196f3;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 20px 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #1976d2;
+}
+
+/* 메뉴 버튼들 */
+.menu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.menu-button {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.menu-button:hover {
+    background: #f5f5f5;
+    border-color: #2563EB;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.menu-button:active {
+    transform: translateY(0);
+}
+
+/* 메뉴 아이콘 */
+.menu-icon {
+    font-size: 24px;
+}
+
+/* 최근 활동 */
+.recent-activity {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.recent-activity h3 {
+    color: #2563EB;
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+
+.activity-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    color: #666;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+/* 설정 화면 */
+.settings-container {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.settings-section {
+    margin-bottom: 24px;
+}
+
+.settings-section h3 {
+    color: #2563EB;
+    margin-bottom: 12px;
+    font-size: 18px;
+    border-bottom: 2px solid #e3f2fd;
+    padding-bottom: 8px;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+.setting-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.setting-value {
+    color: #666;
+}
+
+/* 관리자 정보 */
+.admin-info {
+    background: #fff3e0;
+    border: 2px solid #ff9800;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px 0;
+}
+
+.admin-info h4 {
+    color: #e65100;
+    margin-bottom: 8px;
+}
+
+.admin-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+}
+
+.contact-icon {
+    font-size: 18px;
+}
+
+/* 네비게이션 */
+.nav-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #e0e0e0;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    min-width: 60px;
+}
+
+.nav-button.active {
+    color: #2563EB;
+    font-weight: bold;
+}
+
+.nav-icon {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* 앱 정보 */
+.app-info {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .container {
+        padding: 12px;
+    }
+    
+    .header {
+        padding: 16px 12px;
+    }
+    
+    .header h1 {
+        font-size: 20px;
+    }
+    
+    .menu-button {
+        padding: 16px;
+        font-size: 16px;
+        min-height: 56px;
+    }
+    
+    .menu-icon {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 18px;
+    }
+    
+    .header .subtitle {
+        font-size: 14px;
+    }
+    
+    .menu-button {
+        padding: 14px;
+        font-size: 15px;
+        min-height: 52px;
+    }
+    
+    .current-user {
+        font-size: 16px;
+        padding: 14px;
+    }
+}
+
+/* 터치 최적화 */
+@media (hover: none) and (pointer: coarse) {
+    .menu-button {
+        min-height: 60px;
+        padding: 20px;
+    }
+    
+    .nav-button {
+        min-height: 44px;
+        padding: 12px 8px;
+    }
+}
+
+/* 접근성 */
+.menu-button:focus,
+.nav-button:focus {
+    outline: 3px solid #2563EB;
+    outline-offset: 2px;
+}
+
+/* 로딩 상태 */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* 상태 표시 */
+.status-living { color: #059669; }
+.status-deceased { color: #6B7280; }
+.status-unknown { color: #F59E0B; }
