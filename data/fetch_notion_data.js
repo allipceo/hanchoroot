@@ -3,7 +3,7 @@ const { Client } = require('@notionhq/client');
 
 // 노션 클라이언트 초기화
 const notion = new Client({
-  auth: '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'
+  auth: process.env.NOTION_API_KEY
 });
 
 // 데이터베이스 ID
