@@ -217,6 +217,97 @@
     color: #9E9E9E;
 }
 
+/* 부부 카드 스타일 */
+.couple-card {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border: 2px solid #ff6b6b;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.couple-card:hover {
+    border-color: #ff4757;
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.2);
+    transform: translateY(-1px);
+}
+
+.couple-info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.couple-avatars {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+}
+
+.couple-separator {
+    margin: 0 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff6b6b;
+}
+
+.couple-details {
+    flex: 1;
+}
+
+.couple-name {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.couple-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    color: #666;
+}
+
+.couple-status {
+    display: flex;
+    gap: 8px;
+}
+
+.couple-status .status {
+    font-size: 16px;
+}
+
+/* 클릭 가능한 요소들 */
+.clickable {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.clickable:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.couple-name .clickable:hover {
+    color: #ff4757;
+    font-weight: 700;
+}
+
+.couple-avatars .person-avatar.clickable:hover {
+    background: #ff6b6b;
+    color: white;
+    transform: scale(1.1);
+}
+
+.couple-status .status.clickable:hover {
+    transform: scale(1.2);
+}
+
 /* 세대별 그룹 스타일 */
 .generation-group {
     margin-bottom: 30px;

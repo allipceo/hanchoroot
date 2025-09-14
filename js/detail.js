@@ -70,99 +70,135 @@ function displayPersonDetail(personId) {
 // 기본 정보 표시
 function displayBasicInfo(person) {
   // 헤더 정보
-  document.getElementById('detail-title').textContent = `👤 ${person.name}`;
-  document.getElementById('detail-subtitle').textContent = `${person.generation}세대 | ${person.line}`;
-  
-  // 인물 기본 정보
   document.getElementById('person-name').textContent = person.name;
   
+  // 상태 표시
   const statusElement = document.getElementById('person-status');
   statusElement.textContent = person.생존상태 === '생존' ? '생존' : '고인';
   statusElement.className = `person-status ${person.생존상태 === '생존' ? 'living' : 'deceased'}`;
   
-  // 정보 그리드
+  // 기본 정보
   document.getElementById('person-generation').textContent = `${person.세대}세대`;
   document.getElementById('person-line').textContent = person.Line1;
   document.getElementById('person-birth').textContent = person.생년 || '미상';
   document.getElementById('person-age').textContent = person.age ? `${person.age}세` : '미상';
 }
 
-// 가족 관계 표시
+// 가족 관계 표시 (V5.0 - 규격화된 표시 순서)
 function displayFamilyRelations(person) {
   const familyList = document.getElementById('family-list');
   const relations = [];
   
-  // 부모 관계
-  if (person.relationships.father) {
-    const father = getPersonById(person.relationships.father);
-    if (father) {
-      relations.push({
-        relation: '부',
-        name: father.name,
-        status: father.status
-      });
-    }
-  }
+  console.log('가족관계 표시 시작 (V5.0):', person.name);
   
-  if (person.relationships.mother) {
-    const mother = getPersonById(person.relationships.mother);
-    if (mother) {
-      relations.push({
-        relation: '모',
-        name: mother.name,
-        status: mother.status
-      });
-    }
-  }
+  // 1. 본인 (현재 인물) - 표시하지 않음 (이미 상단에 표시됨)
   
-  // 배우자 관계
+  // 2. 배우자 (본인의 배우자)
   if (person.relationships.spouses && person.relationships.spouses.length > 0) {
-    person.relationships.spouses.forEach(spouseId => {
-      const spouse = getPersonById(spouseId);
+    person.relationships.spouses.forEach(spouseName => {
+      const spouse = getPersonByName(spouseName);
       if (spouse) {
         relations.push({
           relation: '배우자',
           name: spouse.name,
-          status: spouse.status
+          생존상태: spouse.생존상태,
+          id: spouse.id
         });
       }
     });
   }
   
-  // 자녀 관계
-  if (person.relationships.children && person.relationships.children.length > 0) {
-    person.relationships.children.forEach(childId => {
-      const child = getPersonById(childId);
-      if (child) {
-        relations.push({
-          relation: '자녀',
-          name: child.name,
-          status: child.status
-        });
-      }
-    });
+  // 3. 부 (아버지)
+  if (person.relationships.father) {
+    const father = getPersonByName(person.relationships.father);
+    if (father) {
+      relations.push({
+        relation: '부',
+        name: father.name,
+        생존상태: father.생존상태,
+        id: father.id
+      });
+    }
   }
   
-  // 형제자매 관계
-  if (person.relationships.siblings && person.relationships.siblings.length > 0) {
-    person.relationships.siblings.forEach(siblingId => {
-      const sibling = getPersonById(siblingId);
-      if (sibling) {
-        relations.push({
-          relation: '형제자매',
-          name: sibling.name,
-          status: sibling.status
-        });
-      }
-    });
+  // 4. 모 (어머니)
+  if (person.relationships.mother) {
+    const mother = getPersonByName(person.relationships.mother);
+    if (mother) {
+      relations.push({
+        relation: '모',
+        name: mother.name,
+        생존상태: mother.생존상태,
+        id: mother.id
+      });
+    }
   }
   
-  // 가족 관계 HTML 생성
+  // 5-8. 자녀 및 자녀의 배우자 (역방향 검색)
+  const children = findChildrenByParent(person.name);
+  
+  // 아들들 먼저 표시
+  const sons = children.filter(child => child.성별 === 'M');
+  sons.forEach(son => {
+    // 아들 표시
+    relations.push({
+      relation: '아들',
+      name: son.name,
+      생존상태: son.생존상태,
+      id: son.id
+    });
+    
+    // 아들의 배우자 표시 (기혼인 경우)
+    if (son.relationships.spouses && son.relationships.spouses.length > 0) {
+      son.relationships.spouses.forEach(spouseName => {
+        const spouse = getPersonByName(spouseName);
+        if (spouse) {
+          relations.push({
+            relation: '아들의 배우자',
+            name: spouse.name,
+            생존상태: spouse.생존상태,
+            id: spouse.id
+          });
+        }
+      });
+    }
+  });
+  
+  // 딸들 표시
+  const daughters = children.filter(child => child.성별 === 'F');
+  daughters.forEach(daughter => {
+    // 딸 표시
+    relations.push({
+      relation: '딸',
+      name: daughter.name,
+      생존상태: daughter.생존상태,
+      id: daughter.id
+    });
+    
+    // 딸의 배우자 표시 (기혼인 경우)
+    if (daughter.relationships.spouses && daughter.relationships.spouses.length > 0) {
+      daughter.relationships.spouses.forEach(spouseName => {
+        const spouse = getPersonByName(spouseName);
+        if (spouse) {
+          relations.push({
+            relation: '딸의 배우자',
+            name: spouse.name,
+            생존상태: spouse.생존상태,
+            id: spouse.id
+          });
+        }
+      });
+    }
+  });
+  
+  console.log('최종 가족관계 목록 (V5.0):', relations);
+  
+  // 가족 관계 HTML 생성 (클릭 가능하도록 수정)
   if (relations.length === 0) {
     familyList.innerHTML = '<div class="empty-state"><div class="empty-icon">👨‍👩‍👧‍👦</div><div class="empty-text">가족 관계 정보가 없습니다.</div></div>';
   } else {
     familyList.innerHTML = relations.map(relation => 
-      `<div class="family-item">
+      `<div class="family-item" onclick="showPersonDetail('${relation.id}')">
         <div class="family-relation">${relation.relation}</div>
         <div class="family-name">${relation.name}</div>
         <div class="family-status ${relation.생존상태 === '생존' ? 'living' : 'deceased'}">${relation.생존상태 === '생존' ? '생존' : '고인'}</div>
@@ -174,18 +210,6 @@ function displayFamilyRelations(person) {
 // 연락처 정보 표시
 function displayContactInfo(person) {
   const contactList = document.getElementById('contact-list');
-  const contactSection = document.getElementById('contact-section');
-  
-  // 연락처 정보가 있는지 확인
-  const hasContact = person.contact.phone || person.contact.email || person.contact.address;
-  
-  if (!hasContact) {
-    contactSection.style.display = 'none';
-    return;
-  }
-  
-  contactSection.style.display = 'block';
-  
   const contacts = [];
   
   if (person.contact.phone) {
@@ -251,51 +275,46 @@ function displayAdditionalInfo(person) {
     });
   }
   
-  if (person.status === 'deceased' && additional.burialPlace) {
-    additionalItems.push({
-      label: '안장지',
-      value: additional.burialPlace
-    });
-  }
-  
-  if (person.status === 'deceased' && additional.memorialDate) {
-    additionalItems.push({
-      label: '기일',
-      value: additional.memorialDate
-    });
-  }
-  
-  if (additionalItems.length === 0) {
-    additionalInfo.innerHTML = '<div class="empty-state"><div class="empty-icon">📋</div><div class="empty-text">추가 정보가 없습니다.</div></div>';
-  } else {
-    additionalInfo.innerHTML = additionalItems.map(item => 
-      `<div class="additional-item">
-        <div class="additional-label">${item.label}</div>
-        <div class="additional-value">${item.value}</div>
-      </div>`
-    ).join('');
-  }
+  additionalInfo.innerHTML = additionalItems.map(item => 
+    `<div class="additional-item">
+      <div class="additional-label">${item.label}</div>
+      <div class="additional-value">${item.value}</div>
+    </div>`
+  ).join('');
 }
 
-// 액션 버튼 함수들
+// 촌수 계산 버튼 클릭
 function calculateKinship() {
-  if (currentPerson) {
-    alert(`촌수 계산 기능은 3단계에서 구현됩니다.\n인물: ${currentPerson.name}`);
+  if (!currentPerson) {
+    alert('인물 정보를 찾을 수 없습니다.');
+    return;
   }
+  
+  // 촌수 계산 페이지로 이동
+  window.location.href = `calculator.html?from=${currentPerson.id}`;
 }
 
+// 패밀리 보기 버튼 클릭
 function viewFamily() {
-  if (currentPerson) {
-    alert(`패밀리 보기 기능은 3단계에서 구현됩니다.\n인물: ${currentPerson.name}`);
+  if (!currentPerson) {
+    alert('인물 정보를 찾을 수 없습니다.');
+    return;
   }
+  
+  // 패밀리 보기 페이지로 이동
+  window.location.href = `family.html?person=${currentPerson.id}`;
 }
 
+// 연락하기 버튼 클릭
 function contactPerson() {
-  if (currentPerson && currentPerson.contact.phone) {
-    const phone = currentPerson.contact.phone;
-    if (confirm(`${currentPerson.name}님에게 연락하시겠습니까?\n전화번호: ${phone}`)) {
-      window.location.href = `tel:${phone}`;
-    }
+  if (!currentPerson) {
+    alert('인물 정보를 찾을 수 없습니다.');
+    return;
+  }
+  
+  const phone = currentPerson.contact.phone;
+  if (confirm(`${currentPerson.name}님에게 연락하시겠습니까?\n전화번호: ${phone}`)) {
+    window.location.href = `tel:${phone}`;
   } else {
     alert('연락처 정보가 없습니다.');
   }
@@ -304,6 +323,18 @@ function contactPerson() {
 // 유틸리티 함수들 (간결한 구현)
 function getPersonById(id) {
   return detailData?.persons?.find(p => p.id === id);
+}
+
+function getPersonByName(name) {
+  return detailData?.persons?.find(p => p.name === name);
+}
+
+// 자녀 찾기 함수 (역방향 검색)
+function findChildrenByParent(parentName) {
+  return detailData?.persons?.filter(person => 
+    person.relationships.father === parentName || 
+    person.relationships.mother === parentName
+  ) || [];
 }
 
 function showError(message) {

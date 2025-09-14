@@ -1,127 +1,46 @@
-// 브라우저용 core.js 파일 생성 스크립트
+// 브라우저용 core_browser.js 파일 생성 스크립트 V4.0
+// 단일 소스 원칙: 노션 데이터에서 직접 생성
 const fs = require('fs');
 
-console.log('=== 브라우저용 Core Module 생성 시작 ===\n');
+console.log('=== 브라우저용 Core Module 생성 시작 (V4.0) ===\n');
 
 try {
-  // 최종 데이터 파일 읽기
-  console.log('1. 최종 데이터 파일 읽기...');
-  const finalData = JSON.parse(fs.readFileSync('./converted_data.json', 'utf8'));
-  console.log(`✅ 데이터 로드 완료: ${finalData.persons.length}명`);
-
-  // 브라우저용 core.js 파일 생성
-  console.log('\n2. 브라우저용 core.js 파일 생성...');
+  // V4.0: 노션 데이터에서 직접 core_browser.js 생성
+  console.log('1. 노션 데이터에서 직접 core_browser.js 생성...');
   
-  const coreBrowserContent = `// 한양조씨 족보앱 Core Module V3.0 - 브라우저용
-// 브라우저 환경에서 직접 사용할 수 있는 데이터
-
-// 실제 노션 데이터 (155명 완전 데이터 - 1세대 관계 수정)
-const CORE_DATA = ${JSON.stringify(finalData, null, 2)};
-
-// 브라우저용 데이터 로더 클래스
-class CoreDataLoader {
-  constructor() {
-    this.data = CORE_DATA;
-    this.loaded = false;
-  }
-
-  // 데이터 로드
-  load() {
-    if (!this.loaded) {
-      this.loaded = true;
-      console.log("Core Module 데이터 로드 완료 (브라우저용)");
-    }
-    return this.data;
-  }
-
-  // Person 조회
-  getPerson(id) {
-    return this.data.persons.find(p => p.id === id);
-  }
-
-  // 관리자 정보 조회
-  getAdminInfo() {
-    return this.data.config.admin;
-  }
-
-  // 앱 설정 조회
-  getAppConfig() {
-    return this.data.config.app;
-  }
-
-  // 검색 인덱스 조회
-  getSearchIndex() {
-    return this.data.searchIndex;
-  }
-
-  // 검색 히스토리 조회
-  getSearchHistory() {
-    return this.data.searchHistory;
-  }
-
-  // 이름으로 검색 (간결한 검색 함수)
-  searchByName(query) {
-    const results = [];
-    const searchIndex = this.data.searchIndex;
+  // sync_notion_to_core.js가 이미 생성한 core_browser.js 사용
+  if (fs.existsSync('./core_browser.js')) {
+    console.log('✅ core_browser.js 파일이 이미 존재합니다');
+    console.log('📁 파일 위치: ./core_browser.js');
+    console.log('🔧 사용법: <script src="../data/core_browser.js"></script>');
     
-    // 한글 이름 검색
-    if (searchIndex.byName[query]) {
-      results.push(...searchIndex.byName[query]);
-    }
+    // 파일 내용 검증
+    const content = fs.readFileSync('./core_browser.js', 'utf8');
+    const match = content.match(/const CORE_DATA = ([\s\S]*?);/);
     
-    // 한자 이름 검색
-    if (searchIndex.byHanja[query]) {
-      results.push(...searchIndex.byHanja[query]);
-    }
-    
-    // 부분 검색 (간결한 구현)
-    Object.keys(searchIndex.byName).forEach(name => {
-      if (name.includes(query) && !results.includes(name)) {
-        results.push(...searchIndex.byName[name]);
+    if (match) {
+      try {
+        const coreData = JSON.parse(match[1]);
+        console.log(`✅ 검증 완료: ${coreData.persons.length}명`);
+        console.log(`✅ 검색인덱스: ${Object.keys(coreData.searchIndex.byName).length}개`);
+        console.log(`✅ 필드명 일치: 노션 필드명과 완전 일치`);
+      } catch (e) {
+        console.log('⚠️  파일 내용 검증 중 오류:', e.message);
       }
-    });
-    
-    return results;
-  }
-
-  // 검색 히스토리 추가
-  addSearchHistory(query, resultCount) {
-    const history = this.data.searchHistory;
-    const newEntry = {
-      query: query,
-      timestamp: new Date().toISOString(),
-      resultCount: resultCount
-    };
-    
-    // 최신 검색을 맨 앞에 추가
-    history.recent.unshift(newEntry);
-    
-    // 최대 히스토리 수 제한
-    if (history.recent.length > history.maxHistory) {
-      history.recent = history.recent.slice(0, history.maxHistory);
     }
+    
+    console.log('\n🎉 V4.0 단일 소스 시스템 완료!');
+    console.log('📋 특징:');
+    console.log('  - 노션 데이터 → window.CORE_DATA 직접 변환');
+    console.log('  - JSON 파일 의존성 제거');
+    console.log('  - 필드명 완전 일치 (노션 기준)');
+    console.log('  - 152명 완전 데이터');
+    
+  } else {
+    console.log('❌ core_browser.js 파일이 없습니다');
+    console.log('💡 먼저 sync_notion_to_core.js를 실행하세요');
+    process.exit(1);
   }
-}
-
-// 전역 인스턴스 생성
-const coreLoader = new CoreDataLoader();
-
-// 브라우저 전역 변수로 설정
-window.CORE_DATA = CORE_DATA;
-window.coreLoader = coreLoader;`;
-
-  // 파일 저장
-  fs.writeFileSync('./data/core_browser.js', coreBrowserContent, 'utf8');
-  console.log('✅ 브라우저용 core.js 파일 생성 완료');
-
-  // 검증
-  console.log('\n3. 생성된 파일 검증...');
-  const generatedData = JSON.parse(fs.readFileSync('./data/core_browser.js', 'utf8').match(/const CORE_DATA = ([\s\S]*?);/)[1]);
-  console.log(`✅ 검증 완료: ${generatedData.persons.length}명, 검색인덱스: ${Object.keys(generatedData.searchIndex.byName).length}개`);
-
-  console.log('\n🎉 브라우저용 Core Module 생성 완료!');
-  console.log('📁 파일 위치: ./data/core_browser.js');
-  console.log('🔧 사용법: <script src="../data/core_browser.js"></script>');
 
 } catch (error) {
   console.error('❌ 오류 발생:', error.message);

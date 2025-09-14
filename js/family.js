@@ -21,28 +21,14 @@ function initializeFamilyView() {
     loadFamilyData();
 }
 
-// 패밀리 데이터 로드
+// 패밀리 데이터 로드 (V4.0 단일소스 시스템)
 function loadFamilyData() {
     try {
-        // Node.js 환경에서 실행되는 경우
-        if (typeof require !== 'undefined') {
-            const { familyLoader } = require('../data/family.js');
-            familyData = familyLoader.load();
-        } else {
-            // 브라우저 환경에서 실행되는 경우
-            // 브라우저용 데이터 사용
-            if (typeof FAMILY_DATA_BROWSER !== 'undefined') {
-                familyData = FAMILY_DATA_BROWSER;
-            } else {
-                // 폴백 데이터
-                familyData = {
-                    persons: [],
-                    byLine: { Line1: [], Line2: [], Line3: [], 공통: [] },
-                    byGeneration: { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] },
-                    familyTree: {},
-                    statistics: { total: 0, byLine: {}, byGeneration: {} }
-                };
-            }
+        // V4.0 단일소스 시스템: window.CORE_DATA 사용
+        familyData = window.CORE_DATA;
+        
+        if (!familyData || !familyData.persons) {
+            throw new Error('window.CORE_DATA가 로드되지 않았습니다');
         }
         
         console.log('패밀리 데이터 로드 완료:', familyData);
@@ -126,15 +112,19 @@ function updateStatistics() {
     document.getElementById('display-count').textContent = `${filteredPersons.length}명`;
 }
 
-// 필터링된 인물 목록 가져오기
+// 필터링된 인물 목록 가져오기 (V4.0 필드명 사용)
 function getFilteredPersons() {
     if (!familyData) return [];
     
-    let filteredPersons = familyData.byLine[currentLine] || [];
+    // 전체 인물에서 Line별 필터링
+    let filteredPersons = familyData.persons.filter(person => 
+        person.Line1 === currentLine
+    );
     
+    // 세대별 필터링
     if (currentGeneration !== 'all') {
         filteredPersons = filteredPersons.filter(person => 
-            person.generation === parseInt(currentGeneration)
+            person.세대 === parseInt(currentGeneration)
         );
     }
     
@@ -170,22 +160,71 @@ function renderFamilyTree() {
     treeContainer.innerHTML = html;
 }
 
-// 인물들을 세대별로 그룹화
+// 인물들을 세대별로 그룹화하고 부부 순으로 배치 (V4.0 필드명 사용)
 function groupPersonsByGeneration(persons) {
     const grouped = {};
     
+    // 먼저 세대별로 그룹화
     persons.forEach(person => {
-        const generation = person.generation;
+        const generation = person.세대;
         if (!grouped[generation]) {
             grouped[generation] = [];
         }
         grouped[generation].push(person);
     });
     
+    // 각 세대별로 부부 순으로 정렬
+    Object.keys(grouped).forEach(generation => {
+        grouped[generation] = sortCouplesFirst(grouped[generation]);
+    });
+    
     return grouped;
 }
 
-// 세대 그룹 HTML 생성
+// 부부 순으로 정렬하는 함수
+function sortCouplesFirst(persons) {
+    const couples = [];
+    const singles = [];
+    const processed = new Set();
+    
+    persons.forEach(person => {
+        if (processed.has(person.id)) return;
+        
+        // 배우자가 있는 경우
+        if (person.relationships.spouses && person.relationships.spouses.length > 0) {
+            const spouseName = person.relationships.spouses[0]; // 첫 번째 배우자
+            const spouse = persons.find(p => p.name === spouseName && !processed.has(p.id));
+            
+            if (spouse) {
+                // 한양조씨를 먼저, 배우자를 나중에 배열
+                const joPerson = person.name.startsWith('조') ? person : spouse;
+                const spousePerson = person.name.startsWith('조') ? spouse : person;
+                
+                couples.push({
+                    type: 'couple',
+                    husband: joPerson.성별 === 'M' ? joPerson : spousePerson,
+                    wife: joPerson.성별 === 'F' ? joPerson : spousePerson,
+                    displayName: `${joPerson.name}-${spousePerson.name}`
+                });
+                processed.add(person.id);
+                processed.add(spouse.id);
+            } else {
+                // 배우자가 같은 세대에 없는 경우
+                singles.push(person);
+                processed.add(person.id);
+            }
+        } else {
+            // 배우자가 없는 경우
+            singles.push(person);
+            processed.add(person.id);
+        }
+    });
+    
+    // 부부를 먼저, 그 다음 미혼자 순으로 정렬
+    return [...couples, ...singles];
+}
+
+// 세대 그룹 HTML 생성 (부부 표시 지원)
 function createGenerationGroup(generation, persons) {
     return `
         <div class="generation-group">
@@ -199,11 +238,47 @@ function createGenerationGroup(generation, persons) {
     `;
 }
 
-// 인물 카드 HTML 생성
+// 인물 카드 HTML 생성 (부부 표시 지원)
 function createPersonCard(person) {
-    const statusIcon = person.status === 'alive' ? '💚' : '💀';
-    const statusClass = person.status === 'alive' ? 'alive' : 'deceased';
-    const genderIcon = person.gender === 'M' ? '👨' : '👩';
+    // 부부인 경우
+    if (person.type === 'couple') {
+        const husband = person.husband;
+        const wife = person.wife;
+        const husbandStatus = husband.생존상태 === '생존' ? '💚' : '💀';
+        const wifeStatus = wife.생존상태 === '생존' ? '💚' : '💀';
+        
+        return `
+            <div class="couple-card">
+                <div class="couple-info">
+                    <div class="couple-avatars">
+                        <div class="person-avatar clickable" onclick="showPersonDetail('${husband.id}')" title="${husband.name}">${husband.name.charAt(0)}</div>
+                        <div class="couple-separator">-</div>
+                        <div class="person-avatar clickable" onclick="showPersonDetail('${wife.id}')" title="${wife.name}">${wife.name.charAt(0)}</div>
+                    </div>
+                    <div class="couple-details">
+                        <h3 class="couple-name">
+                            <span class="clickable" onclick="showPersonDetail('${husband.id}')" title="${husband.name}">${husband.name}</span>
+                            <span class="couple-separator">-</span>
+                            <span class="clickable" onclick="showPersonDetail('${wife.id}')" title="${wife.name}">${wife.name}</span>
+                        </h3>
+                        <div class="couple-meta">
+                            <span>${husband.세대}세대</span>
+                            <span>${husband.Line1}</span>
+                            <span>부부</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="couple-status">
+                    <span class="status clickable ${husband.생존상태 === '생존' ? 'living' : 'deceased'}" onclick="showPersonDetail('${husband.id}')" title="${husband.name}">${husbandStatus}</span>
+                    <span class="status clickable ${wife.생존상태 === '생존' ? 'living' : 'deceased'}" onclick="showPersonDetail('${wife.id}')" title="${wife.name}">${wifeStatus}</span>
+                </div>
+            </div>
+        `;
+    }
+    
+    // 개인인 경우 (기존 로직)
+    const statusIcon = person.생존상태 === '생존' ? '💚' : '💀';
+    const statusClass = person.생존상태 === '생존' ? 'living' : 'deceased';
     
     return `
         <div class="person-card ${statusClass}" onclick="showPersonDetail('${person.id}')">
@@ -213,11 +288,11 @@ function createPersonCard(person) {
                 </div>
                 <div class="person-details">
                     <h3 class="person-name">${person.name}</h3>
-                    ${person.hanja ? `<p class="person-hanja">${person.hanja}</p>` : ''}
+                    ${person.한자명 ? `<p class="person-hanja">${person.한자명}</p>` : ''}
                     <div class="person-meta">
-                        <span>${person.generation}세대</span>
-                        <span>${person.line}</span>
-                        <span>${person.gender === 'M' ? '남성' : '여성'}</span>
+                        <span>${person.세대}세대</span>
+                        <span>${person.Line1}</span>
+                        <span>${person.성별 === 'M' ? '남성' : '여성'}</span>
                     </div>
                 </div>
             </div>
@@ -228,12 +303,12 @@ function createPersonCard(person) {
     `;
 }
 
-// 인물 상세 정보 표시
+// 인물 상세 정보 표시 (간단하고 단단하게)
 function showPersonDetail(personId) {
     console.log('인물 상세 정보 표시:', personId);
     
-    // 실제 구현에서는 상세 정보 모달이나 별도 페이지로 이동
-    alert(`인물 ID: ${personId}의 상세 정보를 표시합니다.`);
+    // detail.html로 이동 (기존 검증된 기능 재사용)
+    window.location.href = `detail.html?id=${personId}`;
 }
 
 // 로딩 인디케이터 표시
