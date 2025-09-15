@@ -1,0 +1,340 @@
+{
+  "timestamp": "2025-09-14T23:14:03.805Z",
+  "database_id": "2093284156fa404a911cbefa4b422994",
+  "keys": {
+    "GIA_KEY_01": {
+      "api_key": "ntn_445810703353OGBd...",
+      "tests": {
+        "database_schema": {
+          "status": 200,
+          "success": true,
+          "error": null,
+          "data": {
+            "title": "족보 인물 데이터베이스",
+            "properties_count": 14,
+            "properties": [
+              "생년",
+              "비고",
+              "세대",
+              "아버지",
+              "성별",
+              "Line1",
+              "아이디",
+              "배우자",
+              "생존상태",
+              "연락처",
+              "변경유형",
+              "업데이트일자",
+              "어머니",
+              "이름"
+            ]
+          }
+        },
+        "database_query": {
+          "status": 200,
+          "success": true,
+          "error": null,
+          "data": {
+            "results_count": 5,
+            "has_more": true,
+            "sample_names": [
+              "이름없음",
+              "조영하",
+              "조명하"
+            ]
+          }
+        },
+        "page_update_test": {
+          "status": 400,
+          "success": false,
+          "error": {
+            "object": "error",
+            "status": 400,
+            "code": "validation_error",
+            "message": "path failed validation: path.page_id should be a valid uuid, instead was `\"L2-G3-M-S-527\"`.",
+            "request_id": "9f3e471b-8210-4864-bbd5-f538809e5ac1"
+          },
+          "data": null
+        },
+        "real_page_update": {
+          "status": 200,
+          "success": true,
+          "error": null,
+          "data": {
+            "object": "page",
+            "id": "201dc853-c2ba-4d2f-b19f-3c79384ae374",
+            "created_time": "2025-09-13T08:23:00.000Z",
+            "last_edited_time": "2025-09-14T23:14:00.000Z",
+            "created_by": {
+              "object": "user",
+              "id": "212d872b-594c-8101-8802-00024a84d0a1"
+            },
+            "last_edited_by": {
+              "object": "user",
+              "id": "397d887e-1915-416a-a4e3-39fc486a476b"
+            },
+            "cover": null,
+            "icon": null,
+            "parent": {
+              "type": "database_id",
+              "database_id": "20932841-56fa-404a-911c-befa4b422994"
+            },
+            "archived": false,
+            "in_trash": false,
+            "is_locked": false,
+            "properties": {
+              "생년": {
+                "id": "%3Dfwq",
+                "type": "number",
+                "number": null
+              },
+              "비고": {
+                "id": "%3Dq%3D%7B",
+                "type": "rich_text",
+                "rich_text": [
+                  {
+                    "type": "text",
+                    "text": {
+                      "content": "조병희-민혜숙의 아들",
+                      "link": null
+                    },
+                    "annotations": {
+                      "bold": false,
+                      "italic": false,
+                      "strikethrough": false,
+                      "underline": false,
+                      "code": false,
+                      "color": "default"
+                    },
+                    "plain_text": "조병희-민혜숙의 아들",
+                    "href": null
+                  }
+                ]
+              },
+              "세대": {
+                "id": "IgzA",
+                "type": "select",
+                "select": {
+                  "id": "oV:d",
+                  "name": "3세대",
+                  "color": "blue"
+                }
+              },
+              "아버지": {
+                "id": "J%40%3Bc",
+                "type": "rich_text",
+                "rich_text": [
+                  {
+                    "type": "text",
+                    "text": {
+                      "content": "조병희",
+                      "link": null
+                    },
+                    "annotations": {
+                      "bold": false,
+                      "italic": false,
+                      "strikethrough": false,
+                      "underline": false,
+                      "code": false,
+                      "color": "default"
+                    },
+                    "plain_text": "조병희",
+                    "href": null
+                  }
+                ]
+              },
+              "성별": {
+                "id": "U%5Brp",
+                "type": "select",
+                "select": {
+                  "id": "CZz\\",
+                  "name": "M",
+                  "color": "yellow"
+                }
+              },
+              "Line1": {
+                "id": "c%7BTH",
+                "type": "rich_text",
+                "rich_text": [
+                  {
+                    "type": "text",
+                    "text": {
+                      "content": "Line2",
+                      "link": null
+                    },
+                    "annotations": {
+                      "bold": false,
+                      "italic": false,
+                      "strikethrough": false,
+                      "underline": false,
+                      "code": false,
+                      "color": "default"
+                    },
+                    "plain_text": "Line2",
+                    "href": null
+                  }
+                ]
+              },
+              "아이디": {
+                "id": "eO%3EX",
+                "type": "rich_text",
+                "rich_text": [
+                  {
+                    "type": "text",
+                    "text": {
+                      "content": "TEST_UPDATE_REAL",
+                      "link": null
+                    },
+                    "annotations": {
+                      "bold": false,
+                      "italic": false,
+                      "strikethrough": false,
+                      "underline": false,
+                      "code": false,
+                      "color": "default"
+                    },
+                    "plain_text": "TEST_UPDATE_REAL",
+                    "href": null
+                  }
+                ]
+              },
+              "배우자": {
+                "id": "ezT%5E",
+                "type": "rich_text",
+                "rich_text": []
+              },
+              "생존상태": {
+                "id": "tIOX",
+                "type": "select",
+                "select": {
+                  "id": "e2fea8ef-d84b-4aab-b1ac-59a1b7a90006",
+                  "name": "미확인",
+                  "color": "orange"
+                }
+              },
+              "연락처": {
+                "id": "t%5DJ%3A",
+                "type": "phone_number",
+                "phone_number": null
+              },
+              "변경유형": {
+                "id": "wAhg",
+                "type": "select",
+                "select": {
+                  "id": "p@F^",
+                  "name": "신규",
+                  "color": "green"
+                }
+              },
+              "업데이트일자": {
+                "id": "yEDg",
+                "type": "date",
+                "date": {
+                  "start": "2025-09-13",
+                  "end": null,
+                  "time_zone": null
+                }
+              },
+              "어머니": {
+                "id": "%7Df%3Es",
+                "type": "rich_text",
+                "rich_text": [
+                  {
+                    "type": "text",
+                    "text": {
+                      "content": "민혜숙",
+                      "link": null
+                    },
+                    "annotations": {
+                      "bold": false,
+                      "italic": false,
+                      "strikethrough": false,
+                      "underline": false,
+                      "code": false,
+                      "color": "default"
+                    },
+                    "plain_text": "민혜숙",
+                    "href": null
+                  }
+                ]
+              },
+              "이름": {
+                "id": "title",
+                "type": "title",
+                "title": [
+                  {
+                    "type": "text",
+                    "text": {
+                      "content": "조영하",
+                      "link": null
+                    },
+                    "annotations": {
+                      "bold": false,
+                      "italic": false,
+                      "strikethrough": false,
+                      "underline": false,
+                      "code": false,
+                      "color": "default"
+                    },
+                    "plain_text": "조영하",
+                    "href": null
+                  }
+                ]
+              }
+            },
+            "url": "https://www.notion.so/201dc853c2ba4d2fb19f3c79384ae374",
+            "public_url": null,
+            "request_id": "77ec2f8a-f41b-4ba9-96d4-f60998176617"
+          }
+        }
+      }
+    },
+    "GIA_KEY_02": {
+      "api_key": "ntn_445810703359QynM...",
+      "tests": {
+        "database_schema": {
+          "status": 401,
+          "success": false,
+          "error": {
+            "object": "error",
+            "status": 401,
+            "code": "unauthorized",
+            "message": "API token is invalid.",
+            "request_id": "44d4033f-c048-4c2a-94a3-b9d978a8a8a8"
+          },
+          "data": null
+        },
+        "database_query": {
+          "status": 401,
+          "success": false,
+          "error": {
+            "object": "error",
+            "status": 401,
+            "code": "unauthorized",
+            "message": "API token is invalid.",
+            "request_id": "27d95202-b24e-4649-a331-0c5267b7402e"
+          },
+          "data": null
+        },
+        "page_update_test": {
+          "status": 401,
+          "success": false,
+          "error": {
+            "object": "error",
+            "status": 401,
+            "code": "unauthorized",
+            "message": "API token is invalid.",
+            "request_id": "0af6c00c-6ee8-4ab9-80be-92a04060df73"
+          },
+          "data": null
+        },
+        "real_page_update": {
+          "status": 401,
+          "success": false,
+          "error": "쿼리 실패: API token is invalid.",
+          "data": null
+        }
+      }
+    }
+  }
+}
