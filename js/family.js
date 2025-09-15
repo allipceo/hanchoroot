@@ -193,7 +193,14 @@ function sortCouplesFirst(persons) {
         // 배우자가 있는 경우
         if (person.relationships.spouses && person.relationships.spouses.length > 0) {
             const spouseName = person.relationships.spouses[0]; // 첫 번째 배우자
-            const spouse = persons.find(p => p.name === spouseName && !processed.has(p.id));
+            // 1) 현재 세대/라인 목록에서 우선 검색
+            let spouse = persons.find(p => p.name === spouseName && !processed.has(p.id));
+            // 2) 없으면 전체 데이터에서 보조 검색 (라인 달라도 허용, 동일 세대 우선)
+            if (!spouse && typeof window !== 'undefined' && window.CORE_DATA && Array.isArray(window.CORE_DATA.persons)) {
+                const all = window.CORE_DATA.persons;
+                const sameGen = all.find(p => p.name === spouseName && p.세대 === person.세대);
+                spouse = sameGen || all.find(p => p.name === spouseName);
+            }
             
             if (spouse) {
                 // 한양조씨를 먼저, 배우자를 나중에 배열
@@ -207,9 +214,9 @@ function sortCouplesFirst(persons) {
                     displayName: `${joPerson.name}-${spousePerson.name}`
                 });
                 processed.add(person.id);
-                processed.add(spouse.id);
+                if (spouse.id) processed.add(spouse.id);
             } else {
-                // 배우자가 같은 세대에 없는 경우
+                // 배우자가 전체 데이터에도 없으면 단독 표시
                 singles.push(person);
                 processed.add(person.id);
             }

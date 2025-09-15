@@ -4056,7 +4056,7 @@ window.CORE_DATA = [
       "father": "조은상",
       "mother": "변주란",
       "spouses": [
-        "김민재"
+        "김명재"
       ],
       "children": [],
       "siblings": []
@@ -4502,7 +4502,8 @@ window.CORE_DATA = [
       "father": "조정윤",
       "mother": "임정숙",
       "spouses": [
-        "강부인"
+        "강부인",
+        "민혜숙"
       ],
       "children": [],
       "siblings": []
