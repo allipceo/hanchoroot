@@ -4,7 +4,11 @@
 const https = require('https');
 
 const headers = {
+<<<<<<< HEAD
   'Authorization': 'Bearer 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',
+=======
+  'Authorization': `Bearer ${process.env.NOTION_API_KEY}`,
+>>>>>>> 32f8b4e3839543e088dbb97181584009f5f7d0c1
   'Notion-Version': '2022-06-28',
   'Content-Type': 'application/json'
 };

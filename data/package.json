@@ -1,5 +1,11 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "@notionhq/client": "^5.1.0"
+=======
+    "@notionhq/client": "^5.1.0",
+    "dotenv": "^17.2.2",
+    "node-fetch": "^3.3.2"
+>>>>>>> 32f8b4e3839543e088dbb97181584009f5f7d0c1
   }
 }

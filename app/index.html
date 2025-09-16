@@ -59,6 +59,91 @@
             </div>
         </div>
 
+<<<<<<< HEAD
+=======
+        <!-- 촌수계산기 화면 -->
+        <div id="calculator-screen" class="calculator-screen">
+            <div class="calculator-container">
+                <!-- 네비게이션 -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <button id="calculator-back-btn" class="menu-button" style="width: auto; padding: 8px 16px;">
+                        ← 촌수계산기
+                    </button>
+                    <button id="calculator-home-btn" class="menu-button" style="width: auto; padding: 8px 16px;">
+                        🏠 홈
+                    </button>
+                </div>
+
+                <!-- 촌수계산기 제목 -->
+                <div class="calculator-header">
+                    <h2>🧮 촌수 계산기</h2>
+                    <p>두 사람의 촌수와 호칭을 확인하세요</p>
+                </div>
+
+                <!-- 사람 선택 -->
+                <div class="calculator-inputs">
+                    <div class="person-selector">
+                        <label for="person1-select">첫 번째 사람:</label>
+                        <select id="person1-select" class="person-select">
+                            <option value="">선택하세요</option>
+                        </select>
+                    </div>
+                    
+                    <div class="vs-divider">
+                        <span>VS</span>
+                    </div>
+                    
+                    <div class="person-selector">
+                        <label for="person2-select">두 번째 사람:</label>
+                        <select id="person2-select" class="person-select">
+                            <option value="">선택하세요</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 계산 버튼 -->
+                <button id="calculate-btn" class="calculate-button" disabled>
+                    촌수 계산하기
+                </button>
+
+                <!-- 결과 표시 -->
+                <div id="calculator-result" class="calculator-result" style="display: none;">
+                    <div class="result-header">
+                        <h3>📊 촌수 계산 결과</h3>
+                    </div>
+                    <div class="result-content">
+                        <div class="result-item">
+                            <span class="result-label">촌수:</span>
+                            <span id="result-chonsu" class="result-value"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">호칭:</span>
+                            <span id="result-title" class="result-value"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">관계:</span>
+                            <span id="result-relationship" class="result-value"></span>
+                        </div>
+                        <div id="result-details" class="result-details" style="display: none;">
+                            <div class="result-item">
+                                <span class="result-label">공통조상:</span>
+                                <span id="result-ancestor" class="result-value"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 최근 계산 기록 -->
+                <div class="recent-calculations">
+                    <h3>📋 최근 계산 기록</h3>
+                    <div id="recent-calculations-list" class="calculations-list">
+                        <!-- 동적으로 추가됨 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+>>>>>>> 32f8b4e3839543e088dbb97181584009f5f7d0c1
         <!-- 설정 화면 -->
         <div id="settings-screen" class="settings-screen">
             <div class="settings-container">
@@ -140,7 +225,13 @@
     </div>
 
     <!-- JavaScript 로드 -->
+<<<<<<< HEAD
     <script src="../data/core_browser.js"></script>
+=======
+    <script src="../data/window_core_data.js"></script>
+    <script src="../js/chonsu_engine.js"></script>
+    <script src="../js/calculator.js"></script>
+>>>>>>> 32f8b4e3839543e088dbb97181584009f5f7d0c1
     <script src="../js/app.js"></script>
 </body>
 </html>

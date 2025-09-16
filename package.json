@@ -1,0 +1,26 @@
+{
+  "name": "hanchoroot",
+  "version": "1.0.0",
+  "main": "family_data_browser.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allipceo/hanchoroot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allipceo/hanchoroot/issues"
+  },
+  "homepage": "https://github.com/allipceo/hanchoroot#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.2.2"
+  }
+}
