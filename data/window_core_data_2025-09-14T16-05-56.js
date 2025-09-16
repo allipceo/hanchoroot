@@ -1772,8 +1772,8 @@ window.CORE_DATA = [
     "생존상태": "생존",
     "age": null,
     "relationships": {
-      "father": "조명진",
-      "mother": "조명진",
+      "father": "장해경",
+      "mother": "이선이",
       "spouses": [],
       "children": [],
       "siblings": []
@@ -2116,7 +2116,7 @@ window.CORE_DATA = [
     "생존상태": "생존",
     "age": null,
     "relationships": {
-      "father": "조성실",
+      "father": "이원근",
       "mother": "조성실",
       "spouses": [
         "임동민"
