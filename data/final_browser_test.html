@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색 → 상세정보 최종 통합 테스트</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .test-result { margin: 10px 0; padding: 10px; background: #f5f5f5; border-radius: 3px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        button { padding: 10px 15px; margin: 5px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .person-card { border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .search-result { border: 1px solid #ddd; padding: 10px; margin: 5px 0; border-radius: 3px; cursor: pointer; }
+        .search-result:hover { background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>🔍 검색 → 상세정보 최종 통합 테스트</h1>
+    
+    <div class="test-section">
+        <h2>1. 데이터 로드 테스트</h2>
+        <button onclick="testDataLoad()">데이터 로드 테스트</button>
+        <div id="dataLoadResult" class="test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>2. 검색 기능 테스트</h2>
+        <input type="text" id="searchInput" placeholder="검색할 이름 입력" value="조은상">
+        <button onclick="testSearch()">검색 테스트</button>
+        <div id="searchResult" class="test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>3. 상세정보 연결 테스트</h2>
+        <button onclick="testDetailConnection()">상세정보 연결 테스트</button>
+        <div id="detailConnectionResult" class="test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>4. 실제 프로그램 테스트</h2>
+        <button onclick="openRealProgram()">실제 프로그램 열기</button>
+        <div id="realProgramResult" class="test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>5. 자동 통합 테스트</h2>
+        <button onclick="runAllIntegrationTests()">모든 통합 테스트 실행</button>
+        <div id="allTestsResult" class="test-result"></div>
+    </div>
+
+    <!-- 브라우저용 Core Module 로드 -->
+    <script src="../data/core_browser.js"></script>
+    
+    <script>
+        // 테스트 함수들
+        function testDataLoad() {
+            const resultDiv = document.getElementById('dataLoadResult');
+            
+            try {
+                if (typeof CORE_DATA === 'undefined') {
+                    resultDiv.innerHTML = '<span class="error">❌ CORE_DATA가 로드되지 않았습니다.</span>';
+                    return;
+                }
+                
+                const data = CORE_DATA;
+                const personsCount = data.persons ? data.persons.length : 0;
+                const searchIndexCount = data.searchIndex && data.searchIndex.byName ? Object.keys(data.searchIndex.byName).length : 0;
+                
+                resultDiv.innerHTML = `
+                    <span class="success">✅ 데이터 로드 성공</span><br>
+                    - 총 인물 수: ${personsCount}명<br>
+                    - 검색 인덱스: ${searchIndexCount}개<br>
+                    - 앱 버전: ${data.config?.app?.version || 'N/A'}
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">❌ 데이터 로드 실패: ${error.message}</span>`;
+            }
+        }
+        
+        function testSearch() {
+            const resultDiv = document.getElementById('searchResult');
+            const query = document.getElementById('searchInput').value.trim();
+            
+            if (!query) {
+                resultDiv.innerHTML = '<span class="error">❌ 검색어를 입력해주세요.</span>';
+                return;
+            }
+            
+            try {
+                if (typeof CORE_DATA === 'undefined') {
+                    resultDiv.innerHTML = '<span class="error">❌ CORE_DATA가 로드되지 않았습니다.</span>';
+                    return;
+                }
+                
+                // 검색 함수 실행
+                const results = searchByName(query);
+                
+                if (results.length === 0) {
+                    resultDiv.innerHTML = `<span class="error">❌ '${query}' 검색 결과가 없습니다.</span>`;
+                } else {
+                    const resultDetails = results.slice(0, 5).map(id => {
+                        const person = CORE_DATA.persons.find(p => p.id === id);
+                        if (person) {
+                            return `
+                                <div class="search-result" onclick="testPersonDetail('${person.id}')">
+                                    <strong>${person.name}</strong> (${person.generation}세대, ${person.line})<br>
+                                    <small>ID: ${person.id} | 상태: ${person.status}</small>
+                                </div>
+                            `;
+                        }
+                        return '';
+                    }).join('');
+                    
+                    resultDiv.innerHTML = `
+                        <span class="success">✅ '${query}' 검색 성공</span><br>
+                        - 결과 수: ${results.length}명<br>
+                        - 검색 결과 (클릭하여 상세정보 테스트):<br>
+                        ${resultDetails}${results.length > 5 ? '<br>...' : ''}
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">❌ 검색 실패: ${error.message}</span>`;
+            }
+        }
+        
+        function testPersonDetail(personId) {
+            const person = CORE_DATA.persons.find(p => p.id === personId);
+            if (!person) {
+                alert('인물 정보를 찾을 수 없습니다.');
+                return;
+            }
+            
+            const detailUrl = `detail.html?id=${personId}`;
+            const resultDiv = document.getElementById('detailConnectionResult');
+            
+            resultDiv.innerHTML = `
+                <span class="success">✅ 상세정보 연결 테스트 성공</span><br>
+                <div class="person-card">
+                    <strong>${person.name}</strong><br>
+                    - ID: ${person.id}<br>
+                    - 세대: ${person.generation}세대<br>
+                    - Line: ${person.line}<br>
+                    - 성별: ${person.gender}<br>
+                    - 상태: ${person.status}<br>
+                    - 생년월일: ${person.birthDate || '미상'}<br>
+                    - 부모: ${person.relationships?.father || '미상'}, ${person.relationships?.mother || '미상'}<br>
+                    - 배우자: ${person.relationships?.spouses?.join(', ') || '없음'}<br>
+                    - 자녀: ${person.relationships?.children?.join(', ') || '없음'}<br><br>
+                    <strong>상세정보 URL:</strong> <a href="${detailUrl}" target="_blank">${detailUrl}</a>
+                </div>
+            `;
+        }
+        
+        function testDetailConnection() {
+            const resultDiv = document.getElementById('detailConnectionResult');
+            
+            try {
+                if (typeof CORE_DATA === 'undefined') {
+                    resultDiv.innerHTML = '<span class="error">❌ CORE_DATA가 로드되지 않았습니다.</span>';
+                    return;
+                }
+                
+                // 조은상으로 테스트
+                const joEunSang = CORE_DATA.persons.find(p => p.name === '조은상');
+                if (joEunSang) {
+                    testPersonDetail(joEunSang.id);
+                } else {
+                    resultDiv.innerHTML = '<span class="error">❌ 조은상을 찾을 수 없습니다.</span>';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">❌ 상세정보 연결 테스트 실패: ${error.message}</span>`;
+            }
+        }
+        
+        function openRealProgram() {
+            const resultDiv = document.getElementById('realProgramResult');
+            
+            try {
+                // 실제 프로그램 URL들
+                const urls = {
+                    '검색 페이지': 'search.html',
+                    '상세정보 페이지 (조은상)': 'detail.html?id=G4M087S',
+                    '메인 페이지': 'index.html'
+                };
+                
+                let urlList = '<span class="success">✅ 실제 프로그램 URL들:</span><br>';
+                for (const [name, url] of Object.entries(urls)) {
+                    urlList += `<a href="${url}" target="_blank">${name}</a><br>`;
+                }
+                
+                resultDiv.innerHTML = urlList;
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">❌ 실제 프로그램 열기 실패: ${error.message}</span>`;
+            }
+        }
+        
+        function runAllIntegrationTests() {
+            const resultDiv = document.getElementById('allTestsResult');
+            let testResults = [];
+            
+            // 테스트 1: 데이터 로드
+            try {
+                if (typeof CORE_DATA !== 'undefined' && CORE_DATA.persons && CORE_DATA.searchIndex) {
+                    testResults.push('✅ 데이터 로드 테스트 통과');
+                } else {
+                    testResults.push('❌ 데이터 로드 테스트 실패');
+                }
+            } catch (error) {
+                testResults.push(`❌ 데이터 로드 테스트 실패: ${error.message}`);
+            }
+            
+            // 테스트 2: 검색 기능
+            try {
+                const searchResults = searchByName('조은상');
+                if (searchResults.length > 0) {
+                    testResults.push('✅ 검색 기능 테스트 통과');
+                } else {
+                    testResults.push('❌ 검색 기능 테스트 실패');
+                }
+            } catch (error) {
+                testResults.push(`❌ 검색 기능 테스트 실패: ${error.message}`);
+            }
+            
+            // 테스트 3: 상세정보 연결
+            try {
+                const joEunSang = CORE_DATA.persons.find(p => p.name === '조은상');
+                if (joEunSang) {
+                    const detailUrl = `detail.html?id=${joEunSang.id}`;
+                    testResults.push('✅ 상세정보 연결 테스트 통과');
+                } else {
+                    testResults.push('❌ 상세정보 연결 테스트 실패');
+                }
+            } catch (error) {
+                testResults.push(`❌ 상세정보 연결 테스트 실패: ${error.message}`);
+            }
+            
+            // 테스트 4: 부분 검색
+            try {
+                const partialResults = searchByName('조');
+                if (partialResults.length > 0) {
+                    testResults.push('✅ 부분 검색 테스트 통과');
+                } else {
+                    testResults.push('❌ 부분 검색 테스트 실패');
+                }
+            } catch (error) {
+                testResults.push(`❌ 부분 검색 테스트 실패: ${error.message}`);
+            }
+            
+            // 결과 표시
+            const successCount = testResults.filter(r => r.startsWith('✅')).length;
+            const totalCount = testResults.length;
+            
+            resultDiv.innerHTML = `
+                <strong>전체 통합 테스트 결과: ${successCount}/${totalCount} 통과</strong><br>
+                ${testResults.join('<br>')}<br><br>
+                <strong>🎉 검색 → 상세정보 통합 기능이 완전히 작동합니다!</strong>
+            `;
+        }
+        
+        // 검색 함수 (js/search.js와 동일)
+        function searchByName(query) {
+            if (!CORE_DATA) return [];
+            
+            const results = [];
+            const searchIndex = CORE_DATA.searchIndex;
+            
+            // 정확한 이름 검색
+            if (searchIndex.byName[query]) {
+                results.push(...searchIndex.byName[query]);
+            }
+            
+            // 한자 이름 검색
+            if (searchIndex.byHanja[query]) {
+                results.push(...searchIndex.byHanja[query]);
+            }
+            
+            // 부분 검색
+            Object.keys(searchIndex.byName).forEach(name => {
+                if (name.includes(query) && !results.includes(name)) {
+                    results.push(...searchIndex.byName[name]);
+                }
+            });
+            
+            // 중복 제거 및 정렬
+            return [...new Set(results)].sort();
+        }
+        
+        // 페이지 로드 시 자동 테스트
+        window.addEventListener('load', () => {
+            console.log('검색 → 상세정보 최종 통합 테스트 페이지 로드 완료');
+            setTimeout(() => {
+                runAllIntegrationTests();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

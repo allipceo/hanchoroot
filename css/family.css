@@ -1,0 +1,509 @@
+/* 한양조씨 족보앱 - 패밀리별 보기 스타일 */
+
+/* Line 탭 스타일 */
+.line-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.line-tabs .tab {
+    flex: 1;
+    min-width: 80px;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.line-tabs .tab:hover {
+    border-color: #4CAF50;
+    color: #4CAF50;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.2);
+}
+
+.line-tabs .tab.active {
+    background: #4CAF50;
+    border-color: #4CAF50;
+    color: white;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.line-tabs .tab .count {
+    display: block;
+    font-size: 12px;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+/* 세대 필터 스타일 */
+.generation-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.generation-filters .filter {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background: white;
+    color: #666;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.generation-filters .filter:hover {
+    border-color: #2196F3;
+    color: #2196F3;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(33, 150, 243, 0.2);
+}
+
+.generation-filters .filter.active {
+    background: #2196F3;
+    border-color: #2196F3;
+    color: white;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+}
+
+.generation-filters .filter .count {
+    font-size: 11px;
+    opacity: 0.8;
+    margin-left: 4px;
+}
+
+/* 통계 정보 스타일 */
+.statistics-info {
+    display: flex;
+    justify-content: space-around;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 0 20px 20px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* 가족 트리 컨테이너 */
+.family-tree-container {
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.family-tree {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 인물 카드 스타일 */
+.person-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-left: 4px solid #4CAF50;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.person-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.person-card.deceased {
+    border-left-color: #9E9E9E;
+    opacity: 0.8;
+}
+
+.person-card .person-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.person-card .person-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.person-card.deceased .person-avatar {
+    background: linear-gradient(135deg, #9E9E9E, #757575);
+}
+
+.person-card .person-details {
+    flex: 1;
+}
+
+.person-card .person-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 4px 0;
+}
+
+.person-card .person-hanja {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 4px 0;
+}
+
+.person-card .person-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    color: #888;
+}
+
+.person-card .person-meta span {
+    background: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.person-card .person-status {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 20px;
+}
+
+.person-card .person-status.alive {
+    color: #4CAF50;
+}
+
+.person-card .person-status.deceased {
+    color: #9E9E9E;
+}
+
+/* 부부 카드 스타일 */
+.couple-card {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border: 2px solid #ff6b6b;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.couple-card:hover {
+    border-color: #ff4757;
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.2);
+    transform: translateY(-1px);
+}
+
+.couple-info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.couple-avatars {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+}
+
+.couple-separator {
+    margin: 0 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff6b6b;
+}
+
+.couple-details {
+    flex: 1;
+}
+
+.couple-name {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.couple-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    color: #666;
+}
+
+.couple-status {
+    display: flex;
+    gap: 8px;
+}
+
+.couple-status .status {
+    font-size: 16px;
+}
+
+/* 클릭 가능한 요소들 */
+.clickable {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.clickable:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.couple-name .clickable:hover {
+    color: #ff4757;
+    font-weight: 700;
+}
+
+.couple-avatars .person-avatar.clickable:hover {
+    background: #ff6b6b;
+    color: white;
+    transform: scale(1.1);
+}
+
+.couple-status .status.clickable:hover {
+    transform: scale(1.2);
+}
+
+/* 세대별 그룹 스타일 */
+.generation-group {
+    margin-bottom: 30px;
+}
+
+.generation-group .generation-header {
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+}
+
+.generation-group .generation-persons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+}
+
+/* 관계선 스타일 */
+.relationship-line {
+    position: relative;
+    margin: 10px 0;
+}
+
+.relationship-line::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -10px;
+    width: 2px;
+    height: 20px;
+    background: #ddd;
+    transform: translateX(-50%);
+}
+
+.relationship-line::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    width: 20px;
+    height: 2px;
+    background: #ddd;
+    transform: translateX(-50%);
+}
+
+/* 로딩 인디케이터 */
+.loading-indicator {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #4CAF50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 16px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .line-tabs {
+        padding: 0 16px;
+    }
+    
+    .line-tabs .tab {
+        min-width: 70px;
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+    
+    .generation-filters {
+        padding: 0 16px;
+    }
+    
+    .generation-filters .filter {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+    
+    .statistics-info {
+        margin: 0 16px 20px 16px;
+        padding: 12px;
+    }
+    
+    .stat-value {
+        font-size: 14px;
+    }
+    
+    .family-tree-container {
+        padding: 0 16px;
+    }
+    
+    .generation-group .generation-persons {
+        grid-template-columns: 1fr;
+    }
+    
+    .person-card {
+        padding: 12px;
+    }
+    
+    .person-card .person-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .person-card .person-name {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .line-tabs .tab {
+        min-width: 60px;
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    
+    .generation-filters .filter {
+        padding: 5px 8px;
+        font-size: 11px;
+    }
+    
+    .statistics-info {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .stat-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .stat-label {
+        margin-bottom: 0;
+    }
+}
+
+/* 접근성 개선 */
+.tab:focus,
+.filter:focus {
+    outline: 2px solid #4CAF50;
+    outline-offset: 2px;
+}
+
+.person-card:focus {
+    outline: 2px solid #2196F3;
+    outline-offset: 2px;
+}
+
+/* 다크 모드 지원 */
+@media (prefers-color-scheme: dark) {
+    .person-card {
+        background: #2d2d2d;
+        color: #fff;
+    }
+    
+    .person-card .person-name {
+        color: #fff;
+    }
+    
+    .person-card .person-hanja {
+        color: #ccc;
+    }
+    
+    .person-card .person-meta span {
+        background: #404040;
+        color: #ccc;
+    }
+    
+    .statistics-info {
+        background: #2d2d2d;
+        color: #fff;
+    }
+    
+    .stat-label {
+        color: #ccc;
+    }
+    
+    .stat-value {
+        color: #fff;
+    }
+}

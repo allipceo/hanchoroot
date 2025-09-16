@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>브라우저 콘솔 테스트</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .test-result { margin: 10px 0; padding: 10px; background: #f5f5f5; border-radius: 3px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        button { padding: 10px 15px; margin: 5px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .console-output { background: #000; color: #0f0; padding: 10px; border-radius: 3px; font-family: monospace; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h1>🔍 브라우저 콘솔 테스트</h1>
+    
+    <div class="test-section">
+        <h2>1. 스크립트 로드 테스트</h2>
+        <button onclick="testScriptLoad()">스크립트 로드 테스트</button>
+        <div id="scriptLoadResult" class="test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>2. 데이터 접근 테스트</h2>
+        <button onclick="testDataAccess()">데이터 접근 테스트</button>
+        <div id="dataAccessResult" class="test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>3. 검색 함수 테스트</h2>
+        <button onclick="testSearchFunction()">검색 함수 테스트</button>
+        <div id="searchFunctionResult" class="test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>4. 상세정보 함수 테스트</h2>
+        <button onclick="testDetailFunction()">상세정보 함수 테스트</button>
+        <div id="detailFunctionResult" class="test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>5. 콘솔 출력</h2>
+        <div id="consoleOutput" class="console-output"></div>
+    </div>
+
+    <!-- 브라우저용 Core Module 로드 -->
+    <script src="../data/core_browser.js"></script>
+    
+    <script>
+        // 콘솔 출력 함수
+        function logToConsole(message) {
+            const consoleDiv = document.getElementById('consoleOutput');
+            const timestamp = new Date().toLocaleTimeString();
+            consoleDiv.textContent += `[${timestamp}] ${message}\n`;
+            console.log(message);
+        }
+        
+        // 테스트 함수들
+        function testScriptLoad() {
+            const resultDiv = document.getElementById('scriptLoadResult');
+            logToConsole('=== 스크립트 로드 테스트 시작 ===');
+            
+            try {
+                // CORE_DATA 확인
+                if (typeof CORE_DATA !== 'undefined') {
+                    logToConsole('✅ CORE_DATA 로드 성공');
+                    resultDiv.innerHTML = '<span class="success">✅ CORE_DATA 로드 성공</span>';
+                } else {
+                    logToConsole('❌ CORE_DATA 로드 실패');
+                    resultDiv.innerHTML = '<span class="error">❌ CORE_DATA 로드 실패</span>';
+                }
+                
+                // window.CORE_DATA 확인
+                if (typeof window.CORE_DATA !== 'undefined') {
+                    logToConsole('✅ window.CORE_DATA 로드 성공');
+                } else {
+                    logToConsole('❌ window.CORE_DATA 로드 실패');
+                }
+                
+                // coreLoader 확인
+                if (typeof coreLoader !== 'undefined') {
+                    logToConsole('✅ coreLoader 로드 성공');
+                } else {
+                    logToConsole('❌ coreLoader 로드 실패');
+                }
+                
+            } catch (error) {
+                logToConsole(`❌ 스크립트 로드 테스트 실패: ${error.message}`);
+                resultDiv.innerHTML = `<span class="error">❌ 스크립트 로드 테스트 실패: ${error.message}</span>`;
+            }
+        }
+        
+        function testDataAccess() {
+            const resultDiv = document.getElementById('dataAccessResult');
+            logToConsole('=== 데이터 접근 테스트 시작 ===');
+            
+            try {
+                if (typeof CORE_DATA === 'undefined') {
+                    logToConsole('❌ CORE_DATA가 로드되지 않음');
+                    resultDiv.innerHTML = '<span class="error">❌ CORE_DATA가 로드되지 않음</span>';
+                    return;
+                }
+                
+                const data = CORE_DATA;
+                logToConsole(`총 인물 수: ${data.persons.length}명`);
+                logToConsole(`검색 인덱스: ${Object.keys(data.searchIndex.byName).length}개`);
+                
+                // 조은상 찾기
+                const joEunSang = data.persons.find(p => p.name === '조은상');
+                if (joEunSang) {
+                    logToConsole(`✅ 조은상 찾음: ID=${joEunSang.id}`);
+                    resultDiv.innerHTML = `
+                        <span class="success">✅ 데이터 접근 성공</span><br>
+                        - 총 인물 수: ${data.persons.length}명<br>
+                        - 조은상: ${joEunSang.name} (${joEunSang.generation}세대, ${joEunSang.line})
+                    `;
+                } else {
+                    logToConsole('❌ 조은상을 찾을 수 없음');
+                    resultDiv.innerHTML = '<span class="error">❌ 조은상을 찾을 수 없음</span>';
+                }
+                
+            } catch (error) {
+                logToConsole(`❌ 데이터 접근 테스트 실패: ${error.message}`);
+                resultDiv.innerHTML = `<span class="error">❌ 데이터 접근 테스트 실패: ${error.message}</span>`;
+            }
+        }
+        
+        function testSearchFunction() {
+            const resultDiv = document.getElementById('searchFunctionResult');
+            logToConsole('=== 검색 함수 테스트 시작 ===');
+            
+            try {
+                if (typeof CORE_DATA === 'undefined') {
+                    logToConsole('❌ CORE_DATA가 로드되지 않음');
+                    resultDiv.innerHTML = '<span class="error">❌ CORE_DATA가 로드되지 않음</span>';
+                    return;
+                }
+                
+                // 검색 함수 정의 (js/search.js와 동일)
+                function searchByName(query) {
+                    if (!CORE_DATA) return [];
+                    
+                    const results = [];
+                    const searchIndex = CORE_DATA.searchIndex;
+                    
+                    // 정확한 이름 검색
+                    if (searchIndex.byName[query]) {
+                        results.push(...searchIndex.byName[query]);
+                    }
+                    
+                    // 부분 검색
+                    Object.keys(searchIndex.byName).forEach(name => {
+                        if (name.includes(query) && !results.includes(name)) {
+                            results.push(...searchIndex.byName[name]);
+                        }
+                    });
+                    
+                    return [...new Set(results)].sort();
+                }
+                
+                // 조은상 검색 테스트
+                const results = searchByName('조은상');
+                logToConsole(`조은상 검색 결과: ${results.length}명`);
+                
+                if (results.length > 0) {
+                    const person = CORE_DATA.persons.find(p => p.id === results[0]);
+                    logToConsole(`검색된 인물: ${person.name} (${person.generation}세대, ${person.line})`);
+                    resultDiv.innerHTML = `
+                        <span class="success">✅ 검색 함수 테스트 성공</span><br>
+                        - 조은상 검색: ${results.length}명 결과<br>
+                        - 인물: ${person.name} (${person.generation}세대, ${person.line})
+                    `;
+                } else {
+                    logToConsole('❌ 조은상 검색 결과 없음');
+                    resultDiv.innerHTML = '<span class="error">❌ 조은상 검색 결과 없음</span>';
+                }
+                
+            } catch (error) {
+                logToConsole(`❌ 검색 함수 테스트 실패: ${error.message}`);
+                resultDiv.innerHTML = `<span class="error">❌ 검색 함수 테스트 실패: ${error.message}</span>`;
+            }
+        }
+        
+        function testDetailFunction() {
+            const resultDiv = document.getElementById('detailFunctionResult');
+            logToConsole('=== 상세정보 함수 테스트 시작 ===');
+            
+            try {
+                if (typeof CORE_DATA === 'undefined') {
+                    logToConsole('❌ CORE_DATA가 로드되지 않음');
+                    resultDiv.innerHTML = '<span class="error">❌ CORE_DATA가 로드되지 않음</span>';
+                    return;
+                }
+                
+                // getPersonById 함수 정의 (js/search.js와 동일)
+                function getPersonById(id) {
+                    const data = CORE_DATA;
+                    return data?.persons?.find(p => p.id === id);
+                }
+                
+                // showPersonDetail 함수 정의 (js/search.js와 동일)
+                function showPersonDetail(personId) {
+                    const detailUrl = `detail.html?id=${personId}`;
+                    logToConsole(`상세정보 URL 생성: ${detailUrl}`);
+                    return detailUrl;
+                }
+                
+                // 조은상 ID로 테스트
+                const joEunSang = CORE_DATA.persons.find(p => p.name === '조은상');
+                if (joEunSang) {
+                    const person = getPersonById(joEunSang.id);
+                    if (person) {
+                        const detailUrl = showPersonDetail(joEunSang.id);
+                        logToConsole(`✅ 상세정보 함수 테스트 성공: ${person.name}`);
+                        resultDiv.innerHTML = `
+                            <span class="success">✅ 상세정보 함수 테스트 성공</span><br>
+                            - 인물: ${person.name} (${person.generation}세대, ${person.line})<br>
+                            - 상세정보 URL: <a href="${detailUrl}" target="_blank">${detailUrl}</a>
+                        `;
+                    } else {
+                        logToConsole('❌ getPersonById 함수 실패');
+                        resultDiv.innerHTML = '<span class="error">❌ getPersonById 함수 실패</span>';
+                    }
+                } else {
+                    logToConsole('❌ 조은상을 찾을 수 없음');
+                    resultDiv.innerHTML = '<span class="error">❌ 조은상을 찾을 수 없음</span>';
+                }
+                
+            } catch (error) {
+                logToConsole(`❌ 상세정보 함수 테스트 실패: ${error.message}`);
+                resultDiv.innerHTML = `<span class="error">❌ 상세정보 함수 테스트 실패: ${error.message}</span>`;
+            }
+        }
+        
+        // 페이지 로드 시 자동 테스트
+        window.addEventListener('load', () => {
+            logToConsole('브라우저 콘솔 테스트 페이지 로드 완료');
+            setTimeout(() => {
+                testScriptLoad();
+                testDataAccess();
+                testSearchFunction();
+                testDetailFunction();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

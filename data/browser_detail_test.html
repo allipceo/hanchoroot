@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세정보 기능 테스트</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .test-result { margin: 10px 0; padding: 10px; background: #f5f5f5; border-radius: 3px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        button { padding: 10px 15px; margin: 5px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .person-card { border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>👤 상세정보 기능 테스트</h1>
+    
+    <div class="test-section">
+        <h2>1. 데이터 로드 테스트</h2>
+        <button onclick="testDataLoad()">데이터 로드 테스트</button>
+        <div id="dataLoadResult" class="test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>2. 조은상 상세정보 테스트</h2>
+        <button onclick="testJoEunSangDetail()">조은상 상세정보 테스트</button>
+        <div id="joEunSangResult" class="test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>3. 상세정보 URL 테스트</h2>
+        <button onclick="testDetailUrl()">상세정보 URL 테스트</button>
+        <div id="detailUrlResult" class="test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>4. 자동 테스트</h2>
+        <button onclick="runAllDetailTests()">모든 테스트 실행</button>
+        <div id="allTestsResult" class="test-result"></div>
+    </div>
+
+    <!-- 브라우저용 Core Module 로드 -->
+    <script src="../data/core_browser.js"></script>
+    
+    <script>
+        // 테스트 함수들
+        function testDataLoad() {
+            const resultDiv = document.getElementById('dataLoadResult');
+            
+            try {
+                if (typeof CORE_DATA === 'undefined') {
+                    resultDiv.innerHTML = '<span class="error">❌ CORE_DATA가 로드되지 않았습니다.</span>';
+                    return;
+                }
+                
+                const data = CORE_DATA;
+                const personsCount = data.persons ? data.persons.length : 0;
+                
+                resultDiv.innerHTML = `
+                    <span class="success">✅ 데이터 로드 성공</span><br>
+                    - 총 인물 수: ${personsCount}명<br>
+                    - 앱 버전: ${data.config?.app?.version || 'N/A'}
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">❌ 데이터 로드 실패: ${error.message}</span>`;
+            }
+        }
+        
+        function testJoEunSangDetail() {
+            const resultDiv = document.getElementById('joEunSangResult');
+            
+            try {
+                if (typeof CORE_DATA === 'undefined') {
+                    resultDiv.innerHTML = '<span class="error">❌ CORE_DATA가 로드되지 않았습니다.</span>';
+                    return;
+                }
+                
+                const joEunSang = CORE_DATA.persons.find(p => p.name === '조은상');
+                if (!joEunSang) {
+                    resultDiv.innerHTML = '<span class="error">❌ 조은상을 찾을 수 없습니다.</span>';
+                    return;
+                }
+                
+                resultDiv.innerHTML = `
+                    <span class="success">✅ 조은상 상세정보 로드 성공</span><br>
+                    <div class="person-card">
+                        <strong>${joEunSang.name}</strong><br>
+                        - ID: ${joEunSang.id}<br>
+                        - 세대: ${joEunSang.generation}세대<br>
+                        - Line: ${joEunSang.line}<br>
+                        - 성별: ${joEunSang.gender}<br>
+                        - 상태: ${joEunSang.status}<br>
+                        - 생년월일: ${joEunSang.birthDate || '미상'}<br>
+                        - 부모: ${joEunSang.relationships?.father || '미상'}, ${joEunSang.relationships?.mother || '미상'}<br>
+                        - 배우자: ${joEunSang.relationships?.spouses?.join(', ') || '없음'}<br>
+                        - 자녀: ${joEunSang.relationships?.children?.join(', ') || '없음'}
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">❌ 조은상 상세정보 테스트 실패: ${error.message}</span>`;
+            }
+        }
+        
+        function testDetailUrl() {
+            const resultDiv = document.getElementById('detailUrlResult');
+            
+            try {
+                if (typeof CORE_DATA === 'undefined') {
+                    resultDiv.innerHTML = '<span class="error">❌ CORE_DATA가 로드되지 않았습니다.</span>';
+                    return;
+                }
+                
+                const joEunSang = CORE_DATA.persons.find(p => p.name === '조은상');
+                if (!joEunSang) {
+                    resultDiv.innerHTML = '<span class="error">❌ 조은상을 찾을 수 없습니다.</span>';
+                    return;
+                }
+                
+                const detailUrl = `detail.html?id=${joEunSang.id}`;
+                resultDiv.innerHTML = `
+                    <span class="success">✅ 상세정보 URL 생성 성공</span><br>
+                    - URL: <a href="${detailUrl}" target="_blank">${detailUrl}</a><br>
+                    - 클릭하여 상세정보 페이지로 이동 테스트
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">❌ 상세정보 URL 테스트 실패: ${error.message}</span>`;
+            }
+        }
+        
+        function runAllDetailTests() {
+            const resultDiv = document.getElementById('allTestsResult');
+            let testResults = [];
+            
+            // 테스트 1: 데이터 로드
+            try {
+                if (typeof CORE_DATA !== 'undefined' && CORE_DATA.persons) {
+                    testResults.push('✅ 데이터 로드 테스트 통과');
+                } else {
+                    testResults.push('❌ 데이터 로드 테스트 실패');
+                }
+            } catch (error) {
+                testResults.push(`❌ 데이터 로드 테스트 실패: ${error.message}`);
+            }
+            
+            // 테스트 2: 조은상 찾기
+            try {
+                const joEunSang = CORE_DATA.persons.find(p => p.name === '조은상');
+                if (joEunSang) {
+                    testResults.push('✅ 조은상 찾기 테스트 통과');
+                } else {
+                    testResults.push('❌ 조은상 찾기 테스트 실패');
+                }
+            } catch (error) {
+                testResults.push(`❌ 조은상 찾기 테스트 실패: ${error.message}`);
+            }
+            
+            // 테스트 3: 상세정보 URL 생성
+            try {
+                const joEunSang = CORE_DATA.persons.find(p => p.name === '조은상');
+                if (joEunSang) {
+                    const detailUrl = `detail.html?id=${joEunSang.id}`;
+                    testResults.push('✅ 상세정보 URL 생성 테스트 통과');
+                } else {
+                    testResults.push('❌ 상세정보 URL 생성 테스트 실패');
+                }
+            } catch (error) {
+                testResults.push(`❌ 상세정보 URL 생성 테스트 실패: ${error.message}`);
+            }
+            
+            // 결과 표시
+            const successCount = testResults.filter(r => r.startsWith('✅')).length;
+            const totalCount = testResults.length;
+            
+            resultDiv.innerHTML = `
+                <strong>전체 테스트 결과: ${successCount}/${totalCount} 통과</strong><br>
+                ${testResults.join('<br>')}
+            `;
+        }
+        
+        // 페이지 로드 시 자동 테스트
+        window.addEventListener('load', () => {
+            console.log('상세정보 기능 테스트 페이지 로드 완료');
+            setTimeout(() => {
+                runAllDetailTests();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

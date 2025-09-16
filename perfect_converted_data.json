@@ -1,0 +1,5767 @@
+{
+  "persons": [
+    {
+      "id": "G0M001S",
+      "name": "조영하",
+      "displayName": "조영하",
+      "gender": "M",
+      "generation": 0,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "unknown",
+      "age": null,
+      "relationships": {
+        "father": "조병희",
+        "mother": "민혜숙",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조병희-민혜숙의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "미확인"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.959Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-13T08:24:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G0F002D",
+      "name": "조명하",
+      "displayName": "조명하",
+      "gender": "F",
+      "generation": 0,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "unknown",
+      "age": null,
+      "relationships": {
+        "father": "조병희",
+        "mother": "민혜숙",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조병희-민혜숙의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "미확인"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.975Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-13T08:21:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M003S",
+      "name": "조세희",
+      "displayName": "조세희",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조성호",
+        "mother": "조명숙",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성호-조명숙의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.977Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:02:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F004D",
+      "name": "한지영",
+      "displayName": "한지영",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "한성택",
+        "mother": "조성덕",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성덕-한성택의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.977Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T13:33:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M005W",
+      "name": "박초희",
+      "displayName": "박초희",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "이현섭"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "이현섭의 부인",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.979Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T13:30:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M006S",
+      "name": "임동민",
+      "displayName": "임동민",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "이정연"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "이정연의 남편",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.979Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T13:30:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G4F007D",
+      "name": "조성순",
+      "displayName": "조성순",
+      "gender": "F",
+      "generation": 4,
+      "line": "Line1",
+      "birthDate": "1987-01-01",
+      "status": "living",
+      "age": 38,
+      "relationships": {
+        "father": "조강하",
+        "mother": "전흥선",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조강하-전흥선의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "4세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.979Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T13:27:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G6F008D",
+      "name": "류지민",
+      "displayName": "류지민",
+      "gender": "F",
+      "generation": 6,
+      "line": "Line1",
+      "birthDate": "2021-01-01",
+      "status": "living",
+      "age": 4,
+      "relationships": {
+        "father": "김희진",
+        "mother": "류현민",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "김희진-류현민의 딸\n",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "6세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.979Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-13T05:02:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G6M009S",
+      "name": "권민우",
+      "displayName": "권민우",
+      "gender": "M",
+      "generation": 6,
+      "line": "Line1",
+      "birthDate": "2023-01-01",
+      "status": "living",
+      "age": 2,
+      "relationships": {
+        "father": "권바",
+        "mother": "미확인",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "권바의 아들, 2023년생(2세)",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "6세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.979Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T13:52:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G6F010D",
+      "name": "류지안",
+      "displayName": "류지안",
+      "gender": "F",
+      "generation": 6,
+      "line": "Line1",
+      "birthDate": "2018-01-01",
+      "status": "living",
+      "age": 7,
+      "relationships": {
+        "father": "김희진",
+        "mother": "류현민",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "김희진-류현민의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "6세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.980Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-13T05:02:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G6F011D",
+      "name": "김태란",
+      "displayName": "김태란",
+      "gender": "F",
+      "generation": 6,
+      "line": "Line1",
+      "birthDate": "2018-01-01",
+      "status": "living",
+      "age": 7,
+      "relationships": {
+        "father": "김윤형",
+        "mother": "김승우",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "김윤형의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "6세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.980Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:04:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G6F012D",
+      "name": "신이솔",
+      "displayName": "신이솔",
+      "gender": "F",
+      "generation": 6,
+      "line": "Line1",
+      "birthDate": "2020-01-01",
+      "status": "living",
+      "age": 5,
+      "relationships": {
+        "father": "김희수",
+        "mother": "신유석",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "김희수-신유석의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "6세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.983Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-13T05:03:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F013D",
+      "name": "조수정",
+      "displayName": "조수정",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1997-01-01",
+      "status": "living",
+      "age": 28,
+      "relationships": {
+        "father": "조은상",
+        "mother": "변주란",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조은상-변주란의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.983Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T13:53:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M014W",
+      "name": "김민재",
+      "displayName": "김민재",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1982-01-01",
+      "status": "living",
+      "age": 43,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "조광희"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조광희의 부인",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.983Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T13:53:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M015S",
+      "name": "권바",
+      "displayName": "권바",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1986-01-01",
+      "status": "living",
+      "age": 39,
+      "relationships": {
+        "father": "조원상",
+        "mother": "배문경",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조원상-배문경의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.983Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T13:53:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F016D",
+      "name": "조윤경",
+      "displayName": "조윤경",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1990-01-01",
+      "status": "living",
+      "age": 35,
+      "relationships": {
+        "father": "조성희",
+        "mother": "미확인",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성원-박선영의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.983Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-13T04:49:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F017D",
+      "name": "조수경",
+      "displayName": "조수경",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1998-01-01",
+      "status": "living",
+      "age": 27,
+      "relationships": {
+        "father": "조성희",
+        "mother": "미확인",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성원-박성영의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.983Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-13T04:48:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M018S",
+      "name": "조광희",
+      "displayName": "조광희",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1990-01-01",
+      "status": "living",
+      "age": 35,
+      "relationships": {
+        "father": "조은상",
+        "mother": "변주란",
+        "spouses": [
+          "김민재"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조은상-변주란의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.983Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:27:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F019D",
+      "name": "전혜영",
+      "displayName": "전혜영",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1988-01-01",
+      "status": "living",
+      "age": 37,
+      "relationships": {
+        "father": "전승재",
+        "mother": "조야영",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "전승재-조야영의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.983Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T13:53:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M020S",
+      "name": "전종일",
+      "displayName": "전종일",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1995-01-01",
+      "status": "living",
+      "age": 30,
+      "relationships": {
+        "father": "전승재",
+        "mother": "조야영",
+        "spouses": [
+          "이민수"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "전승재-조야영의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.984Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T13:53:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M021S",
+      "name": "조용희",
+      "displayName": "조용희",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1997-01-01",
+      "status": "living",
+      "age": 28,
+      "relationships": {
+        "father": "조원상",
+        "mother": "배문경",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조원상-배문경의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.984Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:43:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M022S",
+      "name": "손안세",
+      "displayName": "손안세",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조성원",
+        "mother": "박선영",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조윤형의 남편",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.985Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-13T05:03:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M023W",
+      "name": "이민수",
+      "displayName": "이민수",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "전종일"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "전종일의 부인",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.985Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T13:53:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F024D",
+      "name": "조율희",
+      "displayName": "조율희",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1988-01-01",
+      "status": "living",
+      "age": 37,
+      "relationships": {
+        "father": "조원상",
+        "mother": "배문경",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조원상-배문경의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.985Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:19:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M025S",
+      "name": "강달호",
+      "displayName": "강달호",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "장정란"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "장정란의 부",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.985Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:03:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F026D",
+      "name": "김희수",
+      "displayName": "김희수",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1989-01-01",
+      "status": "living",
+      "age": 36,
+      "relationships": {
+        "father": "김명진",
+        "mother": "조성희",
+        "spouses": [
+          "신유석"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "김명진의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.985Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-13T05:01:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M027S",
+      "name": "김승우",
+      "displayName": "김승우",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1978-01-01",
+      "status": "living",
+      "age": 47,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "김윤형"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "김윤형의 남편",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.985Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:20:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M028S",
+      "name": "강동민",
+      "displayName": "강동민",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "강달호",
+        "mother": "장정란",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "장정란-강달호의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.985Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:03:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F029D",
+      "name": "김윤형",
+      "displayName": "김윤형",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1984-01-01",
+      "status": "living",
+      "age": 41,
+      "relationships": {
+        "father": "김명진",
+        "mother": "조성희",
+        "spouses": [
+          "김승우"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "김명진의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.985Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:21:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M030S",
+      "name": "류현민",
+      "displayName": "류현민",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1989-01-01",
+      "status": "living",
+      "age": 36,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "김희진"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "김희진의 남편",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.985Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:22:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F031D",
+      "name": "장정란",
+      "displayName": "장정란",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조명진",
+        "mother": "장학용",
+        "spouses": [
+          "강달호"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조명진-장학용의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.985Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:53:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M032S",
+      "name": "강동욱",
+      "displayName": "강동욱",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "강달호",
+        "mother": "장정란",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "장정란-강달호의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.988Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:03:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M033S",
+      "name": "신유석",
+      "displayName": "신유석",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1983-01-01",
+      "status": "living",
+      "age": 42,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "김희수"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "김희수의 남편",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.989Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:23:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F034D",
+      "name": "김희진",
+      "displayName": "김희진",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1989-01-01",
+      "status": "living",
+      "age": 36,
+      "relationships": {
+        "father": "김명진",
+        "mother": "조성희",
+        "spouses": [
+          "류현민"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "김명진 조성희의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.989Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:04:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M035S",
+      "name": "양종원",
+      "displayName": "양종원",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1962-01-01",
+      "status": "living",
+      "age": 63,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "조윤희"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조윤희의 남편",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.989Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-13T08:25:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M036S",
+      "name": "장바우",
+      "displayName": "장바우",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조명진",
+        "mother": "조명진",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "장해경-이선이의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.989Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:43:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M037S",
+      "name": "한지훈",
+      "displayName": "한지훈",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "한성택",
+        "mother": "조성덕",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성덕-한성택의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.989Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:50:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M038W",
+      "name": "이선이",
+      "displayName": "이선이",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "장해경"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "장해경의 부인",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.989Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:13:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M039S",
+      "name": "이현섭",
+      "displayName": "이현섭",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "이원근",
+        "mother": "조성실",
+        "spouses": [
+          "박초희"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성실 이원근의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.989Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:27:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M040S",
+      "name": "장해경",
+      "displayName": "장해경",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조명진",
+        "mother": "장학용",
+        "spouses": [
+          "이선이"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조명진-장학용의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.989Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:44:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F041D",
+      "name": "한지혜",
+      "displayName": "한지혜",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "한성택",
+        "mother": "조성덕",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성덕-한성택의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:53.989Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:50:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F042D",
+      "name": "조윤희",
+      "displayName": "조윤희",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1989-01-01",
+      "status": "living",
+      "age": 36,
+      "relationships": {
+        "father": "조성용",
+        "mother": "정복선",
+        "spouses": [
+          "양종원"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성용-정복선의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.000Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:28:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M043S",
+      "name": "이정연",
+      "displayName": "이정연",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조성실",
+        "mother": "조성실",
+        "spouses": [
+          "임동민"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성실-이원근의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.000Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:14:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M044S",
+      "name": "장일우",
+      "displayName": "장일우",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조명진",
+        "mother": "장학용",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "장해경-이선이의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.000Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:43:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M045S",
+      "name": "유효신",
+      "displayName": "유효신",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조옥란",
+        "mother": "유시천",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조옥란-유시천의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.000Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:09:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M046S",
+      "name": "유승원",
+      "displayName": "유승원",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조옥란",
+        "mother": "유시천",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조옥란-유시천의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.000Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:08:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F047D",
+      "name": "이경희",
+      "displayName": "이경희",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조옥영",
+        "mother": "미확인",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조옥영의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.000Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:11:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M048S",
+      "name": "나준원",
+      "displayName": "나준원",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "조인희"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조인희의 남편",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.000Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:05:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F049D",
+      "name": "이경숙",
+      "displayName": "이경숙",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조옥영",
+        "mother": "미확인",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조옥영의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.000Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:11:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F050D",
+      "name": "조인희",
+      "displayName": "조인희",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조성용",
+        "mother": "정복선",
+        "spouses": [
+          "나준원"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성용-정복선의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.000Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:45:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M051S",
+      "name": "유승대",
+      "displayName": "유승대",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조옥란",
+        "mother": "유시천",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조옥란-유시천의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.000Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:08:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F052D",
+      "name": "유승미",
+      "displayName": "유승미",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조옥란",
+        "mother": "유시천",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조옥란-유시천의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.010Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:08:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M053S",
+      "name": "유근호",
+      "displayName": "유근호",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조옥란",
+        "mother": "유시천",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조옥란-유시천의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.010Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:08:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M054S",
+      "name": "유승철",
+      "displayName": "유승철",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조옥란",
+        "mother": "유시천",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조옥란-유시천의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.010Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:08:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F055D",
+      "name": "조가은",
+      "displayName": "조가은",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조완희",
+        "mother": "송단비",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조완희-송단비의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.010Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:55:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M056S",
+      "name": "유승주",
+      "displayName": "유승주",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조옥란",
+        "mother": "유시천",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조옥란-유시천의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.010Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:08:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M057S",
+      "name": "송단비",
+      "displayName": "송단비",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "조완희"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조완희의 모",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.010Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:06:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F058D",
+      "name": "조완희",
+      "displayName": "조완희",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조성범",
+        "mother": "이경미",
+        "spouses": [
+          "송단비"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성범-이경미의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.010Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:43:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M059W",
+      "name": "김수민",
+      "displayName": "김수민",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "조민희"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조민희의 부인",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.011Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:04:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M060S",
+      "name": "이훈주",
+      "displayName": "이훈주",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "이항열",
+        "mother": "조성미",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성미-이항열의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.011Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:15:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M061S",
+      "name": "조은호",
+      "displayName": "조은호",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조민희",
+        "mother": "김수민",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조민희-김수민의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.011Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:45:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M062S",
+      "name": "유철수",
+      "displayName": "유철수",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조옥란",
+        "mother": "유시천",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조옥란-유시천의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.013Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:09:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F063D",
+      "name": "조은우",
+      "displayName": "조은우",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조민희",
+        "mother": "김수민",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조민희-김수민의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.013Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:45:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M064S",
+      "name": "유승은",
+      "displayName": "유승은",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조옥란",
+        "mother": "유시천",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조옥란-유시천의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.013Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:08:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F065D",
+      "name": "조윤희",
+      "displayName": "조윤희",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조성문",
+        "mother": "최인자",
+        "spouses": [
+          "임준성"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성문-최인자의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.014Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:44:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M066S",
+      "name": "조준희",
+      "displayName": "조준희",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1968-01-01",
+      "status": "living",
+      "age": 57,
+      "relationships": {
+        "father": "조성삼",
+        "mother": "황선경",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성삼-황선경의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.014Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:46:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M067S",
+      "name": "임성우",
+      "displayName": "임성우",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1992-01-01",
+      "status": "living",
+      "age": 33,
+      "relationships": {
+        "father": "임준성",
+        "mother": "조윤희",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조윤희-임준성의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.014Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:33:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M068S",
+      "name": "조주호",
+      "displayName": "조주호",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조성준",
+        "mother": "안은숙",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성준-안은숙의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.014Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:51:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F069D",
+      "name": "조선희",
+      "displayName": "조선희",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조성준",
+        "mother": "안은숙",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성준-안은숙의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.014Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:11:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M070S",
+      "name": "임준성",
+      "displayName": "임준성",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "조윤희"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조윤희의 남편",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.014Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:53:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M071S",
+      "name": "임성현",
+      "displayName": "임성현",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1996-01-01",
+      "status": "living",
+      "age": 29,
+      "relationships": {
+        "father": "임준성",
+        "mother": "조윤희",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조윤희-임준성의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.014Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:35:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F072D",
+      "name": "조연희",
+      "displayName": "조연희",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조성율",
+        "mother": "강은희",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성율-강은희의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.027Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:42:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F073D",
+      "name": "조민희",
+      "displayName": "조민희",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조성범",
+        "mother": "이경미",
+        "spouses": [
+          "김수민"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성범-이경미의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.028Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:39:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F074D",
+      "name": "조금희",
+      "displayName": "조금희",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조성율",
+        "mother": "강은희",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성율-강은희의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.028Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:57:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M075S",
+      "name": "조태희",
+      "displayName": "조태희",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조성장",
+        "mother": "정순재",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성장-정순재의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.028Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:47:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M076S",
+      "name": "조원희",
+      "displayName": "조원희",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조성장",
+        "mother": "정순재",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성장-정순재의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.028Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:44:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M077S",
+      "name": "정승연",
+      "displayName": "정승연",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조성주",
+        "mother": "정찬건",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성주-정찬건의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.028Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:52:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M078S",
+      "name": "조경민",
+      "displayName": "조경민",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1996-01-01",
+      "status": "living",
+      "age": 29,
+      "relationships": {
+        "father": "조창희",
+        "mother": "김미화",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조창희-김미화의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.028Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:56:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5F079D",
+      "name": "조은희",
+      "displayName": "조은희",
+      "gender": "F",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조성장",
+        "mother": "정순재",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성장-정순재의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.028Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:45:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M080S",
+      "name": "조창희",
+      "displayName": "조창희",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1968-01-01",
+      "status": "living",
+      "age": 57,
+      "relationships": {
+        "father": "조성문",
+        "mother": "최인자",
+        "spouses": [
+          "김미화"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성문-최인자의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.028Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:36:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M081S",
+      "name": "조웅희",
+      "displayName": "조웅희",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조성장",
+        "mother": "정순재",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성장-정순재의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.028Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:44:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M082S",
+      "name": "정승기",
+      "displayName": "정승기",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조성주",
+        "mother": "정찬건",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성주-정찬건의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.046Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:51:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M083S",
+      "name": "조경진",
+      "displayName": "조경진",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1996-01-01",
+      "status": "living",
+      "age": 29,
+      "relationships": {
+        "father": "조성문",
+        "mother": "김미화",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조창희-김미화의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.046Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:57:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G5M084W",
+      "name": "김미화",
+      "displayName": "김미화",
+      "gender": "M",
+      "generation": 5,
+      "line": "Line1",
+      "birthDate": "1968-01-01",
+      "status": "living",
+      "age": 57,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "조창희"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조창희의 부인",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "5세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.046Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:37:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G4M085S",
+      "name": "조원상",
+      "displayName": "조원상",
+      "gender": "M",
+      "generation": 4,
+      "line": "Line1",
+      "birthDate": "1961-01-01",
+      "status": "living",
+      "age": 64,
+      "relationships": {
+        "father": "조동하",
+        "mother": "라은실",
+        "spouses": [
+          "배문경"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조동하-라은실의 아들, 1962년생(61세)",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "4세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.046Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:44:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G4M086S",
+      "name": "전승재",
+      "displayName": "전승재",
+      "gender": "M",
+      "generation": 4,
+      "line": "Line1",
+      "birthDate": "1957-01-01",
+      "status": "living",
+      "age": 68,
+      "relationships": {
+        "father": "조동하",
+        "mother": "라은실",
+        "spouses": [
+          "조야영"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조아영의 남편",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "4세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.046Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-13T04:56:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G4M087S",
+      "name": "조은상",
+      "displayName": "조은상",
+      "gender": "M",
+      "generation": 4,
+      "line": "Line1",
+      "birthDate": "1963-01-01",
+      "status": "living",
+      "age": 62,
+      "relationships": {
+        "father": "조동하",
+        "mother": "라은실",
+        "spouses": [
+          "변주란"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조동하-라은실의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "4세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.046Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:44:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G4M088W",
+      "name": "변주란",
+      "displayName": "변주란",
+      "gender": "M",
+      "generation": 4,
+      "line": "Line1",
+      "birthDate": "1964-01-01",
+      "status": "living",
+      "age": 61,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "조은상"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조은상의 부인",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "4세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.046Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:06:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G4M089W",
+      "name": "박선영",
+      "displayName": "박선영",
+      "gender": "M",
+      "generation": 4,
+      "line": "Line1",
+      "birthDate": "1965-01-01",
+      "status": "living",
+      "age": 60,
+      "relationships": {
+        "father": "조강하",
+        "mother": "전흥선",
+        "spouses": [
+          "조성원"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성원의 부인",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "4세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.046Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:06:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G4M090W",
+      "name": "조야영",
+      "displayName": "조야영",
+      "gender": "M",
+      "generation": 4,
+      "line": "Line1",
+      "birthDate": "1963-01-01",
+      "status": "living",
+      "age": 62,
+      "relationships": {
+        "father": "조동하",
+        "mother": "라은실",
+        "spouses": [
+          "전승재"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "전승재의 부인, 1963년생(60세)",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "4세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.046Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:00:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G4M091W",
+      "name": "배문경",
+      "displayName": "배문경",
+      "gender": "M",
+      "generation": 4,
+      "line": "Line1",
+      "birthDate": "1962-01-01",
+      "status": "living",
+      "age": 63,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "조원상"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조원상의 부인",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "4세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.046Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-13T05:03:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G4F092D",
+      "name": "조성실",
+      "displayName": "조성실",
+      "gender": "F",
+      "generation": 4,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조일하",
+        "mother": "심인숙",
+        "spouses": [
+          "이원근"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조일하-심인숙의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "4세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.047Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:40:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G4M093S",
+      "name": "조성원",
+      "displayName": "조성원",
+      "gender": "M",
+      "generation": 4,
+      "line": "Line1",
+      "birthDate": "1961-01-01",
+      "status": "living",
+      "age": 64,
+      "relationships": {
+        "father": "조강하",
+        "mother": "전흥선",
+        "spouses": [
+          "박선영"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조강하-전흥선의 아들",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "4세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.047Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:41:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G4F094D",
+      "name": "조성희",
+      "displayName": "조성희",
+      "gender": "F",
+      "generation": 4,
+      "line": "Line1",
+      "birthDate": "1954-01-01",
+      "status": "living",
+      "age": 71,
+      "relationships": {
+        "father": "조강하",
+        "mother": "전흥선",
+        "spouses": [
+          "김명진"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조강하-전흥선의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "4세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.047Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:15:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G4F095D",
+      "name": "조명진",
+      "displayName": "조명진",
+      "gender": "F",
+      "generation": 4,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조일하",
+        "mother": "심인숙",
+        "spouses": [
+          "장학용"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조일하-심인숙의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "4세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.047Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:11:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G4M096S",
+      "name": "이원근",
+      "displayName": "이원근",
+      "gender": "M",
+      "generation": 4,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "조성실"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성실의 남편",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "4세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.047Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:14:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G4M097H",
+      "name": "김명진",
+      "displayName": "김명진",
+      "gender": "M",
+      "generation": 4,
+      "line": "Line1",
+      "birthDate": "1953-01-01",
+      "status": "living",
+      "age": 72,
+      "relationships": {
+        "father": "조강하",
+        "mother": "전흥선",
+        "spouses": [
+          "조성희"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조강하-전흥선의 사위",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "4세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.047Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T15:15:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G4F098D",
+      "name": "조성덕",
+      "displayName": "조성덕",
+      "gender": "F",
+      "generation": 4,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": "조일하",
+        "mother": "심인숙",
+        "spouses": [
+          "한성택"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조일하-심인숙의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "4세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.047Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:40:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G4F099D",
+      "name": "조성애",
+      "displayName": "조성애",
+      "gender": "F",
+      "generation": 4,
+      "line": "Line1",
+      "birthDate": "1958-01-01",
+      "status": "living",
+      "age": 67,
+      "relationships": {
+        "father": "조강하",
+        "mother": "전흥선",
+        "spouses": [],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조강하-전흥선의 딸",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "4세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.047Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:40:00.000Z",
+        "modifiedBy": "notion"
+      }
+    },
+    {
+      "id": "G4M100S",
+      "name": "한성택",
+      "displayName": "한성택",
+      "gender": "M",
+      "generation": 4,
+      "line": "Line1",
+      "birthDate": null,
+      "status": "living",
+      "age": null,
+      "relationships": {
+        "father": null,
+        "mother": null,
+        "spouses": [
+          "조성덕"
+        ],
+        "children": [],
+        "siblings": []
+      },
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": null,
+        "social": {}
+      },
+      "additional": {
+        "job": null,
+        "education": null,
+        "notes": "조성덕의 남편",
+        "photo": null,
+        "burialPlace": null,
+        "memorialDate": null,
+        "customFields": {}
+      },
+      "tags": [
+        "4세대",
+        "생존"
+      ],
+      "stats": {
+        "totalDescendants": 0,
+        "livingDescendants": 0,
+        "lastContact": "2025-09-13T15:12:54.047Z"
+      },
+      "access": {
+        "isAdmin": false,
+        "canEdit": false,
+        "lastModified": "2025-09-12T14:50:00.000Z",
+        "modifiedBy": "notion"
+      }
+    }
+  ],
+  "searchIndex": {
+    "byName": {
+      "조영하": [
+        "G0M001S"
+      ],
+      "조명하": [
+        "G0F002D"
+      ],
+      "조세희": [
+        "G5M003S"
+      ],
+      "한지영": [
+        "G5F004D"
+      ],
+      "박초희": [
+        "G5M005W"
+      ],
+      "임동민": [
+        "G5M006S"
+      ],
+      "조성순": [
+        "G4F007D"
+      ],
+      "류지민": [
+        "G6F008D"
+      ],
+      "권민우": [
+        "G6M009S"
+      ],
+      "류지안": [
+        "G6F010D"
+      ],
+      "김태란": [
+        "G6F011D"
+      ],
+      "신이솔": [
+        "G6F012D"
+      ],
+      "조수정": [
+        "G5F013D"
+      ],
+      "김민재": [
+        "G5M014W"
+      ],
+      "권바": [
+        "G5M015S"
+      ],
+      "조윤경": [
+        "G5F016D"
+      ],
+      "조수경": [
+        "G5F017D"
+      ],
+      "조광희": [
+        "G5M018S"
+      ],
+      "전혜영": [
+        "G5F019D"
+      ],
+      "전종일": [
+        "G5M020S"
+      ],
+      "조용희": [
+        "G5M021S"
+      ],
+      "손안세": [
+        "G5M022S"
+      ],
+      "이민수": [
+        "G5M023W"
+      ],
+      "조율희": [
+        "G5F024D"
+      ],
+      "강달호": [
+        "G5M025S"
+      ],
+      "김희수": [
+        "G5F026D"
+      ],
+      "김승우": [
+        "G5M027S"
+      ],
+      "강동민": [
+        "G5M028S"
+      ],
+      "김윤형": [
+        "G5F029D"
+      ],
+      "류현민": [
+        "G5M030S"
+      ],
+      "장정란": [
+        "G5F031D"
+      ],
+      "강동욱": [
+        "G5M032S"
+      ],
+      "신유석": [
+        "G5M033S"
+      ],
+      "김희진": [
+        "G5F034D"
+      ],
+      "양종원": [
+        "G5M035S"
+      ],
+      "장바우": [
+        "G5M036S"
+      ],
+      "한지훈": [
+        "G5M037S"
+      ],
+      "이선이": [
+        "G5M038W"
+      ],
+      "이현섭": [
+        "G5M039S"
+      ],
+      "장해경": [
+        "G5M040S"
+      ],
+      "한지혜": [
+        "G5F041D"
+      ],
+      "조윤희": [
+        "G5F042D",
+        "G5F065D"
+      ],
+      "이정연": [
+        "G5M043S"
+      ],
+      "장일우": [
+        "G5M044S"
+      ],
+      "유효신": [
+        "G5M045S"
+      ],
+      "유승원": [
+        "G5M046S"
+      ],
+      "이경희": [
+        "G5F047D"
+      ],
+      "나준원": [
+        "G5M048S"
+      ],
+      "이경숙": [
+        "G5F049D"
+      ],
+      "조인희": [
+        "G5F050D"
+      ],
+      "유승대": [
+        "G5M051S"
+      ],
+      "유승미": [
+        "G5F052D"
+      ],
+      "유근호": [
+        "G5M053S"
+      ],
+      "유승철": [
+        "G5M054S"
+      ],
+      "조가은": [
+        "G5F055D"
+      ],
+      "유승주": [
+        "G5M056S"
+      ],
+      "송단비": [
+        "G5M057S"
+      ],
+      "조완희": [
+        "G5F058D"
+      ],
+      "김수민": [
+        "G5M059W"
+      ],
+      "이훈주": [
+        "G5M060S"
+      ],
+      "조은호": [
+        "G5M061S"
+      ],
+      "유철수": [
+        "G5M062S"
+      ],
+      "조은우": [
+        "G5F063D"
+      ],
+      "유승은": [
+        "G5M064S"
+      ],
+      "조준희": [
+        "G5M066S"
+      ],
+      "임성우": [
+        "G5M067S"
+      ],
+      "조주호": [
+        "G5M068S"
+      ],
+      "조선희": [
+        "G5F069D"
+      ],
+      "임준성": [
+        "G5M070S"
+      ],
+      "임성현": [
+        "G5M071S"
+      ],
+      "조연희": [
+        "G5F072D"
+      ],
+      "조민희": [
+        "G5F073D"
+      ],
+      "조금희": [
+        "G5F074D"
+      ],
+      "조태희": [
+        "G5M075S"
+      ],
+      "조원희": [
+        "G5M076S"
+      ],
+      "정승연": [
+        "G5M077S"
+      ],
+      "조경민": [
+        "G5M078S"
+      ],
+      "조은희": [
+        "G5F079D"
+      ],
+      "조창희": [
+        "G5M080S"
+      ],
+      "조웅희": [
+        "G5M081S"
+      ],
+      "정승기": [
+        "G5M082S"
+      ],
+      "조경진": [
+        "G5M083S"
+      ],
+      "김미화": [
+        "G5M084W"
+      ],
+      "조원상": [
+        "G4M085S"
+      ],
+      "전승재": [
+        "G4M086S"
+      ],
+      "조은상": [
+        "G4M087S"
+      ],
+      "변주란": [
+        "G4M088W"
+      ],
+      "박선영": [
+        "G4M089W"
+      ],
+      "조야영": [
+        "G4M090W"
+      ],
+      "배문경": [
+        "G4M091W"
+      ],
+      "조성실": [
+        "G4F092D"
+      ],
+      "조성원": [
+        "G4M093S"
+      ],
+      "조성희": [
+        "G4F094D"
+      ],
+      "조명진": [
+        "G4F095D"
+      ],
+      "이원근": [
+        "G4M096S"
+      ],
+      "김명진": [
+        "G4M097H"
+      ],
+      "조성덕": [
+        "G4F098D"
+      ],
+      "조성애": [
+        "G4F099D"
+      ],
+      "한성택": [
+        "G4M100S"
+      ]
+    },
+    "byHanja": {},
+    "byGeneration": {
+      "0": [
+        "G0M001S",
+        "G0F002D"
+      ],
+      "4": [
+        "G4F007D",
+        "G4M085S",
+        "G4M086S",
+        "G4M087S",
+        "G4M088W",
+        "G4M089W",
+        "G4M090W",
+        "G4M091W",
+        "G4F092D",
+        "G4M093S",
+        "G4F094D",
+        "G4F095D",
+        "G4M096S",
+        "G4M097H",
+        "G4F098D",
+        "G4F099D",
+        "G4M100S"
+      ],
+      "5": [
+        "G5M003S",
+        "G5F004D",
+        "G5M005W",
+        "G5M006S",
+        "G5F013D",
+        "G5M014W",
+        "G5M015S",
+        "G5F016D",
+        "G5F017D",
+        "G5M018S",
+        "G5F019D",
+        "G5M020S",
+        "G5M021S",
+        "G5M022S",
+        "G5M023W",
+        "G5F024D",
+        "G5M025S",
+        "G5F026D",
+        "G5M027S",
+        "G5M028S",
+        "G5F029D",
+        "G5M030S",
+        "G5F031D",
+        "G5M032S",
+        "G5M033S",
+        "G5F034D",
+        "G5M035S",
+        "G5M036S",
+        "G5M037S",
+        "G5M038W",
+        "G5M039S",
+        "G5M040S",
+        "G5F041D",
+        "G5F042D",
+        "G5M043S",
+        "G5M044S",
+        "G5M045S",
+        "G5M046S",
+        "G5F047D",
+        "G5M048S",
+        "G5F049D",
+        "G5F050D",
+        "G5M051S",
+        "G5F052D",
+        "G5M053S",
+        "G5M054S",
+        "G5F055D",
+        "G5M056S",
+        "G5M057S",
+        "G5F058D",
+        "G5M059W",
+        "G5M060S",
+        "G5M061S",
+        "G5M062S",
+        "G5F063D",
+        "G5M064S",
+        "G5F065D",
+        "G5M066S",
+        "G5M067S",
+        "G5M068S",
+        "G5F069D",
+        "G5M070S",
+        "G5M071S",
+        "G5F072D",
+        "G5F073D",
+        "G5F074D",
+        "G5M075S",
+        "G5M076S",
+        "G5M077S",
+        "G5M078S",
+        "G5F079D",
+        "G5M080S",
+        "G5M081S",
+        "G5M082S",
+        "G5M083S",
+        "G5M084W"
+      ],
+      "6": [
+        "G6F008D",
+        "G6M009S",
+        "G6F010D",
+        "G6F011D",
+        "G6F012D"
+      ]
+    },
+    "byLine": {
+      "Line1": [
+        "G0M001S",
+        "G0F002D",
+        "G5M003S",
+        "G5F004D",
+        "G5M005W",
+        "G5M006S",
+        "G4F007D",
+        "G6F008D",
+        "G6M009S",
+        "G6F010D",
+        "G6F011D",
+        "G6F012D",
+        "G5F013D",
+        "G5M014W",
+        "G5M015S",
+        "G5F016D",
+        "G5F017D",
+        "G5M018S",
+        "G5F019D",
+        "G5M020S",
+        "G5M021S",
+        "G5M022S",
+        "G5M023W",
+        "G5F024D",
+        "G5M025S",
+        "G5F026D",
+        "G5M027S",
+        "G5M028S",
+        "G5F029D",
+        "G5M030S",
+        "G5F031D",
+        "G5M032S",
+        "G5M033S",
+        "G5F034D",
+        "G5M035S",
+        "G5M036S",
+        "G5M037S",
+        "G5M038W",
+        "G5M039S",
+        "G5M040S",
+        "G5F041D",
+        "G5F042D",
+        "G5M043S",
+        "G5M044S",
+        "G5M045S",
+        "G5M046S",
+        "G5F047D",
+        "G5M048S",
+        "G5F049D",
+        "G5F050D",
+        "G5M051S",
+        "G5F052D",
+        "G5M053S",
+        "G5M054S",
+        "G5F055D",
+        "G5M056S",
+        "G5M057S",
+        "G5F058D",
+        "G5M059W",
+        "G5M060S",
+        "G5M061S",
+        "G5M062S",
+        "G5F063D",
+        "G5M064S",
+        "G5F065D",
+        "G5M066S",
+        "G5M067S",
+        "G5M068S",
+        "G5F069D",
+        "G5M070S",
+        "G5M071S",
+        "G5F072D",
+        "G5F073D",
+        "G5F074D",
+        "G5M075S",
+        "G5M076S",
+        "G5M077S",
+        "G5M078S",
+        "G5F079D",
+        "G5M080S",
+        "G5M081S",
+        "G5M082S",
+        "G5M083S",
+        "G5M084W",
+        "G4M085S",
+        "G4M086S",
+        "G4M087S",
+        "G4M088W",
+        "G4M089W",
+        "G4M090W",
+        "G4M091W",
+        "G4F092D",
+        "G4M093S",
+        "G4F094D",
+        "G4F095D",
+        "G4M096S",
+        "G4M097H",
+        "G4F098D",
+        "G4F099D",
+        "G4M100S"
+      ]
+    },
+    "byStatus": {
+      "unknown": [
+        "G0M001S",
+        "G0F002D"
+      ],
+      "living": [
+        "G5M003S",
+        "G5F004D",
+        "G5M005W",
+        "G5M006S",
+        "G4F007D",
+        "G6F008D",
+        "G6M009S",
+        "G6F010D",
+        "G6F011D",
+        "G6F012D",
+        "G5F013D",
+        "G5M014W",
+        "G5M015S",
+        "G5F016D",
+        "G5F017D",
+        "G5M018S",
+        "G5F019D",
+        "G5M020S",
+        "G5M021S",
+        "G5M022S",
+        "G5M023W",
+        "G5F024D",
+        "G5M025S",
+        "G5F026D",
+        "G5M027S",
+        "G5M028S",
+        "G5F029D",
+        "G5M030S",
+        "G5F031D",
+        "G5M032S",
+        "G5M033S",
+        "G5F034D",
+        "G5M035S",
+        "G5M036S",
+        "G5M037S",
+        "G5M038W",
+        "G5M039S",
+        "G5M040S",
+        "G5F041D",
+        "G5F042D",
+        "G5M043S",
+        "G5M044S",
+        "G5M045S",
+        "G5M046S",
+        "G5F047D",
+        "G5M048S",
+        "G5F049D",
+        "G5F050D",
+        "G5M051S",
+        "G5F052D",
+        "G5M053S",
+        "G5M054S",
+        "G5F055D",
+        "G5M056S",
+        "G5M057S",
+        "G5F058D",
+        "G5M059W",
+        "G5M060S",
+        "G5M061S",
+        "G5M062S",
+        "G5F063D",
+        "G5M064S",
+        "G5F065D",
+        "G5M066S",
+        "G5M067S",
+        "G5M068S",
+        "G5F069D",
+        "G5M070S",
+        "G5M071S",
+        "G5F072D",
+        "G5F073D",
+        "G5F074D",
+        "G5M075S",
+        "G5M076S",
+        "G5M077S",
+        "G5M078S",
+        "G5F079D",
+        "G5M080S",
+        "G5M081S",
+        "G5M082S",
+        "G5M083S",
+        "G5M084W",
+        "G4M085S",
+        "G4M086S",
+        "G4M087S",
+        "G4M088W",
+        "G4M089W",
+        "G4M090W",
+        "G4M091W",
+        "G4F092D",
+        "G4M093S",
+        "G4F094D",
+        "G4F095D",
+        "G4M096S",
+        "G4M097H",
+        "G4F098D",
+        "G4F099D",
+        "G4M100S"
+      ]
+    },
+    "byTags": {
+      "미확인": [
+        "G0M001S",
+        "G0F002D"
+      ],
+      "5세대": [
+        "G5M003S",
+        "G5F004D",
+        "G5M005W",
+        "G5M006S",
+        "G5F013D",
+        "G5M014W",
+        "G5M015S",
+        "G5F016D",
+        "G5F017D",
+        "G5M018S",
+        "G5F019D",
+        "G5M020S",
+        "G5M021S",
+        "G5M022S",
+        "G5M023W",
+        "G5F024D",
+        "G5M025S",
+        "G5F026D",
+        "G5M027S",
+        "G5M028S",
+        "G5F029D",
+        "G5M030S",
+        "G5F031D",
+        "G5M032S",
+        "G5M033S",
+        "G5F034D",
+        "G5M035S",
+        "G5M036S",
+        "G5M037S",
+        "G5M038W",
+        "G5M039S",
+        "G5M040S",
+        "G5F041D",
+        "G5F042D",
+        "G5M043S",
+        "G5M044S",
+        "G5M045S",
+        "G5M046S",
+        "G5F047D",
+        "G5M048S",
+        "G5F049D",
+        "G5F050D",
+        "G5M051S",
+        "G5F052D",
+        "G5M053S",
+        "G5M054S",
+        "G5F055D",
+        "G5M056S",
+        "G5M057S",
+        "G5F058D",
+        "G5M059W",
+        "G5M060S",
+        "G5M061S",
+        "G5M062S",
+        "G5F063D",
+        "G5M064S",
+        "G5F065D",
+        "G5M066S",
+        "G5M067S",
+        "G5M068S",
+        "G5F069D",
+        "G5M070S",
+        "G5M071S",
+        "G5F072D",
+        "G5F073D",
+        "G5F074D",
+        "G5M075S",
+        "G5M076S",
+        "G5M077S",
+        "G5M078S",
+        "G5F079D",
+        "G5M080S",
+        "G5M081S",
+        "G5M082S",
+        "G5M083S",
+        "G5M084W"
+      ],
+      "생존": [
+        "G5M003S",
+        "G5F004D",
+        "G5M005W",
+        "G5M006S",
+        "G4F007D",
+        "G6F008D",
+        "G6M009S",
+        "G6F010D",
+        "G6F011D",
+        "G6F012D",
+        "G5F013D",
+        "G5M014W",
+        "G5M015S",
+        "G5F016D",
+        "G5F017D",
+        "G5M018S",
+        "G5F019D",
+        "G5M020S",
+        "G5M021S",
+        "G5M022S",
+        "G5M023W",
+        "G5F024D",
+        "G5M025S",
+        "G5F026D",
+        "G5M027S",
+        "G5M028S",
+        "G5F029D",
+        "G5M030S",
+        "G5F031D",
+        "G5M032S",
+        "G5M033S",
+        "G5F034D",
+        "G5M035S",
+        "G5M036S",
+        "G5M037S",
+        "G5M038W",
+        "G5M039S",
+        "G5M040S",
+        "G5F041D",
+        "G5F042D",
+        "G5M043S",
+        "G5M044S",
+        "G5M045S",
+        "G5M046S",
+        "G5F047D",
+        "G5M048S",
+        "G5F049D",
+        "G5F050D",
+        "G5M051S",
+        "G5F052D",
+        "G5M053S",
+        "G5M054S",
+        "G5F055D",
+        "G5M056S",
+        "G5M057S",
+        "G5F058D",
+        "G5M059W",
+        "G5M060S",
+        "G5M061S",
+        "G5M062S",
+        "G5F063D",
+        "G5M064S",
+        "G5F065D",
+        "G5M066S",
+        "G5M067S",
+        "G5M068S",
+        "G5F069D",
+        "G5M070S",
+        "G5M071S",
+        "G5F072D",
+        "G5F073D",
+        "G5F074D",
+        "G5M075S",
+        "G5M076S",
+        "G5M077S",
+        "G5M078S",
+        "G5F079D",
+        "G5M080S",
+        "G5M081S",
+        "G5M082S",
+        "G5M083S",
+        "G5M084W",
+        "G4M085S",
+        "G4M086S",
+        "G4M087S",
+        "G4M088W",
+        "G4M089W",
+        "G4M090W",
+        "G4M091W",
+        "G4F092D",
+        "G4M093S",
+        "G4F094D",
+        "G4F095D",
+        "G4M096S",
+        "G4M097H",
+        "G4F098D",
+        "G4F099D",
+        "G4M100S"
+      ],
+      "4세대": [
+        "G4F007D",
+        "G4M085S",
+        "G4M086S",
+        "G4M087S",
+        "G4M088W",
+        "G4M089W",
+        "G4M090W",
+        "G4M091W",
+        "G4F092D",
+        "G4M093S",
+        "G4F094D",
+        "G4F095D",
+        "G4M096S",
+        "G4M097H",
+        "G4F098D",
+        "G4F099D",
+        "G4M100S"
+      ],
+      "6세대": [
+        "G6F008D",
+        "G6M009S",
+        "G6F010D",
+        "G6F011D",
+        "G6F012D"
+      ]
+    }
+  },
+  "searchHistory": {
+    "recent": [],
+    "maxHistory": 10
+  },
+  "config": {
+    "app": {
+      "version": "1.0.0",
+      "dataVersion": "v3.0",
+      "lastUpdate": "2025-09-13T15:12:54.049Z",
+      "buildNumber": "100"
+    },
+    "admin": {
+      "name": "조은상",
+      "phone": "010-2067-6442",
+      "email": "choeunsang@gmail.com",
+      "accessPassword": "01020676442"
+    },
+    "settings": {
+      "defaultLine": "Line1",
+      "maxExportSize": 100,
+      "cacheTimeout": 3600,
+      "autoSave": true,
+      "offlineMode": true
+    },
+    "features": {
+      "searchEnabled": true,
+      "calculatorEnabled": true,
+      "exportEnabled": true,
+      "adminModeEnabled": true,
+      "futureFeatures": {
+        "photoUpload": false,
+        "socialSharing": false,
+        "multiLanguage": false
+      }
+    }
+  },
+  "conversionInfo": {
+    "totalCount": 100,
+    "convertedAt": "2025-09-13T15:12:54.049Z",
+    "sourceFile": "notion_data_utf8.json",
+    "version": "perfect-match"
+  }
+}
