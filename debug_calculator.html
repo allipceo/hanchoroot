@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>촌수계산기 디버깅</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .debug-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .error { color: red; }
+        .success { color: green; }
+        select { width: 200px; padding: 5px; margin: 5px; }
+        button { padding: 10px 20px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>촌수계산기 디버깅</h1>
+    
+    <div class="debug-section">
+        <h3>1. 데이터 로드 상태</h3>
+        <div id="data-status">확인 중...</div>
+    </div>
+    
+    <div class="debug-section">
+        <h3>2. 촌수계산 엔진 상태</h3>
+        <div id="engine-status">확인 중...</div>
+    </div>
+    
+    <div class="debug-section">
+        <h3>3. 드롭다운 테스트</h3>
+        <select id="test-select">
+            <option value="">테스트 선택</option>
+        </select>
+        <button onclick="testDropdown()">드롭다운 테스트</button>
+        <div id="dropdown-result"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h3>4. 촌수계산 테스트</h3>
+        <select id="person1-test">
+            <option value="">첫 번째 사람</option>
+        </select>
+        <select id="person2-test">
+            <option value="">두 번째 사람</option>
+        </select>
+        <button onclick="testCalculation()">촌수 계산 테스트</button>
+        <div id="calculation-result"></div>
+    </div>
+
+    <!-- 데이터 로드 -->
+    <script src="data/window_core_data.js"></script>
+    <script src="js/chonsu_engine.js"></script>
+    
+    <script>
+        // 디버깅 함수들
+        function checkDataStatus() {
+            const statusDiv = document.getElementById('data-status');
+            
+            if (typeof window.CORE_DATA === 'undefined') {
+                statusDiv.innerHTML = '<span class="error">❌ window.CORE_DATA가 로드되지 않았습니다.</span>';
+                return false;
+            }
+            
+            if (!Array.isArray(window.CORE_DATA)) {
+                statusDiv.innerHTML = '<span class="error">❌ window.CORE_DATA가 배열이 아닙니다.</span>';
+                return false;
+            }
+            
+            const joFamily = window.CORE_DATA.filter(person => person.name.startsWith('조'));
+            statusDiv.innerHTML = `<span class="success">✅ window.CORE_DATA 로드 완료: 총 ${window.CORE_DATA.length}명, 조씨 ${joFamily.length}명</span>`;
+            return true;
+        }
+        
+        function checkEngineStatus() {
+            const statusDiv = document.getElementById('engine-status');
+            
+            if (typeof ChonsuCalculator === 'undefined') {
+                statusDiv.innerHTML = '<span class="error">❌ ChonsuCalculator 클래스가 로드되지 않았습니다.</span>';
+                return false;
+            }
+            
+            try {
+                const calculator = new ChonsuCalculator();
+                const loaded = calculator.loadData();
+                
+                if (loaded) {
+                    statusDiv.innerHTML = '<span class="success">✅ 촌수계산 엔진 로드 완료</span>';
+                    return true;
+                } else {
+                    statusDiv.innerHTML = '<span class="error">❌ 촌수계산 엔진 데이터 로드 실패</span>';
+                    return false;
+                }
+            } catch (error) {
+                statusDiv.innerHTML = `<span class="error">❌ 촌수계산 엔진 오류: ${error.message}</span>`;
+                return false;
+            }
+        }
+        
+        function testDropdown() {
+            const resultDiv = document.getElementById('dropdown-result');
+            const testSelect = document.getElementById('test-select');
+            
+            if (!checkDataStatus()) {
+                resultDiv.innerHTML = '<span class="error">데이터가 로드되지 않았습니다.</span>';
+                return;
+            }
+            
+            // 드롭다운 채우기 테스트
+            testSelect.innerHTML = '<option value="">테스트 선택</option>';
+            
+            const joFamily = window.CORE_DATA.filter(person => person.name.startsWith('조'));
+            joFamily.slice(0, 5).forEach(person => { // 처음 5명만 테스트
+                const option = document.createElement('option');
+                option.value = person.id;
+                option.textContent = `${person.name} (${person.세대}세대)`;
+                testSelect.appendChild(option);
+            });
+            
+            resultDiv.innerHTML = `<span class="success">✅ 드롭다운 테스트 완료: ${joFamily.slice(0, 5).length}명 추가됨</span>`;
+        }
+        
+        function testCalculation() {
+            const resultDiv = document.getElementById('calculation-result');
+            const person1Select = document.getElementById('person1-test');
+            const person2Select = document.getElementById('person2-test');
+            
+            if (!checkDataStatus() || !checkEngineStatus()) {
+                resultDiv.innerHTML = '<span class="error">데이터 또는 엔진이 로드되지 않았습니다.</span>';
+                return;
+            }
+            
+            // 드롭다운 채우기
+            person1Select.innerHTML = '<option value="">첫 번째 사람</option>';
+            person2Select.innerHTML = '<option value="">두 번째 사람</option>';
+            
+            const joFamily = window.CORE_DATA.filter(person => person.name.startsWith('조'));
+            joFamily.slice(0, 3).forEach(person => {
+                const option1 = document.createElement('option');
+                option1.value = person.id;
+                option1.textContent = `${person.name} (${person.세대}세대)`;
+                person1Select.appendChild(option1);
+                
+                const option2 = document.createElement('option');
+                option2.value = person.id;
+                option2.textContent = `${person.name} (${person.세대}세대)`;
+                person2Select.appendChild(option2);
+            });
+            
+            resultDiv.innerHTML = `<span class="success">✅ 계산 테스트 준비 완료: ${joFamily.slice(0, 3).length}명 추가됨</span>`;
+        }
+        
+        // 페이지 로드 시 자동 체크
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                checkDataStatus();
+                checkEngineStatus();
+            }, 1000); // 1초 후 체크
+        });
+    </script>
+</body>
+</html>
