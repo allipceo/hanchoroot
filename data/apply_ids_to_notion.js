@@ -2,7 +2,8 @@
 const https = require('https');
 const fs = require('fs');
 
-const API_KEY = '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';
+require('dotenv').config();
+const API_KEY = process.env.NOTION_API_KEY;
 const DATABASE_ID = '2093284156fa404a911cbefa4b422994';
 
 // 생성된 ID 데이터 로드

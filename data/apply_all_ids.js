@@ -2,7 +2,8 @@
 const https = require('https');
 const fs = require('fs');
 
-const NOTION_API_KEY = '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'; // GIA_KEY_01
+require('dotenv').config();
+const NOTION_API_KEY = process.env.NOTION_API_KEY; // from .env
 const DATABASE_ID = '2093284156fa404a911cbefa4b422994';
 
 // 원본 노션 데이터 로드

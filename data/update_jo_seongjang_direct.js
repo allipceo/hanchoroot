@@ -2,7 +2,8 @@
 const https = require('https');
 
 // API 키
-const API_KEY = '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';
+require('dotenv').config();
+const API_KEY = process.env.NOTION_API_KEY;
 
 // 조성장의 페이지 ID (기존 데이터에서 확인)
 const PAGE_ID = '9ffa7253-b93b-430c-a43b-8c1207f270e5';

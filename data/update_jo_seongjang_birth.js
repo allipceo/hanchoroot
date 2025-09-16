@@ -2,7 +2,8 @@
 const https = require('https');
 
 // API 키와 데이터베이스 ID
-const API_KEY = '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';
+require('dotenv').config();
+const API_KEY = process.env.NOTION_API_KEY;
 const DATABASE_ID = '2093284156fa404a911cbefa4b422994';
 
 const headers = {

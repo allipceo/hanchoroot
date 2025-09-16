@@ -3,7 +3,7 @@
   "database_id": "2093284156fa404a911cbefa4b422994",
   "keys": {
     "GIA_KEY_01": {
-      "api_key": "ntn_445810703353OGBd...",
+      "api_key": "***",
       "tests": {
         "database_schema": {
           "status": 200,
@@ -290,7 +290,7 @@
       }
     },
     "GIA_KEY_02": {
-      "api_key": "ntn_445810703359QynM...",
+      "api_key": "***",
       "tests": {
         "database_schema": {
           "status": 401,

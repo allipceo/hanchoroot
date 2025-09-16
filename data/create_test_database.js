@@ -2,7 +2,8 @@
 const https = require('https');
 
 // API 키와 상위 페이지 ID
-const API_KEY = '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';
+require('dotenv').config();
+const API_KEY = process.env.NOTION_API_KEY;
 const PARENT_PAGE_ID = '2093284156fa404a911cbefa4b422994'; // 기존 데이터베이스 ID를 상위 페이지로 사용
 
 const headers = {

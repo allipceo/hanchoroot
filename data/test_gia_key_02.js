@@ -1,7 +1,8 @@
 // GIA_KEY_02 API 키로 노션 연결 테스트
 const https = require('https');
 
-const API_KEY = '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'; // GIA_KEY_02
+require('dotenv').config();
+const API_KEY = process.env.NOTION_API_KEY; // GIA_KEY from .env
 const DATABASE_ID = '2093284156fa404a911cbefa4b422994';
 
 const options = {
