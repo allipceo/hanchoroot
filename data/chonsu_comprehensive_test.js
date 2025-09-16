@@ -12,7 +12,7 @@ calculator.loadData();
 
 console.log("=== 촌수계산 종합 테스트 ===");
 
-// 다양한 관계 테스트 케이스
+// 다양한 관계 테스트 케이스 (10+)
 const testCases = [
     // 부자 관계
     { name1: "조정윤", name2: "조병희", expected: 1, description: "시조-2세대 (부자)" },
@@ -30,6 +30,13 @@ const testCases = [
     
     // 더 먼 관계
     { name1: "조정윤", name2: "조영하", expected: 2, description: "시조-3세대 (조부-손자)" },
+
+    // 사촌/종친 테스트
+    { name1: "조원상", name2: "조성원", expected: 4, description: "사촌 (공통조상: 조병갑)" },
+    { name1: "조성장", name2: "조원희", expected: 1, description: "부자 (조성장의 딸)" },
+    { name1: "조성장", name2: "조웅희", expected: 1, description: "부자 (조성장의 아들)" },
+    { name1: "조성장", name2: "조연희", expected: 3, description: "삼촌/조카 (조성장의 손위 세대 확인시 조카 가능)" },
+    { name1: "조성문", name2: "조창희", expected: 1, description: "부자 (검증)" },
 ];
 
 let passed = 0;

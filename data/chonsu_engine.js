@@ -49,7 +49,18 @@ class ChonsuCalculator {
         return ancestors;
     }
 
-    // 공통조상 찾기
+    // 직계 관계 빠른 판정: a가 b의 조상인지 여부와 거리(1-기반)
+    getDirectLineDistance(ancestorId, descendantId) {
+        const ancestorsOfDesc = this.findAncestors(descendantId);
+        for (let i = 0; i < ancestorsOfDesc.length; i++) {
+            if (ancestorsOfDesc[i].id === ancestorId) {
+                return i + 1; // 1-기반 거리
+            }
+        }
+        return 0; // 직계 아님
+    }
+
+    // 공통조상 찾기 (거리는 1-기반: father=1, grandfather=2 ...)
     findCommonAncestor(id1, id2) {
         const ancestors1 = this.findAncestors(id1);
         const ancestors2 = this.findAncestors(id2);
@@ -64,8 +75,8 @@ class ChonsuCalculator {
                 if (ancestors1[i].id === ancestors2[j].id) {
                     return {
                         ancestor: ancestors1[i],
-                        distance1: i,
-                        distance2: j
+                        distance1: i + 1,
+                        distance2: j + 1
                     };
                 }
             }
@@ -88,10 +99,14 @@ class ChonsuCalculator {
             return { chonsu: 0, title: "본인", relationship: "self" };
         }
 
-        // 부모-자식 관계 확인
-        if (person1.relationships.father === person2.name || 
-            person2.relationships.father === person1.name) {
-            return { chonsu: 1, title: person1.relationships.father === person2.name ? "부" : "자", relationship: "parent-child" };
+        // 직계(조상-후손) 빠른 판정 (1-기반): 한쪽이 다른 쪽의 조상이면 그 거리로 확정
+        const d1 = this.getDirectLineDistance(id1, id2); // person1이 person2의 조상인가
+        if (d1 > 0) {
+            return { chonsu: d1, title: d1 === 1 ? "부모/자녀" : `${d1}촌`, relationship: "lineal" };
+        }
+        const d2 = this.getDirectLineDistance(id2, id1); // person2가 person1의 조상인가
+        if (d2 > 0) {
+            return { chonsu: d2, title: d2 === 1 ? "부모/자녀" : `${d2}촌`, relationship: "lineal" };
         }
 
         // 공통조상 찾기
@@ -101,12 +116,7 @@ class ChonsuCalculator {
         }
 
         // 촌수 계산: (A에서 공통조상까지 거리) + (B에서 공통조상까지 거리)
-        let chonsu = commonAncestor.distance1 + commonAncestor.distance2;
-        
-        // 형제/자매 관계 (같은 부모)는 2촌으로 표시
-        if (chonsu === 0) {
-            chonsu = 2;
-        }
+        const chonsu = commonAncestor.distance1 + commonAncestor.distance2;
         
         // 호칭 생성
         const title = this.generateTitle(chonsu, commonAncestor.distance1, commonAncestor.distance2);
