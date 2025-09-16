@@ -254,6 +254,198 @@ body {
     font-size: 14px;
 }
 
+/* 촌수계산기 스타일 */
+.calculator-screen {
+    display: none;
+}
+
+.calculator-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.calculator-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.calculator-header h2 {
+    color: #2563EB;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.calculator-header p {
+    color: #666;
+    font-size: 16px;
+}
+
+.calculator-inputs {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.person-selector {
+    margin-bottom: 15px;
+}
+
+.person-selector label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.person-select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 16px;
+    background: white;
+}
+
+.person-select:focus {
+    outline: none;
+    border-color: #2563EB;
+}
+
+.vs-divider {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2563EB;
+}
+
+.calculate-button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #2563EB, #1D4ED8);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calculate-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+.calculate-button:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.calculator-result {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.result-header h3 {
+    color: #2563EB;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.result-content {
+    display: grid;
+    gap: 10px;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.result-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.result-value {
+    color: #2563EB;
+    font-weight: bold;
+}
+
+.result-details {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.recent-calculations {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.recent-calculations h3 {
+    color: #2563EB;
+    margin-bottom: 15px;
+}
+
+.calculations-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.calculation-item {
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.2s ease;
+}
+
+.calculation-item:hover {
+    background-color: #f8f9fa;
+}
+
+.calculation-item:last-child {
+    border-bottom: none;
+}
+
+.calculation-persons {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.calculation-result {
+    color: #2563EB;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.calculation-time {
+    font-size: 12px;
+    color: #666;
+}
+
+.no-calculations {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    font-style: italic;
+}
+
 /* 반응형 디자인 */
 @media (max-width: 768px) {
     .container {

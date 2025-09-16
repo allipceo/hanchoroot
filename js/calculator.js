@@ -1,326 +1,253 @@
-// 촌수 계산기 JavaScript - 3단계
-// 1-2단계 app.js, search.js와 연동하여 간결하고 재활용 가능한 코드 작성
+// 촌수계산기 JavaScript
+// 기존 함수 재활용, window.CORE_DATA 단일소스 활용
 
-// 전역 변수
-let calculatorData = null;
-let selectedPerson1 = null;
-let selectedPerson2 = null;
-let currentSelector = null;
+class ChonsuCalculatorUI {
+    constructor() {
+        this.calculator = null;
+        this.recentCalculations = [];
+        this.init();
+    }
+
+    // 초기화
+    init() {
+        this.setupEventListeners();
+        this.waitForDataAndInit();
+    }
+    
+    // 데이터 로드를 기다리고 초기화
+    waitForDataAndInit() {
+        const checkData = () => {
+            if (window.CORE_DATA && Array.isArray(window.CORE_DATA)) {
+                console.log("데이터 로드 완료, 촌수계산기 초기화 시작");
+                this.loadCalculatorEngine();
+                this.populatePersonSelects();
+                this.loadRecentCalculations();
+            } else {
+                console.log("데이터 로드 대기 중...");
+                setTimeout(checkData, 100);
+            }
+        };
+        checkData();
+    }
+
+    // 촌수계산 엔진 로드
+    loadCalculatorEngine() {
+        if (typeof ChonsuCalculator !== 'undefined') {
+            this.calculator = new ChonsuCalculator();
+            this.calculator.loadData();
+            console.log("촌수계산 엔진 로드 완료");
+        } else {
+            console.error("ChonsuCalculator 클래스를 찾을 수 없습니다.");
+        }
+    }
+
+    // 이벤트 리스너 설정
+    setupEventListeners() {
+        // 촌수계산기 버튼
+        document.getElementById('calculator-btn').addEventListener('click', () => {
+            this.showCalculatorScreen();
+        });
+
+        // 촌수계산기 화면 네비게이션
+        document.getElementById('calculator-back-btn').addEventListener('click', () => {
+            this.hideCalculatorScreen();
+        });
+
+        document.getElementById('calculator-home-btn').addEventListener('click', () => {
+            this.showMainScreen();
+        });
+
+        // 사람 선택 변경
+        document.getElementById('person1-select').addEventListener('change', () => {
+            this.updateCalculateButton();
+        });
+
+        document.getElementById('person2-select').addEventListener('change', () => {
+            this.updateCalculateButton();
+        });
+
+        // 계산 버튼
+        document.getElementById('calculate-btn').addEventListener('click', () => {
+            this.calculateChonsu();
+        });
+    }
+
+    // 사람 선택 옵션 채우기
+    populatePersonSelects() {
+        if (!window.CORE_DATA) {
+            console.error("window.CORE_DATA를 찾을 수 없습니다.");
+            return;
+        }
+
+        const select1 = document.getElementById('person1-select');
+        const select2 = document.getElementById('person2-select');
+
+        // 기존 옵션 제거 (첫 번째 옵션 제외)
+        select1.innerHTML = '<option value="">선택하세요</option>';
+        select2.innerHTML = '<option value="">선택하세요</option>';
+
+        // 한양조씨 가족만 추가
+        const joFamily = window.CORE_DATA.filter(person => person.name.startsWith('조'));
+        
+        joFamily.forEach(person => {
+            const option1 = document.createElement('option');
+            option1.value = person.id;
+            option1.textContent = `${person.name} (${person.세대}세대)`;
+            select1.appendChild(option1);
+
+            const option2 = document.createElement('option');
+            option2.value = person.id;
+            option2.textContent = `${person.name} (${person.세대}세대)`;
+            select2.appendChild(option2);
+        });
+
+        console.log(`촌수계산 대상: ${joFamily.length}명 로드 완료`);
+    }
+
+    // 계산 버튼 상태 업데이트
+    updateCalculateButton() {
+        const person1 = document.getElementById('person1-select').value;
+        const person2 = document.getElementById('person2-select').value;
+        const calculateBtn = document.getElementById('calculate-btn');
+
+        if (person1 && person2 && person1 !== person2) {
+            calculateBtn.disabled = false;
+            calculateBtn.textContent = '촌수 계산하기';
+        } else {
+            calculateBtn.disabled = true;
+            if (person1 === person2 && person1) {
+                calculateBtn.textContent = '같은 사람을 선택했습니다';
+            } else {
+                calculateBtn.textContent = '두 사람을 선택하세요';
+            }
+        }
+    }
+
+    // 촌수 계산
+    calculateChonsu() {
+        const person1Id = document.getElementById('person1-select').value;
+        const person2Id = document.getElementById('person2-select').value;
+
+        if (!person1Id || !person2Id || person1Id === person2Id) {
+            return;
+        }
+
+        if (!this.calculator) {
+            alert("촌수계산 엔진이 로드되지 않았습니다.");
+            return;
+        }
+
+        const result = this.calculator.calculateChonsu(person1Id, person2Id);
+        this.displayResult(result, person1Id, person2Id);
+        this.saveRecentCalculation(result, person1Id, person2Id);
+    }
+
+    // 결과 표시
+    displayResult(result, person1Id, person2Id) {
+        const resultDiv = document.getElementById('calculator-result');
+        const chonsuSpan = document.getElementById('result-chonsu');
+        const titleSpan = document.getElementById('result-title');
+        const relationshipSpan = document.getElementById('result-relationship');
+        const ancestorSpan = document.getElementById('result-ancestor');
+        const detailsDiv = document.getElementById('result-details');
+
+        if (result.error) {
+            chonsuSpan.textContent = "계산 불가";
+            titleSpan.textContent = result.error;
+            relationshipSpan.textContent = "오류";
+            detailsDiv.style.display = 'none';
+        } else {
+            chonsuSpan.textContent = `${result.chonsu}촌`;
+            titleSpan.textContent = result.title;
+            relationshipSpan.textContent = result.relationship;
+
+            if (result.commonAncestor) {
+                ancestorSpan.textContent = result.commonAncestor;
+                detailsDiv.style.display = 'block';
+            } else {
+                detailsDiv.style.display = 'none';
+            }
+        }
+
+        resultDiv.style.display = 'block';
+    }
+
+    // 최근 계산 기록 저장
+    saveRecentCalculation(result, person1Id, person2Id) {
+        const person1 = this.calculator.findPersonById(person1Id);
+        const person2 = this.calculator.findPersonById(person2Id);
+
+        const calculation = {
+            id: Date.now(),
+            person1: person1.name,
+            person2: person2.name,
+            chonsu: result.chonsu || 0,
+            title: result.title || "계산 불가",
+            timestamp: new Date().toLocaleString()
+        };
+
+        this.recentCalculations.unshift(calculation);
+        
+        // 최대 10개까지만 저장
+        if (this.recentCalculations.length > 10) {
+            this.recentCalculations = this.recentCalculations.slice(0, 10);
+        }
+
+        this.saveRecentCalculations();
+        this.updateRecentCalculationsDisplay();
+    }
+
+    // 최근 계산 기록 로드
+    loadRecentCalculations() {
+        const saved = localStorage.getItem('chonsu_recent_calculations');
+        if (saved) {
+            this.recentCalculations = JSON.parse(saved);
+            this.updateRecentCalculationsDisplay();
+        }
+    }
+
+    // 최근 계산 기록 저장
+    saveRecentCalculations() {
+        localStorage.setItem('chonsu_recent_calculations', JSON.stringify(this.recentCalculations));
+    }
+
+    // 최근 계산 기록 표시 업데이트
+    updateRecentCalculationsDisplay() {
+        const listDiv = document.getElementById('recent-calculations-list');
+        
+        if (this.recentCalculations.length === 0) {
+            listDiv.innerHTML = '<div class="no-calculations">아직 계산 기록이 없습니다.</div>';
+            return;
+        }
+
+        listDiv.innerHTML = this.recentCalculations.map(calc => `
+            <div class="calculation-item">
+                <div class="calculation-persons">${calc.person1} ↔ ${calc.person2}</div>
+                <div class="calculation-result">${calc.chonsu}촌 (${calc.title})</div>
+                <div class="calculation-time">${calc.timestamp}</div>
+            </div>
+        `).join('');
+    }
+
+    // 화면 전환
+    showCalculatorScreen() {
+        document.getElementById('main-screen').style.display = 'none';
+        document.getElementById('calculator-screen').style.display = 'block';
+    }
+
+    hideCalculatorScreen() {
+        document.getElementById('calculator-screen').style.display = 'none';
+        document.getElementById('main-screen').style.display = 'block';
+    }
+
+    showMainScreen() {
+        document.getElementById('calculator-screen').style.display = 'none';
+        document.getElementById('main-screen').style.display = 'block';
+    }
+}
 
 // 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', () => {
-  initCalculatorPage();
+    console.log("DOM 로드 완료, 촌수계산기 UI 초기화 시작");
+    new ChonsuCalculatorUI();
 });
-
-// 촌수 계산기 페이지 초기화
-function initCalculatorPage() {
-  console.log("촌수 계산기 페이지 초기화");
-  
-  // 데이터 로드
-  loadCalculatorData();
-  
-  // 이벤트 리스너 설정
-  setupCalculatorEventListeners();
-  
-  // 계산 히스토리 표시
-  displayCalculationHistory();
-  
-  // 앱 버전 정보 표시
-  displayAppVersion();
-}
-
-// 계산기 데이터 로드 (1-2단계 Core Module 재활용)
-function loadCalculatorData() {
-  calculatorData = window.appData || CORE_DATA;
-  
-  // 촌수 계산기 데이터 로드
-  if (typeof kinshipCalculator !== 'undefined') {
-    kinshipCalculator.loadPersonsData(calculatorData.persons);
-    console.log("촌수 계산기 데이터 로드 완료");
-  } else {
-    console.error("KinshipCalculator를 찾을 수 없습니다");
-  }
-}
-
-// 계산기 이벤트 리스너 설정
-function setupCalculatorEventListeners() {
-  // 모달 검색 입력 이벤트
-  const modalSearch = document.getElementById('modal-search');
-  if (modalSearch) {
-    modalSearch.addEventListener('input', handleModalSearch);
-    modalSearch.addEventListener('keypress', handleModalSearchKeypress);
-  }
-  
-  // 계산 버튼 상태 업데이트
-  updateCalculateButtonState();
-}
-
-// 인물 선택기 열기
-function openPersonSelector(personNumber) {
-  currentSelector = personNumber;
-  const modal = document.getElementById('person-modal');
-  const modalTitle = document.getElementById('modal-title');
-  
-  modalTitle.textContent = `${personNumber}번째 사람 선택`;
-  modal.style.display = 'flex';
-  
-  // 모든 인물 목록 표시
-  displayAllPersons();
-  
-  // 검색 입력창 포커스
-  setTimeout(() => {
-    document.getElementById('modal-search').focus();
-  }, 100);
-}
-
-// 인물 선택기 닫기
-function closePersonSelector() {
-  const modal = document.getElementById('person-modal');
-  modal.style.display = 'none';
-  currentSelector = null;
-}
-
-// 모든 인물 표시
-function displayAllPersons() {
-  const personList = document.getElementById('modal-person-list');
-  if (!personList || !calculatorData) return;
-  
-  personList.innerHTML = calculatorData.persons.map(person => 
-    createPersonListItem(person)
-  ).join('');
-}
-
-// 인물 목록 아이템 생성
-function createPersonListItem(person) {
-  const statusText = person.생존상태 === '생존' ? '생존' : '고인';
-  const statusClass = person.생존상태 === '생존' ? 'living' : 'deceased';
-  
-  return `
-    <div class="modal-person-item" onclick="selectPerson('${person.id}')">
-      <div class="modal-person-info">
-        <div class="modal-person-name">${person.name}</div>
-        <div class="modal-person-details">${person.세대}세대 | ${person.Line1} | ${statusText}</div>
-      </div>
-      <button class="select-person-btn" onclick="event.stopPropagation(); selectPerson('${person.id}')">선택</button>
-    </div>
-  `;
-}
-
-// 인물 선택
-function selectPerson(personId) {
-  const person = calculatorData.persons.find(p => p.id === personId);
-  if (!person) return;
-  
-  if (currentSelector === 1) {
-    selectedPerson1 = person;
-    displaySelectedPerson(1, person);
-  } else if (currentSelector === 2) {
-    selectedPerson2 = person;
-    displaySelectedPerson(2, person);
-  }
-  
-  // 모달 닫기
-  closePersonSelector();
-  
-  // 계산 버튼 상태 업데이트
-  updateCalculateButtonState();
-}
-
-// 선택된 인물 표시
-function displaySelectedPerson(personNumber, person) {
-  const placeholder = document.getElementById(`person${personNumber}-placeholder`);
-  const selected = document.getElementById(`person${personNumber}-selected`);
-  const name = document.getElementById(`person${personNumber}-name`);
-  const details = document.getElementById(`person${personNumber}-details`);
-  
-  if (placeholder && selected && name && details) {
-    placeholder.style.display = 'none';
-    selected.style.display = 'block';
-    
-    name.textContent = person.name;
-    details.textContent = `${person.세대}세대 | ${person.Line1} | ${person.생존상태 === '생존' ? '생존' : '고인'}`;
-  }
-}
-
-// 계산 버튼 상태 업데이트
-function updateCalculateButtonState() {
-  const calculateBtn = document.getElementById('calculate-btn');
-  if (calculateBtn) {
-    calculateBtn.disabled = !selectedPerson1 || !selectedPerson2;
-  }
-}
-
-// 촌수 계산 실행 (핵심 함수)
-function calculateKinship() {
-  if (!selectedPerson1 || !selectedPerson2) {
-    alert('두 사람을 모두 선택해주세요.');
-    return;
-  }
-  
-  if (!kinshipCalculator) {
-    alert('촌수 계산기가 초기화되지 않았습니다.');
-    return;
-  }
-  
-  try {
-    console.log("촌수 계산 실행:", selectedPerson1.name, "↔", selectedPerson2.name);
-    
-    // 촌수 계산
-    const result = kinshipCalculator.calculateKinship(selectedPerson1.id, selectedPerson2.id);
-    
-    // 계산 히스토리 추가
-    kinshipCalculator.addCalculationHistory(selectedPerson1, selectedPerson2, result);
-    
-    // 결과 표시
-    displayCalculationResult(result);
-    
-    // 히스토리 업데이트
-    displayCalculationHistory();
-    
-    console.log("촌수 계산 완료:", result);
-    
-  } catch (error) {
-    console.error("촌수 계산 오류:", error);
-    alert('촌수 계산 중 오류가 발생했습니다: ' + error.message);
-  }
-}
-
-// 계산 결과 표시
-function displayCalculationResult(result) {
-  const resultSection = document.getElementById('result-section');
-  const resultCard = document.getElementById('result-card');
-  
-  if (!resultSection || !resultCard) return;
-  
-  const relationship = result.relationship;
-  
-  // 결과 카드 HTML 생성
-  resultCard.innerHTML = `
-    <div class="result-header">
-      <div class="result-relationship">${result.person1.name} ↔ ${result.person2.name}</div>
-      <div class="result-degree">${relationship.degree}촌 ${relationship.relation} 관계</div>
-    </div>
-    
-    <div class="result-details">
-      <div class="result-detail-item">
-        <div class="result-detail-label">호칭</div>
-        <div class="result-detail-value">${relationship.honorific}</div>
-      </div>
-      <div class="result-detail-item">
-        <div class="result-detail-label">공통 조상</div>
-        <div class="result-detail-value">${getPersonName(relationship.commonAncestor)}</div>
-      </div>
-    </div>
-    
-    ${relationship.path.length > 0 ? `
-      <div class="result-path">
-        <div class="result-path-title">관계 경로</div>
-        <div class="result-path-flow">
-          ${relationship.path.map(personId => getPersonName(personId)).join(' <span class="result-path-arrow">→</span> ')}
-        </div>
-      </div>
-    ` : ''}
-  `;
-  
-  // 결과 섹션 표시
-  resultSection.style.display = 'block';
-  
-  // 결과 섹션으로 스크롤
-  resultSection.scrollIntoView({ behavior: 'smooth' });
-}
-
-// 계산 히스토리 표시
-function displayCalculationHistory() {
-  const historyList = document.getElementById('history-list');
-  if (!historyList || !kinshipCalculator) return;
-  
-  const history = kinshipCalculator.getCalculationHistory();
-  
-  if (history.length === 0) {
-    historyList.innerHTML = '<p style="color: #999; font-style: italic; text-align: center; padding: 20px;">최근 계산 기록이 없습니다.</p>';
-    return;
-  }
-  
-  historyList.innerHTML = history.map(item => 
-    `<div class="history-item" onclick="loadHistoryCalculation('${item.person1}', '${item.person2}')">
-      <div class="history-relationship">${item.result}</div>
-      <div class="history-persons">${item.person1} ↔ ${item.person2}</div>
-    </div>`
-  ).join('');
-}
-
-// 히스토리에서 계산 로드
-function loadHistoryCalculation(person1Name, person2Name) {
-  const person1 = calculatorData.persons.find(p => p.name === person1Name);
-  const person2 = calculatorData.persons.find(p => p.name === person2Name);
-  
-  if (person1 && person2) {
-    selectedPerson1 = person1;
-    selectedPerson2 = person2;
-    
-    displaySelectedPerson(1, person1);
-    displaySelectedPerson(2, person2);
-    updateCalculateButtonState();
-    
-    // 자동으로 계산 실행
-    calculateKinship();
-  }
-}
-
-// 모달 검색 처리
-function handleModalSearch(event) {
-  const query = event.target.value.trim();
-  searchPersons(query);
-}
-
-// 모달 검색 키 입력 처리
-function handleModalSearchKeypress(event) {
-  if (event.key === 'Enter') {
-    searchPersons();
-  }
-}
-
-// 인물 검색
-function searchPersons(query) {
-  const searchInput = document.getElementById('modal-search');
-  const queryText = query || searchInput.value.trim();
-  
-  const personList = document.getElementById('modal-person-list');
-  if (!personList || !calculatorData) return;
-  
-  if (!queryText) {
-    displayAllPersons();
-    return;
-  }
-  
-  const filteredPersons = calculatorData.persons.filter(person => 
-    person.name.includes(queryText)
-  );
-  
-  personList.innerHTML = filteredPersons.map(person => 
-    createPersonListItem(person)
-  ).join('');
-}
-
-// 인물 이름 가져오기
-function getPersonName(personId) {
-  if (!personId || !calculatorData) return '미상';
-  const person = calculatorData.persons.find(p => p.id === personId);
-  return person ? person.name : '미상';
-}
-
-// 앱 버전 정보 표시 (1-2단계 재활용)
-function displayAppVersion() {
-  const appVersion = document.getElementById('app-version');
-  const dataVersion = document.getElementById('data-version');
-  
-  if (appVersion && dataVersion && calculatorData) {
-    appVersion.textContent = calculatorData.config.app.version;
-    dataVersion.textContent = calculatorData.config.app.dataVersion;
-  }
-}
-
-// 뒤로가기
-function goBack() {
-  window.history.back();
-}
