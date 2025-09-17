@@ -88,10 +88,11 @@ class ChonsuCalculator {
             return { chonsu: 0, title: "본인", relationship: "self" };
         }
 
-        // 부모-자식 관계 확인
-        if (person1.relationships.father === person2.name || 
-            person2.relationships.father === person1.name) {
-            return { chonsu: 1, title: person1.relationships.father === person2.name ? "부" : "자", relationship: "parent-child" };
+        // 부모-자식 관계 확인 (부/모 모두 확인)
+        const isP1ChildOfP2 = (person1.relationships && (person1.relationships.father === person2.name || person1.relationships.mother === person2.name));
+        const isP2ChildOfP1 = (person2.relationships && (person2.relationships.father === person1.name || person2.relationships.mother === person1.name));
+        if (isP1ChildOfP2 || isP2ChildOfP1) {
+            return { chonsu: 1, title: isP1ChildOfP2 ? "자" : "부", relationship: "parent-child" };
         }
 
         // 공통조상 찾기
@@ -100,13 +101,12 @@ class ChonsuCalculator {
             return { error: "공통조상을 찾을 수 없습니다." };
         }
 
-        // 촌수 계산: (A에서 공통조상까지 거리) + (B에서 공통조상까지 거리)
-        let chonsu = commonAncestor.distance1 + commonAncestor.distance2;
+        // 촌수 계산: 각 인덱스는 '조상까지의 간수 - 1'이므로 +1 보정
+        // (A→조상 간수) + (B→조상 간수)
+        let chonsu = (commonAncestor.distance1 + 1) + (commonAncestor.distance2 + 1);
         
         // 형제/자매 관계 (같은 부모)는 2촌으로 표시
-        if (chonsu === 0) {
-            chonsu = 2;
-        }
+        // (보정 이후 형제는 2로 계산되므로 별도 보정 불필요)
         
         // 호칭 생성
         const title = this.generateTitle(chonsu, commonAncestor.distance1, commonAncestor.distance2);
