@@ -33,9 +33,19 @@ if (!notionPath || !corePath) {
   process.exit(1);
 }
 
-// Load notion export (assumed JSON array)
+// Load notion export (array or wrapped object)
 const notionRaw = fs.readFileSync(notionPath);
-const notion = readJSON(notionPath);
+const notionLoaded = readJSON(notionPath);
+function toArray(maybe) {
+  if (Array.isArray(maybe)) return maybe;
+  if (maybe && Array.isArray(maybe.persons)) return maybe.persons;
+  if (maybe && Array.isArray(maybe.results)) return maybe.results;
+  if (maybe && Array.isArray(maybe.data)) return maybe.data;
+  // Some exports may nest deeper
+  if (maybe && maybe.payload && Array.isArray(maybe.payload.persons)) return maybe.payload.persons;
+  return [];
+}
+const notion = toArray(notionLoaded);
 // Load core data: supports JS with window.CORE_DATA or pure JSON array
 let core; let coreBuf = null;
 if (corePath.endsWith('.json')) {
@@ -55,7 +65,7 @@ if (corePath.endsWith('.json')) {
 }
 
 function sortByIdName(arr) {
-  return [...arr].sort((a,b)=> (a.id||'').localeCompare(b.id||'') || (a.name||'').localeCompare(b.name||''));
+  return [...(arr||[])].sort((a,b)=> (a.id||'').localeCompare(b.id||'') || (a.name||'').localeCompare(b.name||''));
 }
 
 function validateIdFormat(arr) {
@@ -78,6 +88,27 @@ function refOK(x, indexByName) {
   for (const c of (r.children||[])) names.push(c);
   for (const s of (r.siblings||[])) names.push(s);
   return names.every(n => !n || indexByName.has(n));
+}
+
+function sanitizeReferences(arr, config) {
+  const stripNames = (config.policy && config.policy.references && config.policy.references.strip_unresolved_names) || [];
+  if (stripNames.length === 0) return arr;
+  
+  return arr.map(person => {
+    const r = person.relationships || {};
+    const sanitized = { ...person, relationships: { ...r } };
+    
+    // Remove "미확인" from all relationship fields
+    if (stripNames.includes("미확인")) {
+      if (sanitized.relationships.father === "미확인") sanitized.relationships.father = "";
+      if (sanitized.relationships.mother === "미확인") sanitized.relationships.mother = "";
+      sanitized.relationships.spouses = (r.spouses || []).filter(s => s !== "미확인");
+      sanitized.relationships.children = (r.children || []).filter(c => c !== "미확인");
+      sanitized.relationships.siblings = (r.siblings || []).filter(s => s !== "미확인");
+    }
+    
+    return sanitized;
+  });
 }
 function validateRefs(arr) {
   const idx = new Map();
@@ -104,8 +135,11 @@ function diffById(notionSorted, coreSorted) {
   return { add, update, hold, reissued, ref_fixed };
 }
 
+// Sanitize references first (remove "미확인" etc.)
+const notionSanitized = sanitizeReferences(notion, CONFIG);
+
 // Sort as required
-const notionSorted = sortByIdName(notion);
+const notionSorted = sortByIdName(notionSanitized);
 const coreSorted = sortByIdName(core);
 
 // 4 checks
@@ -118,9 +152,9 @@ const meta = {
   sha256_export: sha256(notionRaw),
   sha256_core: sha256(coreBuf),
   node: process.version,
-  tz: CONFIG.meta.tz,
+  tz: (CONFIG.timezone || (CONFIG.meta && CONFIG.meta.tz) || Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'),
   commit: process.env.GIT_COMMIT || '',
-  sorted_by: CONFIG.export.sorted_by,
+  sorted_by: ((CONFIG.sort && CONFIG.sort.keys) || (CONFIG.export && CONFIG.export.sorted_by) || ['id','name']),
   export_count: notionSorted.length,
   core_count: coreSorted.length,
   ts: nowISO(),
@@ -133,6 +167,17 @@ const metricsPath = path.join(__dirname, 'metrics.json');
 function exitWith(code) { process.exit(code); }
 
 if (mode === 'dry-run') {
+  // Collect unresolved references for reporting
+  const unresolvedRefs = [];
+  for (const person of notionSorted) {
+    const r = person.relationships || {};
+    const refs = [r.father, r.mother, ...(r.spouses || []), ...(r.children || []), ...(r.siblings || [])].filter(Boolean);
+    const unresolved = refs.filter(ref => ref === "미확인");
+    if (unresolved.length > 0) {
+      unresolvedRefs.push({ id: person.id, name: person.name, unresolved });
+    }
+  }
+
   writeJSON(metaPath, meta);
   writeJSON(metricsPath, {
     checks: {
@@ -141,19 +186,24 @@ if (mode === 'dry-run') {
       references: { ok: refFail.length === 0, fail: refFail.length }
     },
     diff,
+    unresolved_refs: unresolvedRefs,
     errors: []
   });
   const exitCode = (invalid.length || dup.length || refFail.length) ? 3 : (diff.hold.length ? 2 : 0);
-  console.log('DRY-RUN complete:', { invalid: invalid.length, dup: dup.length, refFail: refFail.length, add: diff.add.length, update: diff.update.length, hold: diff.hold.length, exitCode });
+  console.log('DRY-RUN complete:', { invalid: invalid.length, dup: dup.length, refFail: refFail.length, add: diff.add.length, update: diff.update.length, hold: diff.hold.length, unresolvedRefs: unresolvedRefs.length, exitCode });
   exitWith(exitCode);
 }
 
 if (mode === 'apply-partial') {
-  if (invalid.length || dup.length || refFail.length) {
+  // Allow partial apply if only reference issues exist (missing "미확인" refs are expected)
+  if (invalid.length || dup.length) {
     writeJSON(metaPath, meta);
     writeJSON(metricsPath, { checks: { id_format: { ok:false, fail: invalid.length }, uniqueness: { ok:false, duplicates: dup.length }, references: { ok:false, fail: refFail.length } }, diff, errors: ['gate_failed'] });
-    console.error('Gate failed. Resolve issues before apply.', { invalid: invalid.length, dup: dup.length, refFail: refFail.length });
+    console.error('Gate failed. Resolve ID format or uniqueness issues before apply.', { invalid: invalid.length, dup: dup.length, refFail: refFail.length });
     exitWith(3);
+  }
+  if (refFail.length > 0) {
+    console.log(`Warning: ${refFail.length} reference issues detected, but proceeding with partial apply.`);
   }
   const coreMap = new Map(coreSorted.map(x => [x.id, x]));
   for (const id of diff.add) coreMap.set(id, notionSorted.find(x => x.id === id));

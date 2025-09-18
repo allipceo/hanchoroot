@@ -6,6 +6,13 @@
   "report": { "metrics": ["add", "update", "hold", "reissued", "ref_fixed"] },
   "export": { "sorted_by": ["id", "name"] },
   "meta": { "tz": "Asia/Seoul" },
+  "policy": {
+    "references": {
+      "allowUnresolvedNames": ["미확인"],
+      "treatAs": "warn",
+      "strip_unresolved_names": ["미확인"]
+    }
+  },
   "paths": {
     "export": "exports/notion_export.json",
     "core": "data/window_core_data_current.js"
