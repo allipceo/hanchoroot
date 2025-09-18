@@ -18,7 +18,7 @@ const options = {
 };
 
 console.log('🔍 GIA_KEY_01로 노션 API 연결 테스트 중...');
-console.log(`API Key: ${API_KEY.substring(0, 20)}...`);
+// console.log(`API Key: ${API_KEY.substring(0, 20)}...`); // 보안상 주석 처리
 console.log(`Database ID: ${DATABASE_ID}`);
 
 const req = https.request(options, (res) => {
