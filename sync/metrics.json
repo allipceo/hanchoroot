@@ -1,0 +1,33 @@
+{
+  "checks": {
+    "id_format": {
+      "ok": true,
+      "fail": 0
+    },
+    "uniqueness": {
+      "ok": true,
+      "duplicates": 0
+    },
+    "references": {
+      "ok": true,
+      "fail": 0
+    }
+  },
+  "diff": {
+    "add": [],
+    "update": [
+      "L1-G4-F-D-089",
+      "L1-G4-F-D-646",
+      "L1-G4-M-S-194",
+      "L1-G5-F-W-610",
+      "L1-G5-F-W-903",
+      "L3-G5-F-D-371",
+      "L3-G5-F-D-448",
+      "L3-G6-M-H-611"
+    ],
+    "hold": [],
+    "reissued": [],
+    "ref_fixed": []
+  },
+  "errors": []
+}

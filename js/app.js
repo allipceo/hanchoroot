@@ -38,7 +38,15 @@ function loadCoreData() {
             const coreData = window.CORE_DATA;
             adminInfo = coreData.config.admin;
             appConfig = coreData.config.app;
-            currentUser = coreData.persons[0]; // 조은상
+            try{
+              // 1) 우선 메모리에 이미 존재하면 사용
+              if (window.APP_CURRENT_USER && window.APP_CURRENT_USER.id) {
+                currentUser = window.APP_CURRENT_USER;
+              } else {
+                const saved = localStorage.getItem('gia_current_user');
+                currentUser = saved ? JSON.parse(saved) : null;
+              }
+            }catch(e){ currentUser = null; }
             console.log("Core 데이터 로드 성공 (V2.0)");
         } else {
             console.error("window.CORE_DATA가 로드되지 않았습니다");
@@ -51,23 +59,53 @@ function loadCoreData() {
 // UI 초기화
 function initializeUI() {
     // "나" 설정 상태 표시
-    if (currentUser) {
-        displayCurrentUser();
-    }
+    displayCurrentUser();
+    updateSettingsCurrentUser();
     
     // 앱 버전 표시
     if (appConfig) {
         displayAppVersion();
+    }
+
+    // 개발경과 토글
+    const devBtn = document.getElementById('dev-progress-btn');
+    const devPanel = document.getElementById('dev-progress-panel');
+    if (devBtn && devPanel) {
+        devBtn.addEventListener('click', function(){
+            devPanel.style.display = (devPanel.style.display === 'none' || devPanel.style.display === '') ? 'block' : 'none';
+            if (devPanel.style.display === 'block') {
+                populateDevProgress();
+            }
+        });
     }
 }
 
 // 현재 사용자 표시
 function displayCurrentUser() {
     const userDisplay = document.getElementById('current-user');
-    if (userDisplay && currentUser) {
+    if (!userDisplay) return;
+    if (currentUser && currentUser.name) {
         userDisplay.innerHTML = `👤 나는 ${currentUser.name}입니다`;
         userDisplay.style.display = 'block';
+    } else {
+        userDisplay.style.display = 'none';
     }
+}
+
+function updateSettingsCurrentUser(){
+  const el=document.getElementById('settings-current-user');
+  if(!el) return;
+  if(currentUser && currentUser.name){
+    // 세대 정보는 CORE_DATA에서 찾아 추가
+    let gen='?';
+    if(Array.isArray(window.CORE_DATA)){
+      const p=window.CORE_DATA.find(x=>x.id===currentUser.id);
+      if(p && (p.세대||p.generation)) gen = p.세대 || p.generation;
+    }
+    el.textContent = `${currentUser.name} (${gen}세대)`;
+  } else {
+    el.textContent = '미등록';
+  }
 }
 
 // 앱 버전 표시
@@ -76,6 +114,28 @@ function displayAppVersion() {
     if (versionDisplay && appConfig) {
         versionDisplay.innerHTML = `v${appConfig.version}`;
     }
+}
+
+// 개발경과 패널 데이터 채우기(개발자용)
+function populateDevProgress(){
+    const engineVerEl = document.getElementById('engine-version');
+    const dataCountEl = document.getElementById('data-count');
+    const joCountEl = document.getElementById('jo-count');
+    const lastSyncEl = document.getElementById('last-sync');
+
+    if (engineVerEl) engineVerEl.textContent = '촐수 v2.0';
+
+    if (Array.isArray(window.CORE_DATA)) {
+        const total = window.CORE_DATA.length;
+        const jo = window.CORE_DATA.filter(p=>p && p.name && p.name[0]==='조').length;
+        if (dataCountEl) dataCountEl.textContent = `${total}명`;
+        if (joCountEl) joCountEl.textContent = `${jo}명`;
+    }
+    // meta가 있을 경우
+    try{
+      const meta = window.CORE_DATA && window.CORE_DATA.meta ? window.CORE_DATA.meta : null;
+      if (meta && lastSyncEl) lastSyncEl.textContent = meta.lastSync || meta.created || '-';
+    }catch(e){ /* no-op */ }
 }
 
 // 관리자 정보 동적 표시
@@ -147,7 +207,8 @@ function handleMenuClick(action) {
             navigateToCalculator();
             break;
         case 'export':
-            showMessage('정보 내보내기 기능은 6단계에서 구현됩니다');
+            // 기존 안내 메시지 대신 export.html로 이동
+            window.location.href = 'export.html';
             break;
         case 'settings':
             navigateToSettings();
@@ -183,6 +244,12 @@ function navigateToSettings() {
     if (settingsScreen && mainScreen) {
         mainScreen.style.display = 'none';
         settingsScreen.style.display = 'block';
+        // 최신 상태 동기화
+        try {
+          const saved = localStorage.getItem('gia_current_user');
+          currentUser = saved ? JSON.parse(saved) : currentUser;
+        } catch(e) {}
+        updateSettingsCurrentUser();
         console.log('설정 화면으로 이동');
     }
 }

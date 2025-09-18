@@ -254,8 +254,6 @@ body {
     font-size: 14px;
 }
 
-<<<<<<< HEAD
-=======
 /* 촌수계산기 스타일 */
 .calculator-screen {
     display: none;
@@ -462,7 +460,6 @@ body {
     font-style: italic;
 }
 
->>>>>>> 32f8b4e3839543e088dbb97181584009f5f7d0c1
 /* 반응형 디자인 */
 @media (max-width: 768px) {
     .container {

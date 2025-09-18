@@ -1,0 +1,15 @@
+{
+  "sha256_export": "34be6866e1f320f50a03e6dd7f8a496ba46c7a934dcd713e4e89b659043c8c81",
+  "sha256_core": "28968d5c972239c6a66def25e1b417546710e510cc56ec7de359300f5bc05621",
+  "node": "v22.15.0",
+  "tz": "Asia/Seoul",
+  "commit": "",
+  "sorted_by": [
+    "id",
+    "name"
+  ],
+  "export_count": 152,
+  "core_count": 153,
+  "ts": "2025-09-17T20:20:53.768Z",
+  "mode": "apply-partial"
+}

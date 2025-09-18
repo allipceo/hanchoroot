@@ -34,7 +34,7 @@
             div.style.padding = '10px 8px';
             div.style.borderBottom = '1px solid #eee';
             div.style.cursor = 'pointer';
-            div.textContent = `${person.name} (${person.세대 || '?'}세대)`;
+            div.textContent = `${person.name} ${/-M-/.test(person.id)?'(M)':(/-F-/.test(person.id)?'(F)':'')} (${person.세대 || '?'}세대)`;
             div.onclick = () => pickPerson(person);
             list.appendChild(div);
         });
@@ -61,15 +61,15 @@
     function pickPerson(person) {
         if (targetIndex === 1) {
             selected.p1 = { id: person.id, name: person.name };
-            $('person1-placeholder').textContent = `${person.name}`;
+            $('person1-placeholder').textContent = `${person.name} ${/-M-/.test(person.id)?'(M)':(/-F-/.test(person.id)?'(F)':'')}`;
             $('person1-selected').style.display = 'block';
-            $('person1-name').textContent = person.name;
+            $('person1-name').textContent = `${person.name} ${/-M-/.test(person.id)?'(M)':(/-F-/.test(person.id)?'(F)':'')}`;
             $('person1-details').textContent = `${person.세대 || '?'}세대`;
         } else {
             selected.p2 = { id: person.id, name: person.name };
-            $('person2-placeholder').textContent = `${person.name}`;
+            $('person2-placeholder').textContent = `${person.name} ${/-M-/.test(person.id)?'(M)':(/-F-/.test(person.id)?'(F)':'')}`;
             $('person2-selected').style.display = 'block';
-            $('person2-name').textContent = person.name;
+            $('person2-name').textContent = `${person.name} ${/-M-/.test(person.id)?'(M)':(/-F-/.test(person.id)?'(F)':'')}`;
             $('person2-details').textContent = `${person.세대 || '?'}세대`;
         }
         updateCalculateButton();
@@ -182,9 +182,7 @@
         const s2 = $('inline-search-2'); if (s2) s2.onclick = () => triggerList('inline-person2');
 
         // 한 사람 입력: 현재 사용자(나) → 대상
-        const currentUserName = (window.APP_CURRENT_USER && window.APP_CURRENT_USER.name) || '조은상';
-        const metaNameEl = $('current-user-name');
-        if (metaNameEl) metaNameEl.textContent = currentUserName;
+        const currentUserName = (window.APP_CURRENT_USER && window.APP_CURRENT_USER.name) || null;
 
         const singleBtn = $('inline-single-calc');
         if (singleBtn) {
@@ -192,16 +190,26 @@
                 const targetName = $('inline-single').value.trim();
                 const out = $('inline-single-result');
                 out.textContent = '';
+                
                 if (!targetName) {
                     out.textContent = '대상 이름을 입력하세요.';
                     return;
                 }
-                const me = window.CORE_DATA.find(p => p.name === currentUserName);
+                
+                if (!window.APP_CURRENT_USER) {
+                    out.textContent = '나 설정이 필요합니다. 먼저 본인을 설정해주세요.';
+                    if (meModal) meModal.style.display = 'block';
+                    return;
+                }
+                
+                const me = window.CORE_DATA.find(p => p.id === window.APP_CURRENT_USER.id);
                 const target = window.CORE_DATA.find(p => p.name === targetName);
+                
                 if (!me || !target) {
                     out.textContent = '대상 또는 나를 데이터에서 찾을 수 없습니다.';
                     return;
                 }
+                
                 const calc = new window.ChonsuCalculator();
                 calc.loadData();
                 const result = calc.calculateChonsu(me.id, target.id);
@@ -221,6 +229,24 @@
 
         let selectedMe = null;
 
+        function enableMeConfirm() {
+            if (meConfirm) {
+                meConfirm.disabled = false;
+                meConfirm.removeAttribute('disabled');
+                meConfirm.removeAttribute('aria-disabled');
+                try { meConfirm.focus(); } catch(e) {}
+            }
+        }
+
+        function proposeSelectByName(name) {
+            const person = window.CORE_DATA.find(p => p.name === name);
+            if (!person) return;
+            if (confirm(`"${name}"(으)로 설정하시겠습니까?`)) {
+                selectedMe = { id: person.id, name: person.name };
+                enableMeConfirm();
+            }
+        }
+
         function renderMeResults(keyword) {
             if (!keyword) { meResults.innerHTML = ''; meConfirm.disabled = true; return; }
             const list = window.CORE_DATA.filter(p => (p.name || '').includes(keyword));
@@ -232,35 +258,131 @@
                 row.style.cursor = 'pointer';
                 const father = (p.relationships && p.relationships.father) ? p.relationships.father : '-';
                 row.textContent = `${p.name} (${p.세대 || '?'}세대) · 부: ${father}`;
-                row.onclick = () => { selectedMe = { id: p.id, name: p.name }; meConfirm.disabled = false; };
+                row.addEventListener('click', () => proposeSelectByName(p.name));
                 meResults.appendChild(row);
             });
         }
 
         if (meSearch) {
             meSearch.addEventListener('input', () => renderMeResults(meSearch.value.trim()));
+            meSearch.addEventListener('keypress', (e)=>{
+                if(e.key==='Enter'){
+                    const name = meSearch.value.trim();
+                    if(name) proposeSelectByName(name);
+                }
+            });
         }
         if (meConfirm) {
             meConfirm.addEventListener('click', () => {
                 if (!selectedMe) return;
                 localStorage.setItem('gia_current_user', JSON.stringify(selectedMe));
                 if (meModal) meModal.style.display = 'none';
-                const metaNameEl2 = $('current-user-name');
-                if (metaNameEl2) metaNameEl2.textContent = selectedMe.name;
                 window.APP_CURRENT_USER = selectedMe;
+                updateHeaderUI();
+                hideExceptionBanner();
             });
         }
         if (meClose) meClose.onclick = () => { if (meModal) meModal.style.display = 'none'; };
-        if (meClear) meClear.onclick = () => { localStorage.removeItem('gia_current_user'); selectedMe = null; meConfirm.disabled = true; meResults.innerHTML=''; if (meSearch) meSearch.value=''; };
+        if (meClear) meClear.onclick = () => { 
+            localStorage.removeItem('gia_current_user'); 
+            selectedMe = null; 
+            meConfirm.disabled = true; 
+            meResults.innerHTML=''; 
+            if (meSearch) meSearch.value='';
+            window.APP_CURRENT_USER = null;
+            updateHeaderUI();
+        };
+
+        // 헤더 UI 업데이트 함수
+        function updateHeaderUI() {
+            const headerInfo = $('header-user-info');
+            const headerUser = $('header-current-user');
+            const metaNameEl = $('current-user-name');
+            
+            if (window.APP_CURRENT_USER) {
+                const user = window.APP_CURRENT_USER;
+                const person = window.CORE_DATA.find(p => p.id === user.id);
+                const displayName = person ? `${user.name} (${person.세대 || '?'}세대)` : user.name;
+                
+                if (headerUser) headerUser.textContent = displayName;
+                if (metaNameEl) metaNameEl.textContent = user.name;
+                if (headerInfo) headerInfo.style.display = 'block';
+            } else {
+                if (headerUser) headerUser.textContent = '(미설정)';
+                if (metaNameEl) metaNameEl.textContent = '(미설정)';
+                if (headerInfo) headerInfo.style.display = 'none';
+            }
+        }
+
+        // 나 변경 버튼 이벤트
+        const changeUserBtn = $('change-user-btn');
+        if (changeUserBtn) {
+            changeUserBtn.addEventListener('click', () => {
+                if (meModal) meModal.style.display = 'block';
+            });
+        }
+
+        // 예외 처리 배너 관리
+        function showExceptionBanner(message) {
+            const banner = $('exception-banner');
+            const messageEl = $('exception-message');
+            if (banner && messageEl) {
+                messageEl.textContent = message;
+                banner.style.display = 'block';
+            }
+        }
+
+        function hideExceptionBanner() {
+            const banner = $('exception-banner');
+            if (banner) banner.style.display = 'none';
+        }
+
+        // 예외 배너 닫기 버튼
+        const exceptionClose = $('exception-close');
+        if (exceptionClose) {
+            exceptionClose.addEventListener('click', hideExceptionBanner);
+        }
+
+        // 데이터 무결성 검사
+        function validateCurrentUser() {
+            if (!window.APP_CURRENT_USER) return true;
+            
+            const user = window.APP_CURRENT_USER;
+            const person = window.CORE_DATA.find(p => p.id === user.id);
+            
+            if (!person) {
+                showExceptionBanner('저장된 사용자 정보가 데이터에서 찾을 수 없습니다. 나 설정을 다시 해주세요.');
+                localStorage.removeItem('gia_current_user');
+                window.APP_CURRENT_USER = null;
+                updateHeaderUI();
+                return false;
+            }
+            
+            if (person.name !== user.name) {
+                showExceptionBanner('사용자 이름이 변경되었습니다. 나 설정을 다시 해주세요.');
+                localStorage.removeItem('gia_current_user');
+                window.APP_CURRENT_USER = null;
+                updateHeaderUI();
+                return false;
+            }
+            
+            return true;
+        }
 
         // 최초 진입: 저장된 사용자 없으면 모달 오픈
         const saved = localStorage.getItem('gia_current_user');
         if (saved) {
             try {
                 window.APP_CURRENT_USER = JSON.parse(saved);
-                const metaNameEl3 = $('current-user-name');
-                if (metaNameEl3 && window.APP_CURRENT_USER) metaNameEl3.textContent = window.APP_CURRENT_USER.name;
-            } catch (e) { /* ignore */ }
+                if (validateCurrentUser()) {
+                    updateHeaderUI();
+                } else if (meModal) {
+                    meModal.style.display = 'block';
+                }
+            } catch (e) { 
+                localStorage.removeItem('gia_current_user');
+                if (meModal) meModal.style.display = 'block';
+            }
         } else if (meModal) {
             meModal.style.display = 'block';
         }

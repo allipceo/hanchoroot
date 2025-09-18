@@ -5,6 +5,44 @@
   margin-bottom: 25px;
 }
 
+/* 상단 헤더 정렬 (겹침 방지) */
+#app > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.header-user-info {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  background: #eaf2ff;
+  border: 1px solid #cfe0ff;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+.change-user-btn {
+  padding: 4px 8px;
+  border: 1px solid #2563EB;
+  color: #2563EB;
+  background: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* 검색 아이콘 버튼 항상 가시화 */
+.icon-btn {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 .person-selection h3 {
   margin: 0 0 15px 0;
   font-size: 18px;

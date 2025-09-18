@@ -164,17 +164,18 @@ function createResultItem(personId, query) {
   return `
     <div class="result-item" onclick="showPersonDetail('${personId}')">
       <div class="result-item-header">
-        <div class="result-name">${person.name}</div>
+        <div class="result-name">${person.name} ${/-M-/.test(person.id||person.ID||person['아이디']||'')?'(M)':(/-F-/.test(person.id||person.ID||person['아이디']||'')?'(F)':'')}</div>
         <div class="result-status ${statusClass}">${statusText}</div>
       </div>
       <div class="result-info">
+        <span>${person.성별 || (/-M-/.test(person.id||person.ID||person['아이디']||'')?'M':(/-F-/.test(person.id||person.ID||person['아이디']||'')?'F':''))}</span>
         <span>👤 ${person.세대}세대</span>
         <span>🏠 ${person.Line1}</span>
         <span>📅 ${person.생년 || '미상'}</span>
       </div>
       <div class="result-actions">
         <button onclick="event.stopPropagation(); showPersonDetail('${personId}')">상세보기</button>
-        <button onclick="event.stopPropagation(); calculateKinship('${personId}')">촌수계산</button>
+        
       </div>
     </div>
   `;
@@ -306,9 +307,7 @@ function showPersonDetail(personId) {
   window.location.href = `detail.html?id=${personId}`;
 }
 
-function calculateKinship(personId) {
-  alert(`촌수 계산 기능은 3단계에서 구현됩니다.\n인물 ID: ${personId}`);
-}
+// 촌수 계산 기능 제거됨
 
 function goBack() {
   window.location.href = 'index.html';

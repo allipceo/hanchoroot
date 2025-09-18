@@ -193,9 +193,6 @@ function sortCouplesFirst(persons) {
         // 배우자가 있는 경우
         if (person.relationships.spouses && person.relationships.spouses.length > 0) {
             const spouseName = person.relationships.spouses[0]; // 첫 번째 배우자
-<<<<<<< HEAD
-            const spouse = persons.find(p => p.name === spouseName && !processed.has(p.id));
-=======
             // 1) 현재 세대/라인 목록에서 우선 검색
             let spouse = persons.find(p => p.name === spouseName && !processed.has(p.id));
             // 2) 없으면 전체 데이터에서 보조 검색 (라인 달라도 허용, 동일 세대 우선)
@@ -204,7 +201,6 @@ function sortCouplesFirst(persons) {
                 const sameGen = all.find(p => p.name === spouseName && p.세대 === person.세대);
                 spouse = sameGen || all.find(p => p.name === spouseName);
             }
->>>>>>> 32f8b4e3839543e088dbb97181584009f5f7d0c1
             
             if (spouse) {
                 // 한양조씨를 먼저, 배우자를 나중에 배열
@@ -215,18 +211,12 @@ function sortCouplesFirst(persons) {
                     type: 'couple',
                     husband: joPerson.성별 === 'M' ? joPerson : spousePerson,
                     wife: joPerson.성별 === 'F' ? joPerson : spousePerson,
-                    displayName: `${joPerson.name}-${spousePerson.name}`
+                    displayName: `${joPerson.name} ${/-M-/.test(joPerson.id)?'(M)':(/-F-/.test(joPerson.id)?'(F)':'')}-${spousePerson.name} ${/-M-/.test(spousePerson.id)?'(M)':(/-F-/.test(spousePerson.id)?'(F)':'')}`
                 });
                 processed.add(person.id);
-<<<<<<< HEAD
-                processed.add(spouse.id);
-            } else {
-                // 배우자가 같은 세대에 없는 경우
-=======
                 if (spouse.id) processed.add(spouse.id);
             } else {
                 // 배우자가 전체 데이터에도 없으면 단독 표시
->>>>>>> 32f8b4e3839543e088dbb97181584009f5f7d0c1
                 singles.push(person);
                 processed.add(person.id);
             }
@@ -304,7 +294,7 @@ function createPersonCard(person) {
                     ${person.name.charAt(0)}
                 </div>
                 <div class="person-details">
-                    <h3 class="person-name">${person.name}</h3>
+                    <h3 class="person-name">${person.name} ${/-M-/.test(person.id)?'(M)':(/-F-/.test(person.id)?'(F)':'')}</h3>
                     ${person.한자명 ? `<p class="person-hanja">${person.한자명}</p>` : ''}
                     <div class="person-meta">
                         <span>${person.세대}세대</span>

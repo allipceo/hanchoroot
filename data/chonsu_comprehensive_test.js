@@ -12,32 +12,121 @@ calculator.loadData();
 
 console.log("=== 촌수계산 종합 테스트 ===");
 
-// 다양한 관계 테스트 케이스 (10+)
-const testCases = [
-    // 부자 관계
-    { name1: "조정윤", name2: "조병희", expected: 1, description: "시조-2세대 (부자)" },
-    { name1: "조병희", name2: "조영하", expected: 1, description: "2세대-3세대 (부자)" },
-    
-    // 형제 관계
-    { name1: "조영하", name2: "조명하", expected: 2, description: "3세대 형제/자매" },
-    { name1: "조병희", name2: "조병갑", expected: 2, description: "2세대 형제" },
-    
-    // 부자 관계 (조병희-민혜숙의 자녀)
-    { name1: "조병희", name2: "조일하", expected: 1, description: "부자 (조병희-민혜숙)" },
-    
-    // 형제 관계 (같은 부모)
-    { name1: "조영하", name2: "조일하", expected: 2, description: "형제/자매 (조병희-민혜숙)" },
-    
-    // 더 먼 관계
-    { name1: "조정윤", name2: "조영하", expected: 2, description: "시조-3세대 (조부-손자)" },
+// 동적 테스트 케이스 생성기: 실제 데이터에서 20+ 케이스 자동 수집
+const testCases = [];
+const seen = new Set();
 
-    // 사촌/종친 테스트
-    { name1: "조원상", name2: "조성원", expected: 4, description: "사촌 (공통조상: 조병갑)" },
-    { name1: "조성장", name2: "조원희", expected: 1, description: "부자 (조성장의 딸)" },
-    { name1: "조성장", name2: "조웅희", expected: 1, description: "부자 (조성장의 아들)" },
-    { name1: "조성장", name2: "조연희", expected: 3, description: "삼촌/조카 (조성장의 손위 세대 확인시 조카 가능)" },
-    { name1: "조성문", name2: "조창희", expected: 1, description: "부자 (검증)" },
-];
+function addCase(name1, name2, expected, description) {
+    if (!name1 || !name2) return;
+    const key = [name1, name2].sort().join('::');
+    if (seen.has(key)) return;
+    seen.add(key);
+    testCases.push({ name1, name2, expected, description });
+}
+
+// 자기자신 2건
+if (window.CORE_DATA.length > 0) {
+    const p0 = window.CORE_DATA[0];
+    addCase(p0.name, p0.name, 0, "자기자신");
+}
+if (window.CORE_DATA.length > 1) {
+    const p1 = window.CORE_DATA[1];
+    addCase(p1.name, p1.name, 0, "자기자신(2)");
+}
+
+// 부모-자녀 6건까지 수집
+let parentChildCount = 0;
+const nameToPerson = new Map(window.CORE_DATA.map(p => [p.name, p]));
+for (const child of window.CORE_DATA) {
+    const r = child.relationships || {};
+    const f = r.father && nameToPerson.get(r.father);
+    const m = r.mother && nameToPerson.get(r.mother);
+    if (f && parentChildCount < 10) { addCase(f.name, child.name, 1, "부모-자녀(부)"); parentChildCount++; }
+    if (m && parentChildCount < 20) { addCase(m.name, child.name, 1, "부모-자녀(모)"); parentChildCount++; }
+    if (parentChildCount >= 20) break;
+}
+
+// 형제/자매 6건까지 수집(부모 공유)
+let siblingCount = 0;
+for (const p of window.CORE_DATA) {
+    const r = p.relationships || {};
+    const father = r.father && nameToPerson.get(r.father);
+    const mother = r.mother && nameToPerson.get(r.mother);
+    const parents = [father, mother].filter(Boolean);
+    for (const parent of parents) {
+        const children = (parent.relationships && parent.relationships.children) || [];
+        if (children.length >= 2) {
+            const sibs = children.map(n => nameToPerson.get(n)).filter(Boolean);
+            for (let i = 0; i < sibs.length - 1 && siblingCount < 12; i++) {
+                addCase(sibs[i].name, sibs[i + 1].name, 2, "형제/자매");
+                siblingCount++;
+            }
+        }
+    }
+    if (siblingCount >= 12) break;
+}
+
+// 배우자 3건(배우자 경로 제외 규칙: degree 0 기대)
+let spouseCount = 0;
+for (const p of window.CORE_DATA) {
+    const r = p.relationships || {};
+    const spouses = r.spouses || (r.spouse ? [r.spouse] : []);
+    if (spouses.length > 0) {
+        const sName = spouses[0];
+        const sp = nameToPerson.get(sName);
+        if (sp) { addCase(p.name, sp.name, 0, "배우자"); spouseCount++; }
+    }
+    if (spouseCount >= 5) break;
+}
+
+// 사촌 4촌 3건: 부모가 형제인 두 아이 선택
+let cousinCount = 0;
+for (const a of window.CORE_DATA) {
+    const aParentName = (a.relationships && (a.relationships.father || a.relationships.mother));
+    const aParent = aParentName && nameToPerson.get(aParentName);
+    if (!aParent) continue;
+    const grandParentName = aParent.relationships && (aParent.relationships.father || aParent.relationships.mother);
+    const grandParent = grandParentName && nameToPerson.get(grandParentName);
+    if (!grandParent) continue;
+    const unclesAunts = (grandParent.relationships && grandParent.relationships.children) || [];
+    for (const uaName of unclesAunts) {
+        if (uaName === aParent.name) continue;
+        const ua = nameToPerson.get(uaName);
+        if (!ua) continue;
+        const cousins = (ua.relationships && ua.relationships.children) || [];
+        if (cousins.length > 0) {
+            const cName = cousins[0];
+            addCase(a.name, cName, 4, "사촌 4촌");
+            cousinCount++;
+            if (cousinCount >= 10) break;
+        }
+    }
+    if (cousinCount >= 10) break;
+}
+
+// 외가 1~2건(가능한 경우): 비-조씨 아이 vs 조씨 이모/외삼촌 라인 => 3촌 기대
+let maternalCount = 0;
+for (const x of window.CORE_DATA) {
+    if (!(x.name && x.name[0] !== '조')) continue;
+    const momName = x.relationships && x.relationships.mother;
+    const mom = momName && nameToPerson.get(momName);
+    if (!mom || !(mom.name && mom.name[0] === '조')) continue;
+    // 엄마의 형제(외삼촌/이모)의 자녀와는 외사촌(보통 5촌)이지만, 엄마의 형제 본인과는 외삼촌(3촌)
+    const momsParentName = mom.relationships && (mom.relationships.father || mom.relationships.mother);
+    const momsParent = momsParentName && nameToPerson.get(momsParentName);
+    if (!momsParent) continue;
+    const siblings = (momsParent.relationships && momsParent.relationships.children) || [];
+    for (const sibName of siblings) {
+        if (sibName === mom.name) continue;
+        const uncle = nameToPerson.get(sibName);
+        if (uncle && uncle.name && uncle.name[0] === '조') {
+            addCase(x.name, uncle.name, 3, "외삼촌/외조카 3촌");
+            maternalCount++;
+            break;
+        }
+    }
+    if (maternalCount >= 5) break;
+}
 
 let passed = 0;
 let total = testCases.length;
