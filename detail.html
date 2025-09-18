@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세 정보 - 한양조씨 족보</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/detail.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 헤더 (1단계 재사용) -->
+        <header>
+            <button class="back-btn" onclick="goBack()">←</button>
+            <h1 id="detail-title">👤 상세 정보</h1>
+            <p id="detail-subtitle">가족 구성원 정보</p>
+            <button class="change-user-btn prev-btn" onclick="history.back()">이전 화면</button>
+        </header>
+
+        <!-- 메인 컨텐츠 -->
+        <main>
+            <!-- 기본 정보 -->
+            <div class="info-section">
+                <div class="person-header">
+                    <div class="person-avatar" id="person-avatar">👤</div>
+                    <div class="person-basic">
+                        <h2 id="person-name">이름</h2>
+                        <div class="person-status" id="person-status">상태</div>
+                    </div>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">성별</span>
+                        <span class="info-value" id="person-gender">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">세대</span>
+                        <span class="info-value" id="person-generation">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Line</span>
+                        <span class="info-value" id="person-line">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">생년</span>
+                        <span class="info-value" id="person-birth">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">사망일</span>
+                        <span class="info-value" id="person-death">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">생존상태</span>
+                        <span class="info-value" id="person-alive">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가족 관계 -->
+            <div class="relationships-section">
+                <h3>👨‍👩‍👧‍👦 가족 관계</h3>
+                
+                <div class="relationship-group" id="parents-group" style="display: none;">
+                    <h4>부모</h4>
+                    <div class="relationship-list" id="parents-list"></div>
+                </div>
+
+                <div class="relationship-group" id="spouses-group" style="display: none;">
+                    <h4>배우자</h4>
+                    <div class="relationship-list" id="spouses-list"></div>
+                </div>
+
+                <div class="relationship-group" id="children-group" style="display: none;">
+                    <h4>자녀</h4>
+                    <div class="relationship-list" id="children-list"></div>
+                </div>
+
+                <div class="relationship-group" id="siblings-group" style="display: none;">
+                    <h4>형제/자매</h4>
+                    <div class="relationship-list" id="siblings-list"></div>
+                </div>
+            </div>
+
+            <!-- 액션 버튼들 -->
+            <div class="actions-section">
+                <button class="action-btn primary" id="calculate-chonsu-btn">🧮 나와의 촌수 계산</button>
+                <button class="action-btn secondary" id="set-as-me-btn">👤 나로 설정</button>
+            </div>
+        </main>
+
+        <!-- 푸터 (1단계 재사용) -->
+        <footer>
+            <p>버전: <span id="app-version"></span> | 데이터: <span id="data-version"></span></p>
+        </footer>
+    </div>
+
+    <!-- 스크립트 로드 -->
+    <script src="data/window_core_data_167_2025-09-17T21-04-52-533Z.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/detail.js"></script>
+</body>
+</html>
