@@ -31,47 +31,54 @@ class ChonsuCalculator {
         return this.data.find(person => person.name === name);
     }
 
-    // 조상 추적 (시조까지)
-    findAncestors(personId) {
-        const ancestors = [];
-        let current = this.findPersonById(personId);
-        
-        while (current && current.relationships.father) {
-            const father = this.findPersonByName(current.relationships.father);
-            if (father) {
-                ancestors.push(father);
-                current = father;
-            } else {
-                break;
-            }
+    getParents(person) {
+        if (!person || !person.relationships) return [];
+        const result = [];
+        if (person.relationships.father) {
+            const f = this.findPersonByName(person.relationships.father);
+            if (f) result.push({ node: f, viaMother: false });
         }
-        
-        return ancestors;
+        if (person.relationships.mother) {
+            const m = this.findPersonByName(person.relationships.mother);
+            if (m) result.push({ node: m, viaMother: true });
+        }
+        return result;
     }
 
-    // 공통조상 찾기
-    findCommonAncestor(id1, id2) {
-        const ancestors1 = this.findAncestors(id1);
-        const ancestors2 = this.findAncestors(id2);
-        
-        // 시조를 공통조상으로 추가
-        ancestors1.push({ id: "founder", name: this.founder });
-        ancestors2.push({ id: "founder", name: this.founder });
-        
-        // 가장 가까운 공통조상 찾기 (가장 먼저 발견되는 것)
-        for (let i = 0; i < ancestors1.length; i++) {
-            for (let j = 0; j < ancestors2.length; j++) {
-                if (ancestors1[i].id === ancestors2[j].id) {
-                    return {
-                        ancestor: ancestors1[i],
-                        distance1: i,
-                        distance2: j
-                    };
-                }
-            }
+    buildAncestorMap(personId) {
+        const start = this.findPersonById(personId);
+        const visited = new Map();
+        const queue = [];
+        if (start) queue.push({ node: start, dist: 0, passedMaternal: false });
+
+        while (queue.length) {
+            const { node, dist, passedMaternal } = queue.shift();
+            if (!node || visited.has(node.id)) continue;
+            visited.set(node.id, { dist, passedMaternal });
+
+            const parents = this.getParents(node);
+            parents.forEach(({ node: parent, viaMother }) => {
+                queue.push({ node: parent, dist: dist + 1, passedMaternal: passedMaternal || viaMother });
+            });
         }
-        
-        return null;
+        return visited;
+    }
+
+    // 최적 공통조상 찾기(부/모 BFS 교집합 최단합)
+    findBestCommon(id1, id2) {
+        const ancA = this.buildAncestorMap(id1);
+        const ancB = this.buildAncestorMap(id2);
+        let best = null;
+        ancA.forEach((infoA, pid) => {
+            const infoB = ancB.get(pid);
+            if (!infoB) return;
+            const degree = infoA.dist + infoB.dist;
+            if (!best || degree < best.degree) {
+                const person = this.findPersonById(pid) || { name: this.founder };
+                best = { ancestor: person, distance1: infoA.dist, distance2: infoB.dist, degree, mA: infoA.passedMaternal, mB: infoB.passedMaternal };
+            }
+        });
+        return best;
     }
 
     // 촌수 계산
@@ -95,21 +102,23 @@ class ChonsuCalculator {
             return { chonsu: 1, title: isP1ChildOfP2 ? "자" : "부", relationship: "parent-child" };
         }
 
-        // 공통조상 찾기
-        const commonAncestor = this.findCommonAncestor(id1, id2);
+        // 공통조상 찾기(부/모 포함 BFS)
+        const commonAncestor = this.findBestCommon(id1, id2);
         if (!commonAncestor) {
             return { error: "공통조상을 찾을 수 없습니다." };
         }
 
-        // 촌수 계산: 각 인덱스는 '조상까지의 간수 - 1'이므로 +1 보정
-        // (A→조상 간수) + (B→조상 간수)
-        let chonsu = (commonAncestor.distance1 + 1) + (commonAncestor.distance2 + 1);
+        // 촌수 계산: (A→조상) + (B→조상) [BFS dist는 1-기반 경로 수]
+        let chonsu = (commonAncestor.distance1) + (commonAncestor.distance2);
         
         // 형제/자매 관계 (같은 부모)는 2촌으로 표시
         // (보정 이후 형제는 2로 계산되므로 별도 보정 불필요)
         
+        // 외가 접두 여부: 모계를 경유했고 당사자 중 한 명이라도 비-조씨인 경우
+        const bothCho = (person1.name && person1.name[0] === '조') && (person2.name && person2.name[0] === '조');
+        const isMaternal = (commonAncestor.mA || commonAncestor.mB) && (!bothCho);
         // 호칭 생성
-        const title = this.generateTitle(chonsu, commonAncestor.distance1, commonAncestor.distance2);
+        const title = this.generateTitle(chonsu, commonAncestor.distance1, commonAncestor.distance2, isMaternal);
         
         return {
             chonsu: chonsu,
@@ -122,18 +131,19 @@ class ChonsuCalculator {
     }
 
     // 호칭 생성
-    generateTitle(chonsu, distance1, distance2) {
+    generateTitle(chonsu, distance1, distance2, isMaternal) {
+        const prefix = isMaternal ? "외" : "";
         if (chonsu === 0) return "본인";
-        if (chonsu === 1) return "부모/자녀";
-        if (chonsu === 2) return "형제/자매";
-        if (chonsu === 3) return "삼촌/조카";
-        if (chonsu === 4) return "사촌";
-        if (chonsu === 5) return "오촌";
-        if (chonsu === 6) return "육촌";
-        if (chonsu === 7) return "칠촌";
-        if (chonsu === 8) return "팔촌";
+        if (chonsu === 1) return prefix ? "모자/모친" : "부모/자녀";
+        if (chonsu === 2) return prefix ? "외형제" : "형제/자매";
+        if (chonsu === 3) return prefix ? "외삼촌/외조카" : "삼촌/조카";
+        if (chonsu === 4) return prefix + "사촌";
+        if (chonsu === 5) return prefix + "오촌";
+        if (chonsu === 6) return prefix + "육촌";
+        if (chonsu === 7) return prefix + "칠촌";
+        if (chonsu === 8) return prefix + "팔촌";
         
-        return `${chonsu}촌`;
+        return prefix + `${chonsu}촌`;
     }
 
     // 테스트 함수

@@ -40,7 +40,7 @@
                     <span>촌수 계산기</span>
                 </button>
                 
-                <button id="export-btn" class="menu-button">
+                <button id="export-btn" class="menu-button" onclick="location.href='export.html'">
                     <span class="menu-icon">📤</span>
                     <span>정보 내보내기</span>
                 </button>
@@ -156,14 +156,14 @@
 
                 <!-- 내 설정 -->
                 <div class="settings-section">
-                    <h3>👤 내 설정</h3>
+                    <h3>👤 나의 정보 설정하기</h3>
                     <div class="setting-item">
                         <span class="setting-label">현재:</span>
-                        <span class="setting-value">조은상 (4세대)</span>
+                        <span class="setting-value" id="settings-current-user">미등록</span>
                     </div>
-                    <div class="setting-item">
-                        <span class="setting-label">나 변경하기</span>
-                        <span class="setting-value">→</span>
+                    <div class="setting-item" style="display:flex; align-items:center; gap:10px;">
+                        <button class="menu-button" style="width:auto; padding:6px 12px;" onclick="(function(){var m=document.getElementById('me-modal'); if(m){ m.style.display='block'; } else { try{ window.openPersonSelector && window.openPersonSelector(1); }catch(e){} } })()">나 설정하기</button>
+                        <span class="setting-value" style="color:#555;">이 버튼을 누르고 나를 설정하세요</span>
                     </div>
                 </div>
 
@@ -205,10 +205,26 @@
                     <div class="setting-item">
                         <span class="setting-label">버전:</span>
                         <span class="setting-value" id="app-version">v1.0.0</span>
+                        <button id="dev-progress-btn" class="menu-button" style="width:auto; padding:4px 10px; margin-left:8px;">개발경과</button>
                     </div>
-                    <div class="setting-item">
-                        <span class="setting-label">데이터:</span>
-                        <span class="setting-value">v3.0 (최신)</span>
+                    <!-- 개발자 전용 상세: 기본 숨김 -->
+                    <div id="dev-progress-panel" style="display:none; margin-top:10px; padding:10px; border:1px solid #eee; border-radius:8px; background:#fafafa;">
+                        <div class="setting-item">
+                            <span class="setting-label">엔진:</span>
+                            <span class="setting-value" id="engine-version">촐수 v2.0</span>
+                        </div>
+                        <div class="setting-item">
+                            <span class="setting-label">데이터:</span>
+                            <span class="setting-value" id="data-count">-</span>
+                        </div>
+                        <div class="setting-item">
+                            <span class="setting-label">조씨:</span>
+                            <span class="setting-value" id="jo-count">-</span>
+                        </div>
+                        <div class="setting-item">
+                            <span class="setting-label">동기화:</span>
+                            <span class="setting-value" id="last-sync">-</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -225,6 +241,19 @@
     <script src="../data/window_core_data.js"></script>
     <script src="../js/chonsu_engine.js"></script>
     <script src="../js/calculator.js"></script>
+    <div id="me-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:9999;">
+      <div style="max-width:520px; margin:60px auto; background:#fff; border-radius:8px; padding:16px;">
+        <h3 style="margin:0 0 8px 0;">나 설정</h3>
+        <input id="me-search" type="text" placeholder="이름 입력" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px;">
+        <div id="me-results" style="max-height:300px; overflow:auto; margin-top:8px; border:1px solid #eee;"></div>
+        <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:12px;">
+          <button id="me-clear">초기화</button>
+          <button id="me-close">닫기</button>
+          <button id="me-confirm" disabled class="primary">나로 확정</button>
+        </div>
+      </div>
+    </div>
+    <script src="../js/me_modal.js"></script>
     <script src="../js/app.js"></script>
 </body>
 </html>

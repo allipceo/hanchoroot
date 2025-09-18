@@ -70,17 +70,15 @@ function displayPersonDetail(personId) {
 // 기본 정보 표시
 function displayBasicInfo(person) {
   // 헤더 정보
-  document.getElementById('person-name').textContent = person.name;
-  
-  // 상태 표시
-  const statusElement = document.getElementById('person-status');
-  statusElement.textContent = person.생존상태 === '생존' ? '생존' : '고인';
-  statusElement.className = `person-status ${person.생존상태 === '생존' ? 'living' : 'deceased'}`;
-  
-  // 기본 정보
+  const gid = person.id||person.ID||person['아이디']||'';
+  document.getElementById('person-name').textContent = `${person.name} ${/-M-/.test(gid)?'(M)':(/-F-/.test(gid)?'(F)':'')}`;
   document.getElementById('person-generation').textContent = `${person.세대}세대`;
   document.getElementById('person-line').textContent = person.Line1;
+  // 생년은 그대로, 성별 필드 신설
   document.getElementById('person-birth').textContent = person.생년 || '미상';
+  const genderField = person.성별 || (/-M-/.test(gid)?'M':(/-F-/.test(gid)?'F':''));
+  const genderEl = document.getElementById('person-gender');
+  if (genderEl) genderEl.textContent = genderField || '미상';
   document.getElementById('person-age').textContent = person.age ? `${person.age}세` : '미상';
 }
 

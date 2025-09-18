@@ -92,12 +92,12 @@ class ChonsuCalculatorUI {
         joFamily.forEach(person => {
             const option1 = document.createElement('option');
             option1.value = person.id;
-            option1.textContent = `${person.name} (${person.세대}세대)`;
+            option1.textContent = `${person.name} ${/-M-/.test(person.id)?'(M)':(/-F-/.test(person.id)?'(F)':'')} (${person.세대}세대)`;
             select1.appendChild(option1);
 
             const option2 = document.createElement('option');
             option2.value = person.id;
-            option2.textContent = `${person.name} (${person.세대}세대)`;
+            option2.textContent = `${person.name} ${/-M-/.test(person.id)?'(M)':(/-F-/.test(person.id)?'(F)':'')} (${person.세대}세대)`;
             select2.appendChild(option2);
         });
 

@@ -34,7 +34,7 @@
             div.style.padding = '10px 8px';
             div.style.borderBottom = '1px solid #eee';
             div.style.cursor = 'pointer';
-            div.textContent = `${person.name} (${person.세대 || '?'}세대)`;
+            div.textContent = `${person.name} ${/-M-/.test(person.id)?'(M)':(/-F-/.test(person.id)?'(F)':'')} (${person.세대 || '?'}세대)`;
             div.onclick = () => pickPerson(person);
             list.appendChild(div);
         });
@@ -61,15 +61,15 @@
     function pickPerson(person) {
         if (targetIndex === 1) {
             selected.p1 = { id: person.id, name: person.name };
-            $('person1-placeholder').textContent = `${person.name}`;
+            $('person1-placeholder').textContent = `${person.name} ${/-M-/.test(person.id)?'(M)':(/-F-/.test(person.id)?'(F)':'')}`;
             $('person1-selected').style.display = 'block';
-            $('person1-name').textContent = person.name;
+            $('person1-name').textContent = `${person.name} ${/-M-/.test(person.id)?'(M)':(/-F-/.test(person.id)?'(F)':'')}`;
             $('person1-details').textContent = `${person.세대 || '?'}세대`;
         } else {
             selected.p2 = { id: person.id, name: person.name };
-            $('person2-placeholder').textContent = `${person.name}`;
+            $('person2-placeholder').textContent = `${person.name} ${/-M-/.test(person.id)?'(M)':(/-F-/.test(person.id)?'(F)':'')}`;
             $('person2-selected').style.display = 'block';
-            $('person2-name').textContent = person.name;
+            $('person2-name').textContent = `${person.name} ${/-M-/.test(person.id)?'(M)':(/-F-/.test(person.id)?'(F)':'')}`;
             $('person2-details').textContent = `${person.세대 || '?'}세대`;
         }
         updateCalculateButton();
@@ -229,6 +229,24 @@
 
         let selectedMe = null;
 
+        function enableMeConfirm() {
+            if (meConfirm) {
+                meConfirm.disabled = false;
+                meConfirm.removeAttribute('disabled');
+                meConfirm.removeAttribute('aria-disabled');
+                try { meConfirm.focus(); } catch(e) {}
+            }
+        }
+
+        function proposeSelectByName(name) {
+            const person = window.CORE_DATA.find(p => p.name === name);
+            if (!person) return;
+            if (confirm(`"${name}"(으)로 설정하시겠습니까?`)) {
+                selectedMe = { id: person.id, name: person.name };
+                enableMeConfirm();
+            }
+        }
+
         function renderMeResults(keyword) {
             if (!keyword) { meResults.innerHTML = ''; meConfirm.disabled = true; return; }
             const list = window.CORE_DATA.filter(p => (p.name || '').includes(keyword));
@@ -240,13 +258,19 @@
                 row.style.cursor = 'pointer';
                 const father = (p.relationships && p.relationships.father) ? p.relationships.father : '-';
                 row.textContent = `${p.name} (${p.세대 || '?'}세대) · 부: ${father}`;
-                row.onclick = () => { selectedMe = { id: p.id, name: p.name }; meConfirm.disabled = false; };
+                row.addEventListener('click', () => proposeSelectByName(p.name));
                 meResults.appendChild(row);
             });
         }
 
         if (meSearch) {
             meSearch.addEventListener('input', () => renderMeResults(meSearch.value.trim()));
+            meSearch.addEventListener('keypress', (e)=>{
+                if(e.key==='Enter'){
+                    const name = meSearch.value.trim();
+                    if(name) proposeSelectByName(name);
+                }
+            });
         }
         if (meConfirm) {
             meConfirm.addEventListener('click', () => {
