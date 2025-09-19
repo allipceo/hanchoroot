@@ -1,6 +1,6 @@
 {
-  "sha256_export": "34be6866e1f320f50a03e6dd7f8a496ba46c7a934dcd713e4e89b659043c8c81",
-  "sha256_core": "28968d5c972239c6a66def25e1b417546710e510cc56ec7de359300f5bc05621",
+  "sha256_export": "c7d73856bfcce3f1a74a5651ad1fe713b6237d98e82d9ac4f9e89b9a23be507b",
+  "sha256_core": "377de4a73571b9e05ab3f620f3ddcf7b65de0947f645f9fc72e02f4b143f0956",
   "node": "v22.15.0",
   "tz": "Asia/Seoul",
   "commit": "",
@@ -8,8 +8,8 @@
     "id",
     "name"
   ],
-  "export_count": 152,
-  "core_count": 153,
-  "ts": "2025-09-17T20:20:53.768Z",
-  "mode": "apply-partial"
+  "export_count": 167,
+  "core_count": 167,
+  "ts": "2025-09-19T12:06:02.963Z",
+  "mode": "dry-run"
 }
