@@ -178,8 +178,17 @@
             el.value = '';
             setTimeout(() => { el.value = val; }, 0);
         };
-        const s1 = $('inline-search-1'); if (s1) s1.onclick = () => triggerList('inline-person1');
-        const s2 = $('inline-search-2'); if (s2) s2.onclick = () => triggerList('inline-person2');
+        function setIconBtnState() {
+            const s1 = $('inline-search-1');
+            const s2 = $('inline-search-2');
+            if (s1) s1.classList.toggle('active', !!$('inline-person1').value.trim());
+            if (s2) s2.classList.toggle('active', !!$('inline-person2').value.trim());
+        }
+        const s1 = $('inline-search-1'); if (s1) s1.onclick = () => { triggerList('inline-person1'); };
+        const s2 = $('inline-search-2'); if (s2) s2.onclick = () => { triggerList('inline-person2'); };
+        const i1 = $('inline-person1'); if (i1) i1.addEventListener('input', setIconBtnState);
+        const i2 = $('inline-person2'); if (i2) i2.addEventListener('input', setIconBtnState);
+        setIconBtnState();
 
         // 한 사람 입력: 현재 사용자(나) → 대상
         const currentUserName = (window.APP_CURRENT_USER && window.APP_CURRENT_USER.name) || null;

@@ -41,6 +41,18 @@
 .icon-btn {
   opacity: 1 !important;
   visibility: visible !important;
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.icon-btn.active {
+  background: #2563EB;
+  color: #FFD54F; /* 노랑 계열 */
+  border-color: #1d4ed8;
 }
 
 .person-selection h3 {
@@ -459,6 +471,9 @@
 
 /* 반응형 디자인 */
 @media (max-width: 480px) {
+  .person-selection .inline-row { flex-direction: column; gap: 10px; }
+  .person-selection .inline-col { width: 100% !important; min-width: unset !important; }
+  .person-selection .inline-arrow { display: none; }
   .result-details {
     grid-template-columns: 1fr;
   }

@@ -35,13 +35,13 @@
             <!-- 간단 입력형: 한 줄에 시작/종착 입력 후 계산 -->
             <div class="person-selection" style="margin-bottom: 20px;">
                 <h3>🧑‍🤝‍🧑 두 사람 입력</h3>
-                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                    <div style="display:flex; gap:6px; align-items:center; flex:1; min-width:240px;">
+                <div class="inline-row" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                    <div class="inline-col" style="display:flex; gap:6px; align-items:center; flex:1; min-width:240px;">
                         <input id="inline-person1" list="names-list" placeholder="첫 번째 사람 이름" style="flex:1; padding:10px; border:1px solid #ddd; border-radius:8px;" />
                         <button id="inline-search-1" class="icon-btn" title="검색">🔍</button>
                     </div>
-                    <span style="opacity:.7;">↔</span>
-                    <div style="display:flex; gap:6px; align-items:center; flex:1; min-width:240px;">
+                    <span class="inline-arrow" style="opacity:.7;">↔</span>
+                    <div class="inline-col" style="display:flex; gap:6px; align-items:center; flex:1; min-width:240px;">
                         <input id="inline-person2" list="names-list" placeholder="두 번째 사람 이름" style="flex:1; padding:10px; border:1px solid #ddd; border-radius:8px;" />
                         <button id="inline-search-2" class="icon-btn" title="검색">🔍</button>
                     </div>
