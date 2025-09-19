@@ -36,8 +36,10 @@ function loadCoreData() {
         // V2.0 방법론: window.CORE_DATA 표준 사용
         if (typeof window.CORE_DATA !== 'undefined') {
             const coreData = window.CORE_DATA;
-            adminInfo = coreData.config.admin;
-            appConfig = coreData.config.app;
+            // CORE_DATA가 배열(표준)일 수도 있고, 객체(개발 시 임시)일 수도 있으므로 방어적으로 처리
+            const config = Array.isArray(coreData) ? (coreData.meta?.config || null) : (coreData.config || null);
+            adminInfo = config?.admin || null;
+            appConfig = config?.app || null;
             try{
               // 1) 우선 메모리에 이미 존재하면 사용
               if (window.APP_CURRENT_USER && window.APP_CURRENT_USER.id) {

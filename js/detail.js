@@ -40,7 +40,7 @@ function getPersonIdFromUrl() {
 // 상세 정보 데이터 로드 (1단계 Core Module 재활용)
 function loadDetailData() {
   detailData = window.CORE_DATA || CORE_DATA;
-  console.log("상세 정보 데이터 로드 완료:", detailData);
+  console.log("상세 정보 데이터 로드 완료:", Array.isArray(detailData)?`array(${detailData.length})`:'object');
 }
 
 // 인물 상세 정보 표시 (핵심 함수)
@@ -71,15 +71,22 @@ function displayPersonDetail(personId) {
 function displayBasicInfo(person) {
   // 헤더 정보
   const gid = person.id||person.ID||person['아이디']||'';
-  document.getElementById('person-name').textContent = `${person.name} ${/-M-/.test(gid)?'(M)':(/-F-/.test(gid)?'(F)':'')}`;
-  document.getElementById('person-generation').textContent = `${person.세대}세대`;
-  document.getElementById('person-line').textContent = person.Line1;
+  const nameEl = document.getElementById('person-name');
+  if (nameEl) nameEl.textContent = `${person.name||person.성명||''} ${/-M-/.test(gid)?'(M)':(/-F-/.test(gid)?'(F)':'')}`;
+  const gen = person.세대||person.generation||'';
+  const line = person.Line1||person.line||person.Line||'';
+  const genEl = document.getElementById('person-generation');
+  if (genEl) genEl.textContent = gen?`${gen}세대`:'-';
+  const lineEl = document.getElementById('person-line');
+  if (lineEl) lineEl.textContent = line||'-';
   // 생년은 그대로, 성별 필드 신설
-  document.getElementById('person-birth').textContent = person.생년 || '미상';
-  const genderField = person.성별 || (/-M-/.test(gid)?'M':(/-F-/.test(gid)?'F':''));
+  const birthEl = document.getElementById('person-birth');
+  if (birthEl) birthEl.textContent = person.생년 || person.birth || '미상';
+  const genderField = person.성별 || person.gender || (/-M-/.test(gid)?'M':(/-F-/.test(gid)?'F':''));
   const genderEl = document.getElementById('person-gender');
   if (genderEl) genderEl.textContent = genderField || '미상';
-  document.getElementById('person-age').textContent = person.age ? `${person.age}세` : '미상';
+  const ageEl = document.getElementById('person-age');
+  if (ageEl) ageEl.textContent = person.age ? `${person.age}세` : '미상';
 }
 
 // 가족 관계 표시 (V5.0 - 규격화된 표시 순서)
@@ -92,8 +99,9 @@ function displayFamilyRelations(person) {
   // 1. 본인 (현재 인물) - 표시하지 않음 (이미 상단에 표시됨)
   
   // 2. 배우자 (본인의 배우자)
-  if (person.relationships.spouses && person.relationships.spouses.length > 0) {
-    person.relationships.spouses.forEach(spouseName => {
+  const rel = person.relationships || {};
+  if (rel.spouses && rel.spouses.length > 0) {
+    rel.spouses.forEach(spouseName => {
       const spouse = getPersonByName(spouseName);
       if (spouse) {
         relations.push({
@@ -107,8 +115,8 @@ function displayFamilyRelations(person) {
   }
   
   // 3. 부 (아버지)
-  if (person.relationships.father) {
-    const father = getPersonByName(person.relationships.father);
+  if (rel.father) {
+    const father = getPersonByName(rel.father);
     if (father) {
       relations.push({
         relation: '부',
@@ -120,8 +128,8 @@ function displayFamilyRelations(person) {
   }
   
   // 4. 모 (어머니)
-  if (person.relationships.mother) {
-    const mother = getPersonByName(person.relationships.mother);
+  if (rel.mother) {
+    const mother = getPersonByName(rel.mother);
     if (mother) {
       relations.push({
         relation: '모',
@@ -136,7 +144,7 @@ function displayFamilyRelations(person) {
   const children = findChildrenByParent(person.name);
   
   // 아들들 먼저 표시
-  const sons = children.filter(child => child.성별 === 'M');
+  const sons = children.filter(child => (child.성별||child.gender) === 'M');
   sons.forEach(son => {
     // 아들 표시
     relations.push({
@@ -163,7 +171,7 @@ function displayFamilyRelations(person) {
   });
   
   // 딸들 표시
-  const daughters = children.filter(child => child.성별 === 'F');
+  const daughters = children.filter(child => (child.성별||child.gender) === 'F');
   daughters.forEach(daughter => {
     // 딸 표시
     relations.push({
@@ -209,28 +217,29 @@ function displayFamilyRelations(person) {
 function displayContactInfo(person) {
   const contactList = document.getElementById('contact-list');
   const contacts = [];
+  const contact = person.contact || {};
   
-  if (person.contact.phone) {
+  if (contact.phone) {
     contacts.push({
       icon: '📞',
       label: '전화번호',
-      value: person.contact.phone
+      value: contact.phone
     });
   }
   
-  if (person.contact.email) {
+  if (contact.email) {
     contacts.push({
       icon: '📧',
       label: '이메일',
-      value: person.contact.email
+      value: contact.email
     });
   }
   
-  if (person.contact.address) {
+  if (contact.address) {
     contacts.push({
       icon: '🏠',
       label: '주소',
-      value: person.contact.address
+      value: contact.address
     });
   }
   
@@ -248,7 +257,7 @@ function displayContactInfo(person) {
 // 추가 정보 표시
 function displayAdditionalInfo(person) {
   const additionalInfo = document.getElementById('additional-info');
-  const additional = person.additional;
+  const additional = person.additional || {};
   
   const additionalItems = [];
   
@@ -320,19 +329,22 @@ function contactPerson() {
 
 // 유틸리티 함수들 (간결한 구현)
 function getPersonById(id) {
+  if (Array.isArray(detailData)) return detailData.find(p => p.id === id);
   return detailData?.persons?.find(p => p.id === id);
 }
 
 function getPersonByName(name) {
+  if (Array.isArray(detailData)) return detailData.find(p => p.name === name);
   return detailData?.persons?.find(p => p.name === name);
 }
 
 // 자녀 찾기 함수 (역방향 검색)
 function findChildrenByParent(parentName) {
-  return detailData?.persons?.filter(person => 
-    person.relationships.father === parentName || 
-    person.relationships.mother === parentName
-  ) || [];
+  const list = Array.isArray(detailData) ? detailData : (detailData?.persons||[]);
+  return list.filter(person => {
+    const rel = person.relationships || {};
+    return rel.father === parentName || rel.mother === parentName;
+  });
 }
 
 function showError(message) {
@@ -345,8 +357,9 @@ function displayAppVersion() {
   const dataVersion = document.getElementById('data-version');
   
   if (appVersion && dataVersion && detailData) {
-    appVersion.textContent = detailData.config.app.version;
-    dataVersion.textContent = detailData.config.app.dataVersion;
+    const config = Array.isArray(detailData) ? (detailData.meta?.config||null) : (detailData.config||null);
+    appVersion.textContent = config?.app?.version || '-';
+    dataVersion.textContent = config?.app?.dataVersion || '-';
   }
 }
 
