@@ -1713,7 +1713,7 @@ window.CORE_DATA = [
     "additional": {
       "job": null,
       "education": null,
-      "notes": "전승재-조아영의 아들"
+      "notes": "전승재-조아영의 아들",
       "photo": null,
       "burialPlace": null,
       "memorialDate": null,
