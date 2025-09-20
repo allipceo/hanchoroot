@@ -1666,7 +1666,7 @@ window.CORE_DATA = [
     "additional": {
       "job": null,
       "education": null,
-      "notes": "전승재-조야영의 딸",
+      "notes": "전승재-조아영의 딸",
       "photo": null,
       "burialPlace": null,
       "memorialDate": null,
@@ -1713,7 +1713,7 @@ window.CORE_DATA = [
     "additional": {
       "job": null,
       "education": null,
-      "notes": "전승재-조야영의 아들",
+      "notes": "전승재-조아영의 아들"
       "photo": null,
       "burialPlace": null,
       "memorialDate": null,
@@ -4907,8 +4907,8 @@ window.CORE_DATA = [
   },
   {
     "id": "L3-G4-F-D-592",
-    "name": "조야영",
-    "displayName": "조야영",
+    "name": "조아영",
+    "displayName": "조아영",
     "성별": "F",
     "세대": 1,
     "Line1": "Line3",
@@ -4931,7 +4931,7 @@ window.CORE_DATA = [
     "additional": {
       "job": null,
       "education": null,
-      "notes": "조동하-라은실의 딸",
+      "notes": "조동하-라은실의 딸 | 배우자: 전승재 | 딸: 전혜영 | 아들: 전종일 (배우자: 이민수)",
       "photo": null,
       "burialPlace": null,
       "memorialDate": null,
