@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>촌수 계산기 - 한양조씨 족보</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/calculator.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 헤더 (1단계 재사용) -->
+        <header>
+            <div class="header-left">
+                <button class="back-btn" onclick="goBack()">←</button>
+                <button class="home-btn" onclick="goHome()">🏠</button>
+            </div>
+            <div class="header-content">
+                <h1>🧮 촌수 계산기</h1>
+                <p>두 사람의 관계를 계산하세요</p>
+            </div>
+            <div class="header-user-info" id="header-user-info" style="display: none;">
+                <span class="current-user">현재: <span id="header-current-user">(미설정)</span></span>
+                <button class="change-user-btn" id="change-user-btn">나 변경</button>
+            </div>
+        </header>
+
+        <!-- 예외 처리 배너 -->
+        <div class="exception-banner" id="exception-banner" style="display: none; background: #fff3cd; border: 1px solid #ffeaa7; padding: 10px; margin: 10px; border-radius: 4px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span id="exception-message">데이터가 변경되었습니다. 나 설정을 다시 해주세요.</span>
+                <button id="exception-close" style="background: none; border: none; font-size: 18px; cursor: pointer;">×</button>
+            </div>
+        </div>
+
+        <!-- 메인 컨텐츠 -->
+        <main>
+            <!-- 간단 입력형: 한 줄에 시작/종착 입력 후 계산 -->
+            <div class="person-selection" style="margin-bottom: 20px;">
+                <h3>🧑‍🤝‍🧑 두 사람 입력</h3>
+                <div class="vertical-input-layout">
+                    <div class="input-row">
+                        <label class="input-label">첫 번째 사람</label>
+                        <div class="input-with-search">
+                            <input id="inline-person1" list="names-list" placeholder="첫 번째 사람 이름을 입력하세요" />
+                            <button id="inline-search-1" class="search-btn" title="검색">
+                                <span class="search-icon">🔍</span>
+                                <span class="search-text">검색</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="input-separator">↓</div>
+                    <div class="input-row">
+                        <label class="input-label">두 번째 사람</label>
+                        <div class="input-with-search">
+                            <input id="inline-person2" list="names-list" placeholder="두 번째 사람 이름을 입력하세요" />
+                            <button id="inline-search-2" class="search-btn" title="검색">
+                                <span class="search-icon">🔍</span>
+                                <span class="search-text">검색</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button id="inline-calc-btn" class="calculate-btn-main">촌수 계산하기</button>
+                </div>
+                <datalist id="names-list"></datalist>
+                <div id="inline-result" style="margin-top:12px; font-size:16px;"></div>
+            </div>
+
+            <!-- 한 사람 입력 (나 → 대상) -->
+            <div class="person-selection" style="margin: 14px 0 24px 0;">
+                <h3>👤 한 사람 입력 (나 → 대상)</h3>
+                <div class="vertical-single-layout">
+                    <div class="input-row">
+                        <label class="input-label">대상 사람</label>
+                        <div class="input-with-search">
+                            <input id="inline-single" list="names-list" placeholder="대상 사람 이름을 입력하세요" />
+                            <button id="inline-search-single" class="search-btn" title="검색">
+                                <span class="search-icon">🔍</span>
+                                <span class="search-text">검색</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button id="inline-single-calc" class="calculate-btn-main">나와의 촌수 계산하기</button>
+                </div>
+                <div id="inline-single-meta" style="margin-top:6px; color:#666; font-size:14px;">시작점: <span id="current-user-name">(미설정)</span></div>
+                <div id="inline-single-result" style="margin-top:12px; font-size:16px;"></div>
+            </div>
+
+            <!-- (기존 모달 선택형 섹션 제거됨) -->
+
+            <!-- 계산 결과 -->
+            <div class="result-section" id="result-section" style="display: none;">
+                <h3>📊 계산 결과</h3>
+                <div class="result-card" id="result-card">
+                    <!-- 계산 결과가 여기에 동적으로 추가됩니다 -->
+                </div>
+            </div>
+
+            <!-- 계산 히스토리 -->
+            <div class="history-section" id="history-section">
+                <h3>📝 최근 계산</h3>
+                <div class="history-list" id="history-list">
+                    <!-- 계산 히스토리가 여기에 동적으로 추가됩니다 -->
+                </div>
+            </div>
+        </main>
+
+        <!-- 푸터 (1단계 재사용) -->
+        <footer>
+            <p>버전: <span id="app-version"></span> | 데이터: <span id="data-version"></span></p>
+        </footer>
+    </div>
+
+    <!-- 나 설정 모달 -->
+    <div class="modal" id="me-modal" style="display:none;">
+        <div class="modal-content me-modal-content">
+            <div class="modal-header">
+                <h3>👤 나 설정</h3>
+                <button class="close-btn" id="me-close">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="me-description">
+                    <p>본인을 선택해 주세요.</p>
+                    <small>한 번만 설정하면 자동으로 유지됩니다.</small>
+                </div>
+                
+                <div class="me-search-container">
+                    <label class="me-search-label">내 이름 검색</label>
+                    <div class="me-search-input-wrapper">
+                        <input type="text" id="me-search" list="names-list" placeholder="이름을 입력하세요" />
+                        <span class="search-icon-inline">🔍</span>
+                    </div>
+                </div>
+                
+                <div id="me-results" class="me-results-container">
+                    <div class="me-no-results">
+                        <span class="me-search-hint">💡 이름을 입력하면 검색 결과가 나타납니다</span>
+                    </div>
+                </div>
+                
+                <div class="me-actions">
+                    <button id="me-clear" class="me-clear-btn">
+                        <span>🔄</span>
+                        <span>초기화</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 인물 선택 모달 -->
+    <div class="modal" id="person-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">인물 선택</h3>
+                <button class="close-btn" onclick="closePersonSelector()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-container">
+                    <input type="text" id="modal-search" placeholder="이름을 입력하세요" autocomplete="off">
+                    <button onclick="searchPersons()">검색</button>
+                </div>
+                <div class="person-list" id="modal-person-list">
+                    <!-- 검색 결과가 여기에 표시됩니다 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 스크립트 로드 (단일 소스 데이터 + 촌수 엔진 + 전용 컨트롤러) -->
+    <script src="../data/window_core_data.js"></script>
+    <script src="../js/chonsu_engine.js"></script>
+    <script src="../js/calculator_standalone.js"></script>
+</body>
+</html>

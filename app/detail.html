@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세 정보 - 한양조씨 족보</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/detail.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 헤더 (1단계 재사용) -->
+        <header>
+            <div class="header-left">
+                <button class="back-btn" onclick="goBack()">←</button>
+                <button class="home-btn" onclick="goHome()">🏠</button>
+            </div>
+            <div class="header-center">
+                <h1 id="detail-title">👤 상세 정보</h1>
+                <p id="detail-subtitle">가족 구성원 정보</p>
+            </div>
+            <button class="change-user-btn prev-btn" onclick="history.back()">이전 화면</button>
+        </header>
+
+        <!-- 메인 컨텐츠 -->
+        <main>
+            <!-- 기본 정보 -->
+            <div class="info-section">
+                <div class="person-header">
+                    <div class="person-avatar" id="person-avatar">👤</div>
+                    <div class="person-basic">
+                        <h2 id="person-name">이름</h2>
+                        <div class="person-status" id="person-status">상태</div>
+                    </div>
+                </div>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">세대</span>
+                        <span class="info-value" id="person-generation">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Line</span>
+                        <span class="info-value" id="person-line">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">생년월일</span>
+                        <span class="info-value" id="person-birth">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">성별</span>
+                        <span class="info-value" id="person-gender">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가족 관계 -->
+            <div class="info-section">
+                <h3>👨‍👩‍👧‍👦 가족 관계</h3>
+                <div class="family-list" id="family-list">
+                    <!-- 가족 관계 정보가 여기에 동적으로 추가됩니다 -->
+                </div>
+            </div>
+
+            <!-- 연락처 정보 -->
+            <div class="info-section" id="contact-section">
+                <h3>📞 연락처 정보</h3>
+                <div class="contact-list" id="contact-list">
+                    <!-- 연락처 정보가 여기에 동적으로 추가됩니다 -->
+                </div>
+            </div>
+
+            <!-- 추가 정보 -->
+            <div class="info-section">
+                <h3>📋 추가 정보</h3>
+                <div class="additional-info" id="additional-info">
+                    <!-- 추가 정보가 여기에 동적으로 추가됩니다 -->
+                </div>
+            </div>
+
+            <!-- 액션 버튼 -->
+            <div class="action-buttons">
+                <button class="action-btn primary" onclick="calculateKinship()">🧮 촌수 계산</button>
+                <button class="action-btn secondary" onclick="viewFamily()">👥 패밀리 보기</button>
+                <button class="action-btn secondary" onclick="contactPerson()">📞 연락하기</button>
+            </div>
+        </main>
+
+        <!-- 푸터 (1단계 재사용) -->
+        <footer>
+            <p>버전: <span id="app-version"></span> | 데이터: <span id="data-version"></span></p>
+        </footer>
+    </div>
+
+    <!-- 스크립트 로드 -->
+    <script src="../data/window_core_data.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/detail.js"></script>
+</body>
+</html>

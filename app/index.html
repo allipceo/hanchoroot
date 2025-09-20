@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한양조씨 족보</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/calculator.css">
+    <meta name="description" content="한양조씨 족보 앱 - 가족 관계를 쉽게 확인하세요">
+    <meta name="theme-color" content="#2563EB">
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <header class="header">
+            <h1>🏠 한양조씨 족보 <span class="version-badge" style="display: inline-block; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; font-size: 12px; font-weight: 700; padding: 4px 8px; border-radius: 6px; margin-left: 8px; box-shadow: 0 2px 6px rgba(245, 158, 11, 0.3);">MVP V2.0</span></h1>
+            <p class="subtitle">우리 가족을 찾아보세요</p>
+        </header>
+
+        <!-- 메인 화면 -->
+        <div id="main-screen" class="main-screen">
+            <!-- 현재 사용자 표시 -->
+            <div id="current-user" class="current-user" style="display: none;">
+                👤 나는 조은상입니다
+            </div>
+
+            <!-- 메뉴 버튼들 -->
+            <div class="menu-grid">
+                <button id="search-btn" class="menu-button">
+                    <span class="menu-icon">🔍</span>
+                    <span>이름 검색</span>
+                </button>
+                
+                <button id="family-btn" class="menu-button">
+                    <span class="menu-icon">👥</span>
+                    <span>패밀리별 보기</span>
+                </button>
+                
+                <button id="calculator-btn" class="menu-button">
+                    <span class="menu-icon">🧮</span>
+                    <span>촌수 계산기</span>
+                </button>
+                
+                <button id="export-btn" class="menu-button" onclick="location.href='export.html'">
+                    <span class="menu-icon">📤</span>
+                    <span>정보 내보내기</span>
+                </button>
+                
+                <button id="settings-btn" class="menu-button">
+                    <span class="menu-icon">⚙️</span>
+                    <span>설정</span>
+                </button>
+            </div>
+
+            <!-- 최근 활동 -->
+            <div class="recent-activity">
+                <h3>📊 최근 활동</h3>
+                <div class="activity-item">• 조광희님과의 촌수 확인</div>
+                <div class="activity-item">• Line1 가족 목록 조회</div>
+            </div>
+        </div>
+
+        <!-- 촌수계산기 화면 -->
+        <div id="calculator-screen" class="calculator-screen">
+            <div class="calculator-container">
+                <!-- 네비게이션 -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <button id="calculator-back-btn" class="menu-button" style="width: auto; padding: 8px 16px;">
+                        ← 촌수계산기
+                    </button>
+                    <button id="calculator-home-btn" class="menu-button" style="width: auto; padding: 8px 16px;">
+                        🏠 홈
+                    </button>
+                </div>
+
+                <!-- 촌수계산기 제목 -->
+                <div class="calculator-header">
+                    <h2>🧮 촌수 계산기</h2>
+                    <p>두 사람의 촌수와 호칭을 확인하세요</p>
+                </div>
+
+                <!-- 사람 선택 -->
+                <div class="calculator-inputs">
+                    <div class="person-selector">
+                        <label for="person1-select">첫 번째 사람:</label>
+                        <select id="person1-select" class="person-select">
+                            <option value="">선택하세요</option>
+                        </select>
+                    </div>
+                    
+                    <div class="vs-divider">
+                        <span>VS</span>
+                    </div>
+                    
+                    <div class="person-selector">
+                        <label for="person2-select">두 번째 사람:</label>
+                        <select id="person2-select" class="person-select">
+                            <option value="">선택하세요</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 계산 버튼 -->
+                <button id="calculate-btn" class="calculate-button" disabled>
+                    촌수 계산하기
+                </button>
+
+                <!-- 결과 표시 -->
+                <div id="calculator-result" class="calculator-result" style="display: none;">
+                    <div class="result-header">
+                        <h3>📊 촌수 계산 결과</h3>
+                    </div>
+                    <div class="result-content">
+                        <div class="result-item">
+                            <span class="result-label">촌수:</span>
+                            <span id="result-chonsu" class="result-value"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">호칭:</span>
+                            <span id="result-title" class="result-value"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">관계:</span>
+                            <span id="result-relationship" class="result-value"></span>
+                        </div>
+                        <div id="result-details" class="result-details" style="display: none;">
+                            <div class="result-item">
+                                <span class="result-label">공통조상:</span>
+                                <span id="result-ancestor" class="result-value"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 최근 계산 기록 -->
+                <div class="recent-calculations">
+                    <h3>📋 최근 계산 기록</h3>
+                    <div id="recent-calculations-list" class="calculations-list">
+                        <!-- 동적으로 추가됨 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 설정 화면 -->
+        <div id="settings-screen" class="settings-screen">
+            <div class="settings-container">
+                <!-- 네비게이션 -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <button id="back-btn" class="menu-button" style="width: auto; padding: 8px 16px;">
+                        ← 설정
+                    </button>
+                    <button id="home-btn" class="menu-button" style="width: auto; padding: 8px 16px;">
+                        🏠 홈
+                    </button>
+                </div>
+
+                <!-- 내 설정 -->
+                <div class="settings-section">
+                    <h3>👤 나의 정보 설정하기</h3>
+                    <div class="setting-item">
+                        <span class="setting-label">현재:</span>
+                        <span class="setting-value" id="settings-current-user">미등록</span>
+                    </div>
+                    <div class="setting-item" style="display:flex; align-items:center; gap:10px;">
+                        <button class="menu-button" style="width:auto; padding:6px 12px;" onclick="(function(){var m=document.getElementById('me-modal'); if(m){ m.style.display='block'; } else { try{ window.openPersonSelector && window.openPersonSelector(1); }catch(e){} } })()">나 설정하기</button>
+                        <span class="setting-value" style="color:#555;">이 버튼을 누르고 나를 설정하세요</span>
+                    </div>
+                </div>
+
+                <!-- 도움 및 문의 -->
+                <div class="settings-section">
+                    <h3>📞 도움 및 문의</h3>
+                    <div class="setting-item">
+                        <span class="setting-label">관리자 문의</span>
+                        <span class="setting-value">→</span>
+                    </div>
+                    <div class="setting-item">
+                        <span class="setting-label">사용법 도움말</span>
+                        <span class="setting-value">→</span>
+                    </div>
+                </div>
+
+                <!-- 관리자 정보 (동적 표시) -->
+                <div class="admin-info">
+                    <h4>👨‍💼 족보 관리자</h4>
+                    <div class="admin-contact">
+                        <div class="contact-item">
+                            <span class="contact-icon">📇</span>
+                            <span id="admin-name">조은상</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <span id="admin-phone">010-2067-6442</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span id="admin-email">choeunsang@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 앱 정보 -->
+                <div class="settings-section">
+                    <h3>📋 앱 정보</h3>
+                    <div class="setting-item">
+                        <span class="setting-label">버전:</span>
+                        <span class="setting-value" id="app-version">MVP V2.0</span>
+                        <button id="dev-progress-btn" class="menu-button" style="width:auto; padding:4px 10px; margin-left:8px;">개발경과</button>
+                    </div>
+                    <!-- 개발자 전용 상세: 기본 숨김 -->
+                    <div id="dev-progress-panel" style="display:none; margin-top:10px; padding:10px; border:1px solid #eee; border-radius:8px; background:#fafafa;">
+                        <div class="setting-item">
+                            <span class="setting-label">엔진:</span>
+                            <span class="setting-value" id="engine-version">촐수 v2.0</span>
+                        </div>
+                        <div class="setting-item">
+                            <span class="setting-label">데이터:</span>
+                            <span class="setting-value" id="data-count">-</span>
+                        </div>
+                        <div class="setting-item">
+                            <span class="setting-label">조씨:</span>
+                            <span class="setting-value" id="jo-count">-</span>
+                        </div>
+                        <div class="setting-item">
+                            <span class="setting-label">동기화:</span>
+                            <span class="setting-value" id="last-sync">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 앱 정보 -->
+        <div class="app-info">
+            <p>한양조씨 족보 앱 v1.0.0</p>
+            <p>© 2025 한양조씨 족보 관리위원회</p>
+        </div>
+    </div>
+
+    <!-- JavaScript 로드 -->
+    <script src="../data/window_core_data.js"></script>
+    <script src="../js/chonsu_engine.js"></script>
+    <script src="../js/calculator.js"></script>
+    <!-- 나 설정 모달 (촌수계산기와 동일한 개선된 모듈) -->
+    <div class="modal" id="me-modal" style="display:none;">
+        <div class="modal-content me-modal-content">
+            <div class="modal-header">
+                <h3>👤 나 설정</h3>
+                <button class="close-btn" id="me-close">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="me-description">
+                    <p>본인을 선택해 주세요.</p>
+                    <small>한 번만 설정하면 자동으로 유지됩니다.</small>
+                </div>
+                
+                <div class="me-search-container">
+                    <label class="me-search-label">내 이름 검색</label>
+                    <div class="me-search-input-wrapper">
+                        <input type="text" id="me-search" list="names-list" placeholder="이름을 입력하세요" />
+                        <span class="search-icon-inline">🔍</span>
+                    </div>
+                </div>
+                
+                <div id="me-results" class="me-results-container">
+                    <div class="me-no-results">
+                        <span class="me-search-hint">💡 이름을 입력하면 검색 결과가 나타납니다</span>
+                    </div>
+                </div>
+                
+                <div class="me-actions">
+                    <button id="me-clear" class="me-clear-btn">
+                        <span>🔄</span>
+                        <span>초기화</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/me_modal.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+</html>

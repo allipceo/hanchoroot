@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이름 검색 - 한양조씨 족보</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/search.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 헤더 (1단계 재사용) -->
+        <header>
+            <div class="header-left">
+                <button class="back-btn" onclick="goBack()">←</button>
+                <button class="home-btn" onclick="goHome()">🏠</button>
+            </div>
+            <div class="header-center">
+                <h1>🔍 이름 검색</h1>
+                <p>가족 구성원을 찾아보세요</p>
+            </div>
+            <button class="change-user-btn prev-btn" onclick="history.back()">이전 화면</button>
+        </header>
+
+        <!-- 메인 컨텐츠 -->
+        <main>
+            <!-- 검색 입력 영역 -->
+            <div class="search-section">
+                <div class="search-input-container">
+                    <input type="text" id="searchInput" placeholder="이름을 입력하세요 (예: 조은상)" 
+                           autocomplete="off" maxlength="20">
+                    <button id="searchBtn" onclick="performSearch()">검색</button>
+                </div>
+                <div class="search-suggestions" id="searchSuggestions"></div>
+            </div>
+
+            <!-- 검색 결과 영역 -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-header">
+                    <h3 id="resultsTitle">검색 결과</h3>
+                    <span id="resultsCount" class="results-count"></span>
+                </div>
+                <div class="results-list" id="resultsList"></div>
+            </div>
+
+            <!-- 빈 결과 메시지 -->
+            <div class="empty-results" id="emptyResults" style="display: none;">
+                <div class="empty-icon">🔍</div>
+                <h3>검색 결과가 없습니다</h3>
+                <p>다른 이름으로 검색해보세요</p>
+                <div style="margin-top:8px;">
+                    <button class="change-user-btn" onclick="history.back()">이전 화면</button>
+                </div>
+            </div>
+
+            <!-- 검색 히스토리 -->
+            <div class="history-section" id="historySection">
+                <h3>📝 최근 검색</h3>
+                <div class="history-list" id="historyList"></div>
+            </div>
+        </main>
+
+        <!-- 푸터 (1단계 재사용) -->
+        <footer>
+            <p>버전: <span id="app-version"></span> | 데이터: <span id="data-version"></span></p>
+        </footer>
+    </div>
+
+    <!-- 스크립트 로드 -->
+    <script src="../data/window_core_data.js"></script>
+    <script src="../js/app.js"></script>
+    <div id="me-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:9999;">
+      <div style="max-width:520px; margin:60px auto; background:#fff; border-radius:8px; padding:16px;">
+        <h3 style="margin:0 0 8px 0;">나 설정</h3>
+        <input id="me-search" type="text" placeholder="이름 입력" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px;">
+        <div id="me-results" style="max-height:300px; overflow:auto; margin-top:8px; border:1px solid #eee;"></div>
+        <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:12px;">
+          <button id="me-clear">초기화</button>
+          <button id="me-close">닫기</button>
+          <button id="me-confirm" disabled class="primary">나로 확정</button>
+        </div>
+      </div>
+    </div>
+    <script src="../js/me_modal.js"></script>
+    <script src="../js/search.js"></script>
+</body>
+</html>
