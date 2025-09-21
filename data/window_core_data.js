@@ -1994,7 +1994,7 @@ window.CORE_DATA = [
     "additional": {
       "job": null,
       "education": null,
-      "notes": "김명진의 딸",
+      "notes": "김명진-조성희의 딸",
       "photo": null,
       "burialPlace": null,
       "memorialDate": null,
@@ -2134,7 +2134,7 @@ window.CORE_DATA = [
     "additional": {
       "job": null,
       "education": null,
-      "notes": "김명진의 딸",
+      "notes": "김명진-조성희의 딸",
       "photo": null,
       "burialPlace": null,
       "memorialDate": null,
@@ -2367,7 +2367,7 @@ window.CORE_DATA = [
     "additional": {
       "job": null,
       "education": null,
-      "notes": "김명진 조성희의 딸",
+      "notes": "김명진-조성희의 딸",
       "photo": null,
       "burialPlace": null,
       "memorialDate": null,
@@ -5119,7 +5119,7 @@ window.CORE_DATA = [
     "additional": {
       "job": null,
       "education": null,
-      "notes": "조강하-전흥선의 딸",
+      "notes": "조강하-전흥전의 딸 | 배우자: 김명진 | 딸: 김윤형(배우자: 김승우), 김희진(배우자: 류현민), 김희수(배우자: 신유석)",
       "photo": null,
       "burialPlace": null,
       "memorialDate": null,
@@ -5258,7 +5258,7 @@ window.CORE_DATA = [
     "additional": {
       "job": null,
       "education": null,
-      "notes": "조강하-전흥선의 사위",
+      "notes": "조성희의 남편 | 딸: 김윤형(배우자: 김승우), 김희진(배우자: 류현민), 김희수(배우자: 신유석)",
       "photo": null,
       "burialPlace": null,
       "memorialDate": null,
@@ -8129,4 +8129,4 @@ window.GENDER_FIX_LOG = {
       "notes": "조광하-이의경의 딸"
     }
   ]
-};
+];
