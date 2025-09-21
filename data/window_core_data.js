@@ -3807,7 +3807,7 @@ window.CORE_DATA = [
     "additional": {
       "job": null,
       "education": null,
-      "notes": "조성문-최인자의 딸 | 동명이인: 부모=조성문/최인자",
+      "notes": "조성문-최민자의 딸 | 배우자: 임준성 | 아들: 임성우, 임성현",
       "photo": null,
       "burialPlace": null,
       "memorialDate": null,
@@ -3994,7 +3994,7 @@ window.CORE_DATA = [
     "additional": {
       "job": null,
       "education": null,
-      "notes": "조윤희의 남편",
+      "notes": "조윤희의 남편 | 아들: 임성우, 임성현",
       "photo": null,
       "burialPlace": null,
       "memorialDate": null,
@@ -4368,7 +4368,7 @@ window.CORE_DATA = [
     "additional": {
       "job": null,
       "education": null,
-      "notes": "조창희-김미화의 아들",
+      "notes": "조윤희-임준성의 아들",
       "photo": null,
       "burialPlace": null,
       "memorialDate": null,
