@@ -3901,7 +3901,7 @@ window.CORE_DATA = [
     "additional": {
       "job": null,
       "education": null,
-      "notes": "조윤희-임준성의 아들",
+      "notes": "임준성-조윤희의 아들",
       "photo": null,
       "burialPlace": null,
       "memorialDate": null,
@@ -3994,7 +3994,7 @@ window.CORE_DATA = [
     "additional": {
       "job": null,
       "education": null,
-      "notes": "조윤희의 남편 | 아들: 임성우, 임성현",
+      "notes": "조윤희의 남편",
       "photo": null,
       "burialPlace": null,
       "memorialDate": null,
@@ -4041,7 +4041,7 @@ window.CORE_DATA = [
     "additional": {
       "job": null,
       "education": null,
-      "notes": "조윤희-임준성의 아들",
+      "notes": "임준성-조윤희의 아들",
       "photo": null,
       "burialPlace": null,
       "memorialDate": null,
@@ -4368,7 +4368,7 @@ window.CORE_DATA = [
     "additional": {
       "job": null,
       "education": null,
-      "notes": "조윤희-임준성의 아들",
+      "notes": "임준성-조윤희의 아들",
       "photo": null,
       "burialPlace": null,
       "memorialDate": null,

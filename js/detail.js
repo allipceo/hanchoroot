@@ -567,14 +567,39 @@ function findSpousesFromNotes(personName) {
   
   const spouses = [];
   
-  // 배우자 찾기 (양방향)
+  // 1. personName을 찾아서 그 사람의 notes에서 배우자 정보 추출
+  const targetPerson = persons.find(p => p.name === personName);
+  if (targetPerson) {
+    const notes = targetPerson.additional?.notes || '';
+    
+    // "배우자: 이름" 패턴에서 배우자 찾기
+    const spouseInNotesPattern = /배우자:\s*(.+?)(?:\s*\||$)/;
+    const spouseMatch = notes.match(spouseInNotesPattern);
+    if (spouseMatch) {
+      const spouseName = spouseMatch[1].trim();
+      const spousePerson = persons.find(p => p.name === spouseName);
+      if (spousePerson) {
+        spouses.push(spousePerson);
+      }
+    }
+  }
+  
+  // 2. 다른 사람들의 notes에서 personName을 배우자로 언급하는 경우 찾기
   persons.forEach(person => {
     const notes = person.additional?.notes || '';
     
-    // 배우자 패턴: "personName의 부인" 또는 "personName의 남편"
-    const spousePattern = new RegExp(`${personName}의.*(부인|남편)`);
-    if (spousePattern.test(notes)) {
+    // 패턴 1: "personName의 부인" 또는 "personName의 남편"
+    const spousePattern1 = new RegExp(`${personName}의.*(부인|남편)`);
+    if (spousePattern1.test(notes)) {
       spouses.push(person);
+      return;
+    }
+    
+    // 패턴 2: "배우자: personName" 형태
+    const spousePattern2 = new RegExp(`배우자:\\s*${personName}`);
+    if (spousePattern2.test(notes)) {
+      spouses.push(person);
+      return;
     }
   });
   
