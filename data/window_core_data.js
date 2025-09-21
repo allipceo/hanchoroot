@@ -1412,9 +1412,9 @@ window.CORE_DATA = [
     "성별": "F",
     "세대": 1,
     "Line1": "Line3",
-    "생년": 1982,
+    "생년": 1992,
     "생존상태": "생존",
-    "age": 43,
+    "age": 33,
     "relationships": {
       "father": null,
       "mother": null,
@@ -1882,9 +1882,9 @@ window.CORE_DATA = [
     "성별": "F",
     "세대": 1,
     "Line1": "Line3",
-    "생년": 1988,
+    "생년": 1989,
     "생존상태": "생존",
-    "age": 37,
+    "age": 36,
     "relationships": {
       "father": null,
       "mother": null,
